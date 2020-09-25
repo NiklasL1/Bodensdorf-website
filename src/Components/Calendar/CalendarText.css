@@ -1,0 +1,32 @@
+.preSeason {
+    background-color: rgb(181, 236, 98);
+}
+
+.mainSeason {
+    background-color: rgb(243, 243, 114);
+}
+
+.aftSeason {
+    background-color: burlywood;
+}
+
+.offSeason {
+    background-color: rgb(114, 114, 241);
+}
+
+.arrivalDepartureDay {
+    background-color: grey;
+    font-weight: bold;
+    text-align: center;
+}
+
+.unavailableDay {
+    color: #ccc;
+    background-color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.centerText {
+    text-align: center;    
+}

@@ -1,0 +1,27 @@
+.buttonColor {
+    background-color: rgba(245, 245, 245, 0.644) !important;
+    border-color: rgba(67, 88, 93, 0.644) !important;
+}
+
+.loginForm {   
+    margin-left: 10%;
+    margin-right: 10%;
+    cursor: default;
+}
+
+.loginButton {
+    margin-right: 10px;
+}
+
+.forgotPassword {
+    font-size: 0.8rem !important;
+}
+
+.register {
+    margin-left: 10%;
+    margin-bottom: -10%;
+}
+
+.registerText {
+    cursor: pointer;
+}

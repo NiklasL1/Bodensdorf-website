@@ -1,0 +1,28 @@
+.verticalAlign {
+    display:flex;
+    align-content: center;
+    align-items: center;
+}
+
+.boldIt {
+    font-weight: bold;
+}
+
+.centerText {
+    text-align: center;
+}
+
+.spacing {
+    padding-top:2%;    
+}
+
+.title {
+    font-weight: bold;
+    text-align: center;
+}
+
+.subTitle {
+    font-style: italic;
+    text-align: center;
+    padding-bottom: 2%;
+}
