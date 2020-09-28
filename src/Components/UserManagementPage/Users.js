@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import User from "./User";
 import { UsersContext } from "../../Context/UsersContext";
 
-const Users = () => {	
+const Users = () => {
 	const { list, loading } = useContext(UsersContext);
 
 	const renderData = (data) => {
@@ -29,8 +29,7 @@ const Users = () => {
 		<>
 			{loading ? (
 				"loading..."
-			) : 
-			list ? (
+			) : list ? (
 				<>
 					<h2>{list.length} Users</h2>
 					{renderData(list)}

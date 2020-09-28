@@ -1,37 +1,37 @@
-#headerPic {    
-    background-image: url(/img/lage-haeuservomsee2.jpg);    
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    min-height: 100vh;
-    font-family: "Raleway", sans-serif;    
+#headerPic {
+	background-image: url(/img/lage-haeuservomsee2.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	min-height: 100vh;
+	font-family: "Raleway", sans-serif;
 }
 
 .transparent {
-    background-color: rgba(23, 163, 184, 0) !important;
-    border-width: 0px !important;    
+	background-color: rgba(23, 163, 184, 0) !important;
+	border-width: 0px !important;
 }
 
 .colored {
-    background-color: rgba(17, 118, 133, 0.671) !important;
-    color: white
+	background-color: rgba(17, 118, 133, 0.671) !important;
+	color: white;
 }
 
 .wideIt {
-    width: 80%;
+	width: 80%;
 }
 
 .centerIt {
-    display: flex;
-    justify-content: center;
+	display: flex;
+	justify-content: center;
 }
 
 .boldIt {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 .centerText {
-    text-align: center;
+	text-align: center;
 }
 
 /* #alignMenu {
@@ -42,17 +42,17 @@
 } */
 
 .buttonColor {
-    background-color: rgba(245, 245, 245, 0.644) !important;
-    border-color: rgba(67, 88, 93, 0.644) !important;
+	background-color: rgba(245, 245, 245, 0.644) !important;
+	border-color: rgba(67, 88, 93, 0.644) !important;
 }
 
 .vertAlignMenu {
-    padding-top: 6%;    
+	padding-top: 6%;
 }
 
 @media (max-width: 1050px) {
-    .vertAlignMenu {
-    align-items: center;
-       padding-top: 0%;
-   }
- }
+	.vertAlignMenu {
+		align-items: center;
+		padding-top: 0%;
+	}
+}

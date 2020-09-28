@@ -3,10 +3,23 @@ import EditBooking from "./EditBooking";
 import UserInfo from "./UserInfo";
 import { BookingsContext } from "../../Context/BookingsContext";
 import { UsersContext } from "../../Context/UsersContext";
-import './Bookings.css';
-import Button from 'react-bootstrap/Button';
+import "./Bookings.css";
+import Button from "react-bootstrap/Button";
 
-const Booking = ({ _id, airBnB, totalPrice, prepayment, amtPaid, amtOwed, arriveStr, departStr, arriveEpoch, departEpoch, people, userID }) => {
+const Booking = ({
+	_id,
+	airBnB,
+	totalPrice,
+	prepayment,
+	amtPaid,
+	amtOwed,
+	arriveStr,
+	departStr,
+	arriveEpoch,
+	departEpoch,
+	people,
+	userID,
+}) => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
@@ -15,8 +28,8 @@ const Booking = ({ _id, airBnB, totalPrice, prepayment, amtPaid, amtOwed, arrive
 	const handleClose2 = () => setShow2(false);
 	const handleShow2 = () => setShow2(true);
 
-	const { update } = useContext(BookingsContext)
-	const { list, getUsers } = useContext(UsersContext)
+	const { update } = useContext(BookingsContext);
+	const { list, getUsers } = useContext(UsersContext);
 	const [value, setValue] = useState({
 		userID: userID,
 		airBnB: airBnB,
@@ -41,21 +54,21 @@ const Booking = ({ _id, airBnB, totalPrice, prepayment, amtPaid, amtOwed, arrive
 
 	const handleKeypress = (event) => {
 		if (event.key === "Enter") {
-			console.log(event.key)
-			saveChanges()
+			console.log(event.key);
+			saveChanges();
 		}
 	};
 
 	const saveChanges = () => {
-		update(_id, value)
+		update(_id, value);
 	};
 
 	useEffect(() => {
 		// getUserByID(value.userID)
-		getUsers()
-	}, [])
+		getUsers();
+	}, []);
 
-	const thisUser = list ? list.find(user => user._id === value.userID) : null
+	const thisUser = list ? list.find((user) => user._id === value.userID) : null;
 
 	return (
 		<>
@@ -114,7 +127,7 @@ const Booking = ({ _id, airBnB, totalPrice, prepayment, amtPaid, amtOwed, arrive
 						name="name"
 						type="text"
 						readOnly="readonly"
-						value={thisUser ? `${thisUser.fName} ${thisUser.lName}` : null}
+						value={thisUser ? `${thisUser.fName} ${thisUser.lName}` : undefined}
 					></input>
 				</td>
 				<td className="resizeTableCell">
@@ -196,7 +209,7 @@ const Booking = ({ _id, airBnB, totalPrice, prepayment, amtPaid, amtOwed, arrive
 			</td>								 */}
 				<td className="d-flex justify-content-center resizeTableCell">
 					<Button variant="primary" onClick={handleShow}>
-						<i class="fa fa-pencil fa-lg" aria-hidden="true"></i>
+						<i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
 					</Button>
 					{/* <button onClick={saveChanges}>Save changes</button> */}
 					{/* <DeleteBooking _id={_id} /> */}

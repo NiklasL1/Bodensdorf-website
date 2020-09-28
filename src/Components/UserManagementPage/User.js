@@ -3,12 +3,12 @@ import DeleteUser from "./DeleteUser";
 import { UsersContext } from "../../Context/UsersContext";
 
 const User = ({ _id, fName, lName, email, telNo }) => {
-	const {update} = useContext(UsersContext)
+	const { update } = useContext(UsersContext);
 	const [value, setValue] = useState({
 		fName: fName,
-        lName: lName,
-        email: email,
-        telNo: telNo
+		lName: lName,
+		email: email,
+		telNo: telNo,
 	});
 	// const [isEditing, setIsEditing] = useState(false);
 
@@ -29,14 +29,14 @@ const User = ({ _id, fName, lName, email, telNo }) => {
 	// };
 
 	const handleKeypress = (event) => {
-		if(event.key === "Enter") {
-			console.log(event.key)
-			saveChanges()
+		if (event.key === "Enter") {
+			console.log(event.key);
+			saveChanges();
 		}
 	};
 
 	const saveChanges = () => {
-		update(_id, value) 		
+		update(_id, value);
 	};
 
 	return (
@@ -74,7 +74,7 @@ const User = ({ _id, fName, lName, email, telNo }) => {
 					value={value.email}
 				></input>
 			</td>
-            <td>
+			<td>
 				<input
 					onChange={handleChange}
 					// onClick={handleClick}
@@ -84,7 +84,7 @@ const User = ({ _id, fName, lName, email, telNo }) => {
 					type="text"
 					value={value.telNo}
 				></input>
-			</td>			
+			</td>
 			<td>
 				<button onClick={saveChanges}>Save changes</button>
 				<DeleteUser _id={_id} />

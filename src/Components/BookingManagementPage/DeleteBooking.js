@@ -1,23 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import { BookingsContext } from "../../Context/BookingsContext";
-import Button from 'react-bootstrap/Button';
+import Button from "react-bootstrap/Button";
 // import Swal from 'sweetalert2'
 
 const DeleteProduct = ({ _id }) => {
-	const { deleteItem } = useContext(BookingsContext)
+	const { deleteItem } = useContext(BookingsContext);
 
 	const removeItem = () => {
-		if (
-			window.confirm(
-				"Diese Buchung permanent löschen?"
-			)
-		) {
-			if (
-				window.confirm(
-					"Wirklich löschen?"
-				)
-			) {
-				deleteItem(_id)
+		if (window.confirm("Diese Buchung permanent löschen?")) {
+			if (window.confirm("Wirklich löschen?")) {
+				deleteItem(_id);
 			}
 		} else {
 			alert("Buchung wurde nicht gelöscht");
@@ -43,17 +35,17 @@ const DeleteProduct = ({ _id }) => {
 		// 	} else if (result.dismiss === Swal.DismissReason.cancel) {
 		// 		Swal.fire({
 		// 			title: 'Buchung wurde nicht gelöscht!',
-		// 			icon: 'error'					
-		// 		})	
+		// 			icon: 'error'
+		// 		})
 		// 	}
 		// })
 	};
 
 	return (
 		<Button variant="danger" onClick={removeItem}>
-			<i class="fa fa-trash fa-lg" aria-hidden="true"></i>
+			<i className="fa fa-trash fa-lg" aria-hidden="true"></i>
 		</Button>
-	)
-}
+	);
+};
 
-export default DeleteProduct
+export default DeleteProduct;

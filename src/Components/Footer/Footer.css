@@ -1,14 +1,14 @@
 .textStyling {
-    color: black;  
+	color: black;
 }
 
 .secretTextStyling {
-    color: black;
-    cursor: default;      
+	color: black;
+	cursor: default;
 }
 
 .secretTextStyling:hover {
-    font-style: none;
+	font-style: none;
 }
 
 /* .style {
