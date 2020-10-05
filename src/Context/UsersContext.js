@@ -28,8 +28,10 @@ const UsersContextProvider = ({ children }) => {
 
 	// read
 	const getUsers = async () => {
-		// https://bodensdorf-server.herokuapp.com/api/users/
-		const url = "http://localhost:4000/api/users/";
+		const url =
+			process.env.REACT_APP_LOCATION === "development"
+				? `http://localhost:4000/api/users/`
+				: `https://bodensdorf-server.herokuapp.com/api/users/`;
 		const response = await fetch(url);
 		const data = await response.json();
 		setList(data);
@@ -38,8 +40,10 @@ const UsersContextProvider = ({ children }) => {
 
 	// read by userID
 	const getUserByID = async (id) => {
-		// https://bodensdorf-server.herokuapp.com/api/users/${id}
-		const url = `http://localhost:4000/api/users/${id}`;
+		const url =
+			process.env.REACT_APP_LOCATION === "development"
+				? `http://localhost:4000/api/users/${id}`
+				: `https://bodensdorf-server.herokuapp.com/api/users/${id}`;
 		const response = await fetch(url);
 		const data = await response.json();
 		setList(data);
@@ -55,15 +59,19 @@ const UsersContextProvider = ({ children }) => {
 
 	//update
 	const update = (_id, values) => {
-		// https://bodensdorf-server.herokuapp.com/api/users/${_id}
-		fetch(`http://localhost:4000/api/users/${_id}`, {
-			method: "put",
-			headers: {
-				Accept: "application/json, text/plain, */*",
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ ...values }),
-		})
+		fetch(
+			process.env.REACT_APP_LOCATION === "development"
+				? `http://localhost:4000/api/users/${_id}`
+				: `https://bodensdorf-server.herokuapp.com/api/users/${_id}`,
+			{
+				method: "put",
+				headers: {
+					Accept: "application/json, text/plain, */*",
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ ...values }),
+			}
+		)
 			.then((res) => res.json())
 			.then((res) => {
 				const updatedState = list.map((item) => {
@@ -79,10 +87,14 @@ const UsersContextProvider = ({ children }) => {
 
 	//delete
 	const deleteItem = (_id) => {
-		// https://bodensdorf-server.herokuapp.com/api/users/${_id}
-		fetch(`http://localhost:4000/api/users/${_id}`, {
-			method: "delete",
-		})
+		fetch(
+			process.env.REACT_APP_LOCATION === "development"
+				? `http://localhost:4000/api/users/${_id}`
+				: `https://bodensdorf-server.herokuapp.com/api/users/${_id}`,
+			{
+				method: "delete",
+			}
+		)
 			.then(() => setList(list.filter((item) => item._id !== _id)))
 			.catch((error) => {
 				console.error("Error:", error);
