@@ -48,8 +48,10 @@ const Login = () => {
 					password: loginPassword,
 				},
 				withCredentials: true,
-				url: "http://localhost:4000/api/login",
-				// url: "https://bodensdorf-server.herokuapp.com/api/login"
+				url:
+					process.env.REACT_APP_LOCATION === "development"
+						? "http://localhost:4000/api/login"
+						: "https://bodensdorf-server.herokuapp.com/api/login",
 			}).then((res) => {
 				console.log(res);
 				if (res.data === "No user exists") {
@@ -90,8 +92,10 @@ const Login = () => {
 		axios({
 			method: "GET",
 			withCredentials: true,
-			url: "http://localhost:4000/api/user",
-			// url: "https://bodensdorf-server.herokuapp.com/api/user"
+			url:
+				process.env.REACT_APP_LOCATION === "development"
+					? "http://localhost:4000/api/user"
+					: "https://bodensdorf-server.herokuapp.com/api/user",
 		}).then((res) => {
 			setData(res.data);
 			console.log(res.data);
@@ -102,8 +106,10 @@ const Login = () => {
 		axios({
 			method: "GET",
 			withCredentials: true,
-			url: "http://localhost:4000/api/logout",
-			// url: "https://bodensdorf-server.herokuapp.com/api/logout"
+			url:
+				process.env.REACT_APP_LOCATION === "development"
+					? "http://localhost:4000/api/logout"
+					: "https://bodensdorf-server.herokuapp.com/api/logout",
 		}).then(setData(null));
 	};
 

@@ -39,8 +39,10 @@ const Register = () => {
 				telNo: registerTelNo,
 			},
 			withCredentials: true,
-			url: "http://localhost:4000/api/register",
-			// url: "https://bodensdorf-server.herokuapp.com/api/register"
+			url:
+				process.env.REACT_APP_LOCATION === "development"
+					? "http://localhost:4000/api/register"
+					: "https://bodensdorf-server.herokuapp.com/api/register",
 		}).then((res) => {
 			console.log(res);
 			if (res.data === "User Already Exists") {

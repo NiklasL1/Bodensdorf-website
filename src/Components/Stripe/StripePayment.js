@@ -32,17 +32,21 @@ const StripePayment = ({ handleClose }) => {
 		};
 		const headers = {
 			"Content-Type": "application/json",
-		};
-		//https://bodensdorf-server.herokuapp.com/api/payment
-		return fetch(`http://localhost:4000/api/payment`, {
-			method: "POST",
-			headers: headers,
-			body: JSON.stringify(body),
-		})
+		};		
+		return fetch(
+			process.env.REACT_APP_LOCATION === "development"
+				? "http://localhost:4000/api/payment"
+				: "https://bodensdorf-server.herokuapp.com/api/payment",
+			{
+				method: "POST",
+				headers: headers,
+				body: JSON.stringify(body),
+			}
+		)
 			.then((res) => {
 				console.log("response", res);
 				const { status } = res;
-				console.log("status", status);				
+				console.log("status", status);
 				setSucceeded(true);
 				console.log(succeeded);
 			})
