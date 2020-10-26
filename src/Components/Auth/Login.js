@@ -98,7 +98,7 @@ const Login = () => {
 					: "https://bodensdorf-server.herokuapp.com/api/user",
 		}).then((res) => {
 			setData(res.data);
-			console.log(res.data);
+			console.log(res);
 		});
 	};
 

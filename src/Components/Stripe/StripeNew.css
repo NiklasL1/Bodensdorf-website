@@ -1,4 +1,4 @@
-/* #root {
+#root {
 
     display: flex;
   
@@ -6,7 +6,7 @@
   
   }
   
-  body {
+  .StripeNew {
   
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   
@@ -26,9 +26,9 @@
   
   }
   
-  form {
+  #payment-form {
   
-    width: 30vw;
+    width: 100%;
   
     align-self: center;
   
@@ -42,7 +42,7 @@
   
   }
   
-  input {
+  #payment-form input {
   
     border-radius: 6px;
   
@@ -128,7 +128,7 @@
   
   /* Buttons and links */
   
-  /* button {
+  #payment-form button {
   
     background: #5469d4;
   
@@ -158,13 +158,13 @@
   
   }
   
-  button:hover {
+  #payment-form button:hover {
   
     filter: contrast(115%);
   
   }
   
-  button:disabled {
+  #payment-form button:disabled {
   
     opacity: 0.5;
   
@@ -174,7 +174,7 @@
   
   /* spinner/processing state, errors */
   
-  /* .spinner,
+   .spinner,
   
   .spinner:before,
   
@@ -297,4 +297,4 @@
     }
   
   }
-     */
+    

@@ -17,6 +17,7 @@ import DatePicker from "react-datepicker";
 import { getDefaultLocale } from "react-datepicker";
 import addDays from "date-fns/addDays";
 import { AuthContext } from "../../Context/AuthContext";
+import StripeNew from "../Stripe/StripeNew";
 
 const BookingMenu = () => {
 	const {
@@ -44,6 +45,12 @@ const BookingMenu = () => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => {
 		setShow(true);
+	};
+
+	const [showStripe, setShowStripe] = useState(false);
+	const handleCloseStripe = () => setShowStripe(false);
+	const handleShowStripe = () => {
+		setShowStripe(true);
 	};
 
 	useEffect(() => {
@@ -283,6 +290,11 @@ const BookingMenu = () => {
 				checkShow={checkShow}
 				arrayOfDates={arrayOfDates}
 				extraPerson={extraPerson}
+				handleShowStripe={handleShowStripe}				
+			/>
+			<StripeNew 
+				handleClose={handleCloseStripe}
+				show={showStripe}
 			/>
 		</>
 	);

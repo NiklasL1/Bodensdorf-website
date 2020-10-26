@@ -6,12 +6,13 @@ import Imprint from "./Imprint";
 import UserManagementPage from "../UserManagementPage/UserManagementPage";
 import BookingManagementPage from "../BookingManagementPage/BookingManagementPage";
 import PageNotFound from "../PageNotFound";
-// import StripeNew from '../Stripe/StripeNew';
+import StripeNew from '../Stripe/StripeNew';
 
 function App() {
 	return (
 		<div className="App">
 			<Switch>
+				<Route exact path="/checkout/" children={<StripeNew />} />
 				<Route exact path="/impressum/" children={<Imprint />} />
 				<Route exact path="/users/" children={<UserManagementPage />} />
 				<Route exact path="/bookings/" children={<BookingManagementPage />} />

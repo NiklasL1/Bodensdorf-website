@@ -56,3 +56,8 @@
 		padding-top: 0%;
 	}
 }
+
+#bookingModalFooter {
+	display: flex;
+	justify-content: space-between;
+}

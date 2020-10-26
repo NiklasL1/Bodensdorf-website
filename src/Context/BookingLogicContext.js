@@ -14,6 +14,8 @@ const BookingLogicContextProvider = ({ children }) => {
 	const [prepaymentCost, setPrepaymentCost] = useState(0);
 	const [restpaymentCost, setRestpaymentCost] = useState(0);
 
+	const [bookingDetails, setBookingDetails] = useState()
+
 	const bodensdorf = {
 		cleaningFee: 40,
 		// currency: "EUR",
@@ -207,6 +209,8 @@ const BookingLogicContextProvider = ({ children }) => {
 				setArrayOfDates,
 				extraPerson,
 				setExtraPerson,
+				bookingDetails,
+				setBookingDetails
 			}}
 		>
 			{children}

@@ -2,18 +2,19 @@ import React, { useState, useEffect, useContext } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
-// import moment from "moment";
+import moment from "moment";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import BookingButton from "./BookingButton";
-import StripePayment from "../Stripe/StripePayment";
+// import StripePayment from "../Stripe/StripePayment";
 
-const BookingModal = ({ handleClose, show }) => {
+const BookingModal = ({ handleClose, show, handleShowStripe }) => {
 	const {
 		totalBookingCost,
 		arrayOfDates,
 		showDates,
 		prepaymentCost,
 		restpaymentCost,
+		startDate,
 	} = useContext(BookingLogicContext);
 
 	const { t } = useTranslation();
@@ -47,15 +48,27 @@ const BookingModal = ({ handleClose, show }) => {
 							{t("bookMo5")} {arrayOfDates ? Math.round(prepaymentCost) : null}€
 						</div>
 						<div>
-							{t("bookMo6")} {arrayOfDates ? Math.round(restpaymentCost) : null}€
+							{t("bookMo6")}
+							{t("bookMoDateFunc") === "DE"
+								? moment(
+										moment(startDate, "YYYY-MM-DD").valueOf() - 2592000000
+								  ).format("DD/MM/YYYY")
+								: moment(
+										moment(startDate, "YYYY-MM-DD").valueOf() - 2592000000
+								  ).format("MM/DD/YYYY")}
+							{t("bookMo6a")}
+							{arrayOfDates ? Math.round(restpaymentCost) : null}€
 						</div>
 					</>
 				)}
 
-				{/* <BookingButton /> */}
-				<StripePayment handleClose={handleClose} />
+				{/* <StripePayment handleClose={handleClose} /> */}
 			</Modal.Body>
-			<Modal.Footer>
+			<Modal.Footer id="bookingModalFooter">
+				<BookingButton
+					handleClose={handleClose}
+					handleShowStripe={handleShowStripe}
+				/>
 				<Button variant="outline-danger" onClick={handleClose}>
 					{t("bookMo8")}
 				</Button>

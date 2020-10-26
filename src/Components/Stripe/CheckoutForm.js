@@ -1,213 +1,146 @@
-import React, { useState, useEffect } from "react";
-
-import {
-
-    CardElement,
-
-    useStripe,
-
-    useElements
-
-} from "@stripe/react-stripe-js";
-
+import React, { useState, useEffect, useContext } from "react";
+import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { PaymentContext } from "../../Context/PaymentContext";
+import { BookingLogicContext } from "../../Context/BookingLogicContext";
+import "./StripeNew.css";
 
 export default function CheckoutForm() {
-    
-    const {succeeded, setSucceeded} = useContext(PaymentContext)    
+	const { succeeded, setSucceeded } = useContext(PaymentContext);
 
-    const [error, setError] = useState(null);
+	const [error, setError] = useState(null);
 
-    const [processing, setProcessing] = useState('');
+	const [processing, setProcessing] = useState("");
 
-    const [disabled, setDisabled] = useState(true);
+	const [disabled, setDisabled] = useState(true);
 
-    const [clientSecret, setClientSecret] = useState('');
+	const [clientSecret, setClientSecret] = useState("");
 
-    const stripe = useStripe();
+	const stripe = useStripe();
 
-    const elements = useElements();
+	const elements = useElements();
 
-    useEffect(() => {
+	const { bookingDetails } = useContext(BookingLogicContext);
 
-        // Create PaymentIntent as soon as the page loads
+	useEffect(() => {
+		// Create PaymentIntent as soon as the page loads
 
-        window
+		setSucceeded(false);
 
-            .fetch("http://localhost:4242/create-payment-intent", {
+		window
 
-                method: "POST",
+			.fetch("http://localhost:4000/api/payments/create-payment-intent", {
+				method: "POST",
 
-                headers: {
+				headers: {
+					"Content-Type": "application/json",
+				},
 
-                    "Content-Type": "application/json"
+				body: JSON.stringify({ price:bookingDetails.prepayment }),
+			})
 
-                },
+			.then((res) => {
+				return res.json();
+			})
 
-                body: JSON.stringify({ items: [{ id: "xl-tshirt" }] })
+			.then((data) => {
+				setClientSecret(data.clientSecret);
+			});
+	}, []);
 
-            })
+	const cardStyle = {
+		style: {
+			base: {
+				color: "#32325d",
 
-            .then(res => {
+				fontFamily: "Arial, sans-serif",
 
-                return res.json();
+				fontSmoothing: "antialiased",
 
-            })
+				fontSize: "16px",
 
-            .then(data => {
+				"::placeholder": {},
+			},
 
-                setClientSecret(data.clientSecret);
+			invalid: {
+				color: "#fa755a",
 
-            });
+				iconColor: "#fa755a",
+			},
+		},
+	};
 
-    }, []);
+	const handleChange = async (event) => {
+		// Listen for changes in the CardElement
 
-    const cardStyle = {
+		// and display any errors as the customer types their card details
 
-        style: {
+		setDisabled(event.empty);
 
-            base: {
+		setError(event.error ? event.error.message : "");
+	};
 
-                color: "#32325d",
+	const handleSubmit = async (ev) => {
+		ev.preventDefault();
 
-                fontFamily: 'Arial, sans-serif',
+		setProcessing(true);
 
-                fontSmoothing: "antialiased",
+		setSucceeded(false);
 
-                fontSize: "16px",
+		const payload = await stripe.confirmCardPayment(clientSecret, {
+			payment_method: {
+				card: elements.getElement(CardElement),
+			},
+		});
 
-                "::placeholder": {
+		if (payload.error) {
+			setError(`Payment failed ${payload.error.message}`);
 
-                }
+			setProcessing(false);
+		} else {
+			setError(null);
 
-            },
+			setProcessing(false);
 
-            invalid: {
+			setSucceeded(true);
 
-                color: "#fa755a",
-
-                iconColor: "#fa755a"
-
-            }
-
-        }
-
-    };
-
-    const handleChange = async (event) => {
-
-        // Listen for changes in the CardElement
-
-        // and display any errors as the customer types their card details
-
-        setDisabled(event.empty);
-
-        setError(event.error ? event.error.message : "");
-
-    };
-
-    const handleSubmit = async ev => {
-
-        ev.preventDefault();
-
-        setProcessing(true);
-
-        setSucceeded(false)
-
-        const payload = await stripe.confirmCardPayment(clientSecret, {
-
-            payment_method: {
-
-                card: elements.getElement(CardElement)
-
-            }
-
-        });
-
-        if (payload.error) {
-
-            setError(`Payment failed ${payload.error.message}`);
-
-            setProcessing(false);
-
-        } else {
-
-            setError(null);
-
-            setProcessing(false);
-
-            setSucceeded(true);
-
-            console.log("succeeded", succeeded)
-
-        }
-
-    };
-
-    return (
-
-        <form id="payment-form" onSubmit={handleSubmit}>
-
-            <CardElement id="card-element" options={cardStyle} onChange={handleChange} />
-
-            <button
-
-                disabled={processing || disabled || succeeded}
-
-                id="submit"
-
-            >
-
-                <span id="button-text">
-
-                    {processing ? (
-
-                        <div className="spinner" id="spinner"></div>
-
-                    ) : (
-
-                            "Pay"
-
-                        )}
-
-                </span>
-
-            </button>
-
-            {/* Show any error that happens when processing the payment */}
-
-            {error && (
-
-                <div className="card-error" role="alert">
-
-                    {error}
-
-                </div>
-
-            )}
-
-            {/* Show a success message upon completion */}
-
-            <p className={succeeded ? "result-message" : "result-message hidden"}>
-
-                Payment succeeded, see the result in your
-
-        <a
-
-                    href={`https://dashboard.stripe.com/test/payments`}
-
-                >
-
-                    {" "}
-
-          Stripe dashboard.
-
-        </a> Refresh the page to pay again.
-
-      </p>
-
-        </form>
-
-    );
-
+			console.log("succeeded", succeeded);
+		}
+	};
+
+	return (
+		<form id="payment-form" onSubmit={handleSubmit}>
+			<h2> {bookingDetails.prepayment}€ </h2>
+            <h3> {bookingDetails.arriveStr} - {bookingDetails.departStr} </h3>
+			<CardElement
+				id="card-element"
+				options={cardStyle}
+                onChange={handleChange}                
+			/>
+
+			<button disabled={processing || disabled || succeeded} id="submit">
+				<span id="button-text">
+					{processing ? <div className="spinner" id="spinner"></div> : "Pay"}
+				</span>
+			</button>
+
+			{/* Show any error that happens when processing the payment */}
+
+			{error && (
+				<div className="card-error" role="alert">
+					{error}
+				</div>
+			)}
+
+			{/* Show a success message upon completion */}
+
+			<p className={succeeded ? "result-message" : "result-message hidden"}>
+				Payment succeeded, see the result in your
+				<a href={`https://dashboard.stripe.com/test/payments`}>
+					{" "}
+					Stripe dashboard.
+				</a>{" "}
+				Refresh the page to pay again.
+			</p>
+		</form>
+	);
 }
