@@ -76,7 +76,7 @@ export default function StripeNew({ show, handleClose }) {
 			});
 			handleClose();
 		}
-	}, [succeeded]);
+  }, [succeeded]);
 
 	return (
 		<Modal show={show} onHide={handleClose} centered className="StripeNew">
