@@ -5,6 +5,7 @@ a {
 .App {
 	font-family: "Raleway", sans-serif;
 	background-color: rgb(245, 245, 245);
+	width: 100%;
 }
 
 .impressum {

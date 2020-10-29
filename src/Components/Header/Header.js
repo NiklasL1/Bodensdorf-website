@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense, useEffect, useContext } from "react";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -15,10 +15,14 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import de from "date-fns/locale/de";
 import en from "date-fns/locale/en-US";
 import Login from "../Auth/Login";
+import { PaymentContext } from "../../Context/PaymentContext";
 registerLocale("de", de);
 registerLocale("en", en);
 
+
 function Page() {
+	const { setPayingRemainder } = useContext(PaymentContext);
+
 	const { t } = useTranslation();
 	const changeLanguage = (lng) => {
 		i18n.changeLanguage(lng);
@@ -27,6 +31,7 @@ function Page() {
 
 	useEffect(() => {
 		setDefaultLocale("de");
+		setPayingRemainder(false)
 	}, []);
 
 	return (

@@ -1,11 +1,26 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
+import {	
+	useStripe,
+	useElements,
+	CardNumberElement,
+	CardExpiryElement,
+	CardCvcElement,	
+} from "@stripe/react-stripe-js";
 import { PaymentContext } from "../../Context/PaymentContext";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import "./StripeNew.css";
+import { useTranslation } from "react-i18next";
+import moment from "moment";
 
 export default function CheckoutForm() {
-	const { succeeded, setSucceeded } = useContext(PaymentContext);
+	const { t } = useTranslation();
+
+	const {
+		succeeded,
+		setSucceeded,
+		payingRemainder,
+		outstandingPayment,
+	} = useContext(PaymentContext);
 
 	const [error, setError] = useState(null);
 
@@ -26,19 +41,26 @@ export default function CheckoutForm() {
 
 		setSucceeded(false);
 
+		let payment = payingRemainder
+			? outstandingPayment
+			: bookingDetails.prepayment;
+
 		window
 
-			.fetch(process.env.REACT_APP_LOCATION === "development"
-            ? "http://localhost:4000/api/payments/create-payment-intent"
-            : "https://bodensdorf-server.herokuapp.com/api/payments/create-payment-intent", {
-				method: "POST",
+			.fetch(
+				process.env.REACT_APP_LOCATION === "development"
+					? "http://localhost:4000/api/payments/create-payment-intent"
+					: "https://bodensdorf-server.herokuapp.com/api/payments/create-payment-intent",
+				{
+					method: "POST",
 
-				headers: {
-					"Content-Type": "application/json",
-				},
+					headers: {
+						"Content-Type": "application/json",
+					},
 
-				body: JSON.stringify({ price:bookingDetails.prepayment }),
-			})
+					body: JSON.stringify({ price: payment }),
+				}
+			)
 
 			.then((res) => {
 				return res.json();
@@ -90,7 +112,7 @@ export default function CheckoutForm() {
 
 		const payload = await stripe.confirmCardPayment(clientSecret, {
 			payment_method: {
-				card: elements.getElement(CardElement),
+				card: elements.getElement(CardNumberElement),
 			},
 		});
 
@@ -105,23 +127,55 @@ export default function CheckoutForm() {
 
 			setSucceeded(true);
 
-			console.log("succeeded", succeeded);
+			// console.log("succeeded", succeeded);
 		}
 	};
 
 	return (
-		<form id="payment-form" onSubmit={handleSubmit}>
-			<h2> {bookingDetails.prepayment}€ </h2>
-            <h3> {bookingDetails.arriveStr} - {bookingDetails.departStr} </h3>
-			<CardElement
-				id="card-element"
+		<form className="payment-form" onSubmit={handleSubmit}>
+			{payingRemainder ? (
+				<h2> {outstandingPayment}€ </h2>
+			) : (
+				<>
+					<h2> {bookingDetails.prepayment}€ </h2>
+					<h3>
+						{" "}
+						{moment(bookingDetails.arriveStr, "DD/MM/YYYY").format(
+							"DD.MM.YYYY"
+						)}
+						-{" "}
+						{moment(bookingDetails.departStr, "DD/MM/YYYY").format(
+							"DD.MM.YYYY"
+						)}{" "}
+					</h3>
+				</>
+			)}
+
+			<CardNumberElement
+				className="card-element"
 				options={cardStyle}
-                onChange={handleChange}                
+				onChange={handleChange}
 			/>
+			<div id="bottomRowPaymentForm">
+			<CardExpiryElement
+				className="card-element"
+				options={cardStyle}
+				onChange={handleChange}
+			/>
+			<CardCvcElement
+				className="card-element"
+				options={cardStyle}
+				onChange={handleChange}
+			/>
+			</div>			
 
 			<button disabled={processing || disabled || succeeded} id="submit">
 				<span id="button-text">
-					{processing ? <div className="spinner" id="spinner"></div> : "Pay"}
+					{processing ? (
+						<div className="spinner" id="spinner"></div>
+					) : (
+						`${t("payment1")}`
+					)}
 				</span>
 			</button>
 

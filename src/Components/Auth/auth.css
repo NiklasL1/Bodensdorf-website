@@ -25,3 +25,54 @@
 .registerText {
 	cursor: pointer;
 }
+
+#userProfileContainer {
+	display: block;
+	width: 100%;
+}
+
+#userDataForm {
+	display: flex;
+	justify-content: space-around;
+}
+
+.userLabel {
+	margin-right: 2%;
+	white-space: nowrap;
+}
+
+.userFormGroup {
+	display: flex;
+}
+
+#bookingCards {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
+	align-items: stretch;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.individualBooking {
+	border: 1px solid #ccc;
+  	box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+
+#userProfilePage {	
+	margin: 0px 20px 0px 20px
+}
+
+.userProfileTitle{
+	margin-top:20px;
+	margin-bottom:20px;
+}
+
+.paymentDueWarning {
+	font-weight: bold;
+}
+
+#userProfileTop {
+	display: flex;
+	justify-content: space-between;
+}

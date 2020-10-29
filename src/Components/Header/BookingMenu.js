@@ -169,7 +169,7 @@ const BookingMenu = () => {
 			eventKey,
 			() => setButtonClicked(true),
 			menu ? menu.classList.add("colored") : null
-        );
+		);
 
 		useEffect(() => {
 			setTimeout(() => {
@@ -290,12 +290,8 @@ const BookingMenu = () => {
 				checkShow={checkShow}
 				arrayOfDates={arrayOfDates}
 				extraPerson={extraPerson}
-				handleShowStripe={handleShowStripe}				
 			/>
-			<StripeNew 
-				handleClose={handleCloseStripe}
-				show={showStripe}
-			/>
+			<StripeNew />
 		</>
 	);
 };

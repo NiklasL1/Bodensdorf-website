@@ -95,6 +95,7 @@ const BookingsContextProvider = ({ children }) => {
 					"Content-Type": "application/json",
 				},
 				body: JSON.stringify({ ...values }),
+				// body: { ...values },
 			}
 		)
 			.then((res) => res.json())

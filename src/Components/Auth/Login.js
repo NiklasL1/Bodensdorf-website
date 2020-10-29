@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import axios from "axios";
 import Dropdown from "react-bootstrap/Dropdown";
 import Form from "react-bootstrap/Form";
@@ -7,9 +7,10 @@ import Register from "./Register";
 import "./auth.css";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext";
-import UserProfile from "./UserProfile";
+// import UserProfile from "./UserProfile";
 import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 const Login = () => {
 	const { t } = useTranslation();
@@ -23,11 +24,11 @@ const Login = () => {
 		setLoginPassword,
 	} = useContext(AuthContext);
 
-	const [show, setShow] = useState(false);
-	const handleClose = () => setShow(false);
-	const handleShow = () => {
-		setShow(true);
-	};
+	// const [show, setShow] = useState(false);
+	// const handleClose = () => setShow(false);
+	// const handleShow = () => {
+	// 	setShow(true);
+	// };
 
 	let history = useHistory();
 
@@ -177,14 +178,16 @@ const Login = () => {
 		<div>
 			{data ? (
 				<>
-					<UserProfile handleClose={handleClose} show={show} data={data} />
-					<Button
-						className="buttonColor loginButton"
-						variant="light"
-						onClick={handleShow}
-					>
-						{data.username}
-					</Button>
+					{/* <UserProfile handleClose={handleClose} show={show} data={data} /> */}
+					<Link to="/user">
+						<Button
+							className="buttonColor loginButton"
+							variant="light"
+							// onClick={handleShow}
+						>
+							{t("user0")}
+						</Button>
+					</Link>
 					<Button className="buttonColor" variant="light" onClick={logout}>
 						{t("login4")}
 					</Button>

@@ -7,7 +7,7 @@ import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import BookingButton from "./BookingButton";
 // import StripePayment from "../Stripe/StripePayment";
 
-const BookingModal = ({ handleClose, show, handleShowStripe }) => {
+const BookingModal = ({ handleClose, show }) => {
 	const {
 		totalBookingCost,
 		arrayOfDates,
@@ -66,8 +66,7 @@ const BookingModal = ({ handleClose, show, handleShowStripe }) => {
 			</Modal.Body>
 			<Modal.Footer id="bookingModalFooter">
 				<BookingButton
-					handleClose={handleClose}
-					handleShowStripe={handleShowStripe}
+					handleClose={handleClose}					
 				/>
 				<Button variant="outline-danger" onClick={handleClose}>
 					{t("bookMo8")}

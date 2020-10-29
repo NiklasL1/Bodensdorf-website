@@ -14,15 +14,6 @@ const UserProfile = ({ handleClose, show, data }) => {
 		(booking) => booking.userID === data._id
 	);
 
-	// const showBookings = () => {
-	// 	console.log("this is all the bookings", bookingsList);
-	// 	console.log("these are the filtered bookings", filteredList);
-	// 	filteredList.map((booking) => {
-	// 		console.log(booking.arriveStr, booking.departStr);
-	// 		return <input value={`${booking.arriveStr}` - `${booking.departStr}`} />;
-	// 	});
-	// };
-
 	return (
 		<Modal show={show} onHide={handleClose} centered>
 			<Modal.Header closeButton>

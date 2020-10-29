@@ -26,7 +26,7 @@
   
   }
   
-  #payment-form {
+  .payment-form {
   
     width: 100%;
   
@@ -42,7 +42,7 @@
   
   }
   
-  #payment-form input {
+  .payment-form input {
   
     border-radius: 6px;
   
@@ -102,7 +102,7 @@
   
   }
   
-  #card-element {
+  .card-element {
   
     border-radius: 4px 4px 0 0;
   
@@ -128,7 +128,7 @@
   
   /* Buttons and links */
   
-  #payment-form button {
+  .payment-form button, #submit {
   
     background: #5469d4;
   
@@ -158,13 +158,13 @@
   
   }
   
-  #payment-form button:hover {
+  .payment-form button:hover, #submit {
   
     filter: contrast(115%);
   
   }
   
-  #payment-form button:disabled {
+  .payment-form button:disabled, #submit:disabled {
   
     opacity: 0.5;
   
@@ -296,5 +296,12 @@
   
     }
   
+  }    
+
+  #bottomRowPaymentForm{
+    display: flex;
   }
-    
+
+  #selectPaymentMethod {
+    margin-bottom: 10px;
+  }

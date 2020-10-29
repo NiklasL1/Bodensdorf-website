@@ -1,7 +1,8 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import CheckoutFormIban from "./CheckoutFormIban";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./StripeNew.css";
@@ -19,15 +20,32 @@ import { useTranslation } from "react-i18next";
 
 // loadStripe is initialized with your real test publishable API key.
 
-const promise = loadStripe(process.env.REACT_APP_LOCATION === "development"
-? process.env.REACT_APP_PUBLISHABLE_KEY
-: "pk_test_51HJwTAKuLkk2F1U9lLls6bJYPxdFMeU0awqk5wcd3dcfkXr6QjjtdUPRM0hYD1gfkF5sZ6auf8vQbZsmotbAbqOo00i7iH5Fh9");
+const promise = loadStripe(
+	process.env.REACT_APP_LOCATION === "development"
+		? process.env.REACT_APP_PUBLISHABLE_KEY
+		: "pk_test_51HJwTAKuLkk2F1U9lLls6bJYPxdFMeU0awqk5wcd3dcfkXr6QjjtdUPRM0hYD1gfkF5sZ6auf8vQbZsmotbAbqOo00i7iH5Fh9"
+);
 
-export default function StripeNew({ show, handleClose }) {
+export default function StripeNew() {
 	const { t } = useTranslation();
 
-	const { succeeded, setSucceeded } = useContext(PaymentContext);
-	const { create } = useContext(BookingsContext);
+	const [paymentMethod, setPaymentMethod] = useState("creditCard")
+
+	const handleChange = (e) => {
+		setPaymentMethod(e.target.value)		
+	}
+
+	const {
+		succeeded,
+		setSucceeded,
+		showStripe,
+		handleCloseStripe,
+		payingRemainder,
+		outstandingPayment,		
+		thisBooking,
+	} = useContext(PaymentContext);
+
+	const { create, update } = useContext(BookingsContext);
 	const {
 		totalBookingCost,
 		prepaymentCost,
@@ -60,39 +78,53 @@ export default function StripeNew({ show, handleClose }) {
 				people: peopleNum,
 			});
 		}
-	}, [
-		totalBookingCost,
-		prepaymentCost,
-		restpaymentCost,
-		extraPerson,
-		data,
-	]);
+	}, [totalBookingCost, prepaymentCost, restpaymentCost, extraPerson, data]);
 
 	useEffect(() => {
-		if (succeeded) {
+		if (succeeded && !payingRemainder) {
 			create(bookingDetails);
 			setSucceeded(false);
 			Swal.fire({
 				title: `${t("bAlert5")}`,
 				icon: "success",
 			});
-			handleClose();
+			handleCloseStripe();
 		}
-  }, [succeeded]);
+
+		if (succeeded && payingRemainder) {			
+			update(thisBooking._id, thisBooking);
+			setSucceeded(false);
+			Swal.fire({
+				title: `${t("bAlert5a")}`,
+				icon: "success",
+			});
+			handleCloseStripe();
+		}
+	}, [succeeded]);
 
 	return (
-		<Modal show={show} onHide={handleClose} centered className="StripeNew">
-			<Modal.Header closeButton>
+		<Modal
+			show={showStripe}
+			onHide={handleCloseStripe}
+			centered
+			className="StripeNew"
+		>
+			{/* <Modal.Header closeButton>
 				<Modal.Title>title</Modal.Title>
-			</Modal.Header>
-			<Modal.Body>
+			</Modal.Header> */}
+			<Modal.Body>				
+				<select value={paymentMethod} onChange={handleChange} id="selectPaymentMethod">
+					<option value="creditCard">{t("payment5")}</option>
+					<option value="SEPA">{t("payment6")}</option>
+				</select>
 				<Elements stripe={promise}>
-					<CheckoutForm />
+					{paymentMethod === "creditCard" ? <CheckoutForm /> : undefined}
+					{paymentMethod === "SEPA" ? <CheckoutFormIban /> : undefined}					
 				</Elements>
 			</Modal.Body>
 			<Modal.Footer>
-				<Button variant="secondary" onClick={handleClose}>
-					button
+				<Button variant="outline-danger" onClick={handleCloseStripe}>
+					{t("bookMo8")}
 				</Button>
 			</Modal.Footer>
 		</Modal>

@@ -76,7 +76,7 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 	};
 
 	const checkOverlap = () => {
-		const otherBookings = bookingsList.filter((element) => element._id != _id);
+		const otherBookings = bookingsList.filter((element) => element._id !== _id);
 		otherBookings.forEach((element) => {
 			if (
 				(value.arriveEpoch >= element.arriveEpoch &&

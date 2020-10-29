@@ -1,8 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useTranslation } from "react-i18next";
 import Button from "react-bootstrap/Button";
+import { PaymentContext } from "../../Context/PaymentContext";
 
-const BookingButton = ({ handleClose, handleShowStripe }) => {
+const BookingButton = ({ handleClose }) => {
 	const { t } = useTranslation();
 
 	// const [bookingDetails, setBookingDetails] = useState({
@@ -18,6 +19,8 @@ const BookingButton = ({ handleClose, handleShowStripe }) => {
 	// 	departEpoch: endEpoch,
 	// 	people: peopleNum,
 	// });
+
+	const { handleShowStripe } = useContext(PaymentContext);
 
 	const handleClick = () => {
 		handleClose()
