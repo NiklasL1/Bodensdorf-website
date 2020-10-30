@@ -1,25 +1,28 @@
 import React, { useState, useEffect, useContext } from "react";
-import {	
+import {
 	useStripe,
 	useElements,
 	CardNumberElement,
 	CardExpiryElement,
-	CardCvcElement,	
+	CardCvcElement,
 } from "@stripe/react-stripe-js";
 import { PaymentContext } from "../../Context/PaymentContext";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
+import { AuthContext } from "../../Context/AuthContext";
 import "./StripeNew.css";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 
 export default function CheckoutForm() {
 	const { t } = useTranslation();
+	const { data } = useContext(AuthContext);
 
 	const {
 		succeeded,
 		setSucceeded,
 		payingRemainder,
 		outstandingPayment,
+		thisBooking,
 	} = useContext(PaymentContext);
 
 	const [error, setError] = useState(null);
@@ -35,6 +38,18 @@ export default function CheckoutForm() {
 	const elements = useElements();
 
 	const { bookingDetails } = useContext(BookingLogicContext);
+
+	let timeStart = payingRemainder
+		? moment(thisBooking.arriveStr, "DD-MM-YYYY").format("DD.MM.YYYY")
+		: moment(bookingDetails.arriveStr, "DD-MM-YYYY").format("DD.MM.YYYY");
+
+	let timeEnd = payingRemainder
+		? moment(thisBooking.departStr, "DD-MM-YYYY").format("DD.MM.YYYY")
+		: moment(bookingDetails.departStr, "DD-MM-YYYY").format("DD.MM.YYYY");
+
+	let paymentType = payingRemainder
+		? "Restzahlung vor Ankunft"
+		: "Zahlung bei Buchung";
 
 	useEffect(() => {
 		// Create PaymentIntent as soon as the page loads
@@ -58,7 +73,12 @@ export default function CheckoutForm() {
 						"Content-Type": "application/json",
 					},
 
-					body: JSON.stringify({ price: payment }),
+					body: JSON.stringify({
+						price: payment,
+						bookingStart: timeStart,
+						bookingEnd: timeEnd,
+						bookingType: paymentType,
+					}),
 				}
 			)
 
@@ -113,6 +133,10 @@ export default function CheckoutForm() {
 		const payload = await stripe.confirmCardPayment(clientSecret, {
 			payment_method: {
 				card: elements.getElement(CardNumberElement),
+				billing_details: {
+					name: `${data.fName} ${data.lName}`,
+					email: data.email,
+				},
 			},
 		});
 
@@ -130,6 +154,12 @@ export default function CheckoutForm() {
 			// console.log("succeeded", succeeded);
 		}
 	};
+
+	// const logit = () => {
+	// 	console.log("from new booking", bookingDetails);
+	// 	console.log("from paying balance", thisBooking);
+	// 	console.log("from", timeStart, "to", timeEnd);
+	// };
 
 	return (
 		<form className="payment-form" onSubmit={handleSubmit}>
@@ -157,17 +187,17 @@ export default function CheckoutForm() {
 				onChange={handleChange}
 			/>
 			<div id="bottomRowPaymentForm">
-			<CardExpiryElement
-				className="card-element"
-				options={cardStyle}
-				onChange={handleChange}
-			/>
-			<CardCvcElement
-				className="card-element"
-				options={cardStyle}
-				onChange={handleChange}
-			/>
-			</div>			
+				<CardExpiryElement
+					className="card-element"
+					options={cardStyle}
+					onChange={handleChange}
+				/>
+				<CardCvcElement
+					className="card-element"
+					options={cardStyle}
+					onChange={handleChange}
+				/>
+			</div>
 
 			<button disabled={processing || disabled || succeeded} id="submit">
 				<span id="button-text">

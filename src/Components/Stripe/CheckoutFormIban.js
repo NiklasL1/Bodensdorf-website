@@ -17,15 +17,28 @@ export default function CheckoutForm() {
 		setSucceeded,
 		payingRemainder,
 		outstandingPayment,
+		thisBooking,
 	} = useContext(PaymentContext);
 
 	const [error, setError] = useState(null);
 
-	const [processing, setProcessing] = useState(false);	
+	const [processing, setProcessing] = useState(false);
 
 	const [clientSecret, setClientSecret] = useState("");
 
 	const { bookingDetails } = useContext(BookingLogicContext);
+
+	let timeStart = payingRemainder
+		? moment(thisBooking.arriveStr, "DD-MM-YYYY").format("DD.MM.YYYY")
+		: moment(bookingDetails.arriveStr, "DD-MM-YYYY").format("DD.MM.YYYY");
+
+	let timeEnd = payingRemainder
+		? moment(thisBooking.departStr, "DD-MM-YYYY").format("DD.MM.YYYY")
+		: moment(bookingDetails.departStr, "DD-MM-YYYY").format("DD.MM.YYYY");
+
+	let paymentType = payingRemainder
+	? "Restzahlung vor Ankunft"
+	: "Zahlung bei Buchung"
 
 	useEffect(() => {
 		// Create PaymentIntent as soon as the page loads
@@ -49,7 +62,12 @@ export default function CheckoutForm() {
 						"Content-Type": "application/json",
 					},
 
-					body: JSON.stringify({ price: payment }),
+					body: JSON.stringify({
+						price: payment,
+						bookingStart: timeStart,
+						bookingEnd: timeEnd,
+						bookingType: paymentType
+					}),
 				}
 			)
 
@@ -61,16 +79,6 @@ export default function CheckoutForm() {
 				setClientSecret(data.clientSecret);
 			});
 	}, []);
-
-	// const handleChange = async (event) => {
-	// 	// Listen for changes in the CardElement
-
-	// 	// and display any errors as the customer types their card details
-
-	// 	setDisabled(event.empty);
-
-	// 	setError(event.error ? event.error.message : "");
-	// };
 
 	const handleSubmit = async (ev) => {
 		if (!stripe || !elements) {
@@ -113,6 +121,12 @@ export default function CheckoutForm() {
 		}
 	};
 
+	// const logit = () => {
+	// 	console.log("from new booking", bookingDetails);
+	// 	console.log("from paying balance", thisBooking);
+	// 	console.log("from", timeStart, "to", timeEnd);
+	// };
+
 	return (
 		<>
 			{payingRemainder ? (
@@ -135,9 +149,9 @@ export default function CheckoutForm() {
 			<IbanForm
 				onSubmit={handleSubmit}
 				// handleChange={handleChange}
-                disabled={!stripe}
-                processing={processing}
-                succeeded={succeeded}
+				disabled={!stripe}
+				processing={processing}
+				succeeded={succeeded}
 			/>
 
 			{error && (

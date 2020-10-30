@@ -1,51 +1,54 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import ListForm from "./ListForm";
 import Bookings from "./Bookings";
-import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 import "./Bookings.css";
 import { AuthContext } from "../../Context/AuthContext";
 import PageNotFound from "../PageNotFound";
+import axios from "axios";
 
 const ManagementPage = () => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
 	const handleShow = () => setShow(true);
 
-	const { loginUsername, loginPassword } = useContext(AuthContext);
+	const { data, setData } = useContext(AuthContext);
+
+	const getUser = () => {
+		axios({
+			method: "GET",
+			withCredentials: true,
+			url:
+				process.env.REACT_APP_LOCATION === "development"
+					? "http://localhost:4000/api/user"
+					: "https://bodensdorf-server.herokuapp.com/api/user",
+		}).then((res) => {
+			setData(res.data);
+			console.log(res);
+		});
+	};
+
+	useEffect(() => {
+		getUser();
+	}, []);
 
 	return (
 		<>
-			{loginPassword == "65527" &&
-			(loginUsername === "niklas" ||
-				loginUsername === "heidi" ||
-				loginUsername === "tom") ? (
-				<div className="alignPage">
-					<ListForm
-						handleClose={handleClose}
-						show={show}
-						handleShow={handleShow}
-					/>
-					<Bookings />
-					<div className="alignBottomButtons">
-						<Link to="/">
-							<Button variant="primary" size="lg">
-								Home
-							</Button>
-						</Link>
-						<Button
-							variant="success"
-							size="lg"
-							onClick={handleShow}
-							className="addButton"
-						>
-							<i className="fa fa-plus fa-lg" aria-hidden="true"></i>
-						</Button>
+			{data ? (
+				(data.username === "niklas" && data.lName === "Little") ||
+				(data.username === "heidi" && data.lName === "Holzapfel-Little") ||
+				(data.username === "tom" && data.lName === "Little") ? (
+					<div className="alignPage">
+						<ListForm
+							handleClose={handleClose}
+							show={show}
+							handleShow={handleShow}
+						/>
+						<Bookings handleShow={handleShow} />
 					</div>
-				</div>
-			) : (
-				<PageNotFound />
-			)}
+				) : (
+					<PageNotFound />
+				)
+			) : undefined}
 		</>
 	);
 };

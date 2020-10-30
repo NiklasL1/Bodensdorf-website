@@ -14,11 +14,17 @@
 	position: relative;
 }
 
-.alignBottomButtons {
-	display: flex;
-	justify-content: space-between;
-}
-
 .resizeTable {
 	max-width: 100% !important;
+}
+
+#managementTop {
+	display: flex;
+	justify-content: space-between;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#addButton {
+	margin-right: 10px;
 }

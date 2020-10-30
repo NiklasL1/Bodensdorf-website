@@ -3,8 +3,10 @@ import Booking from "./Booking";
 import { BookingsContext } from "../../Context/BookingsContext";
 import Table from "react-bootstrap/Table";
 import "./Bookings.css";
+import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
-const Bookings = () => {
+const Bookings = ({handleShow}) => {
 	const { bookingsList, loading } = useContext(BookingsContext);
 
 	const sortedList = bookingsList.sort((a, b) => a.arriveEpoch > b.arriveEpoch);
@@ -52,7 +54,24 @@ const Bookings = () => {
 				"loading..."
 			) : sortedList ? (
 				<>
-					<h2>{sortedList.length} Buchungen</h2>
+					<span id="managementTop">
+						<h2>{sortedList.length} Buchungen</h2>
+						<div>
+							<Button
+								variant="success"
+								size="lg"
+								onClick={handleShow}
+								id="addButton"
+							>
+								<i className="fa fa-plus fa-lg" aria-hidden="true"></i>
+							</Button>
+							<Link to="/">
+								<Button variant="primary" size="lg">
+									Home
+								</Button>
+							</Link>
+						</div>
+					</span>
 					{renderData(sortedList)}
 				</>
 			) : (

@@ -34,35 +34,34 @@ const Login = () => {
 
 	const login = (event) => {
 		event.preventDefault();
-		if (
-			loginPassword == "65527" &&
-			(loginUsername === "niklas" ||
-				loginUsername === "heidi" ||
-				loginUsername === "tom")
-		) {
-			history.push("/bookings");
-		} else {
-			axios({
-				method: "POST",
-				data: {
-					username: loginUsername,
-					password: loginPassword,
-				},
-				withCredentials: true,
-				url:
-					process.env.REACT_APP_LOCATION === "development"
-						? "http://localhost:4000/api/login"
-						: "https://bodensdorf-server.herokuapp.com/api/login",
-			}).then((res) => {
-				console.log(res);
-				if (res.data === "No user exists") {
-					Swal.fire({
-						icon: "error",
-						title: `${t("loginAlert1")}`,
-					});
-				}
-				if (res.data === "successfully authenticated") {
-					getUser();
+
+		axios({
+			method: "POST",
+			data: {
+				username: loginUsername,
+				password: loginPassword,
+			},
+			withCredentials: true,
+			url:
+				process.env.REACT_APP_LOCATION === "development"
+					? "http://localhost:4000/api/login"
+					: "https://bodensdorf-server.herokuapp.com/api/login",
+		}).then((res) => {
+			console.log(res);
+			if (res.data === "No user exists") {
+				Swal.fire({
+					icon: "error",
+					title: `${t("loginAlert1")}`,
+				});
+			}
+			if (res.data === "successfully authenticated") {
+				getUser();
+				if (
+					loginPassword !== "65527" &&
+					loginUsername !== "niklas" &&
+					loginUsername !== "heidi" &&
+					loginUsername !== "tom"
+				) {
 					let timerInterval;
 					Swal.fire({
 						icon: "success",
@@ -85,7 +84,16 @@ const Login = () => {
 						},
 					});
 				}
-			});
+			}
+		});
+
+		if (
+			loginPassword === "65527" &&
+			(loginUsername === "niklas" ||
+				loginUsername === "heidi" ||
+				loginUsername === "tom")
+		) {
+			history.push("/bookings");
 		}
 	};
 
@@ -177,21 +185,31 @@ const Login = () => {
 	return (
 		<div>
 			{data ? (
-				<>
-					{/* <UserProfile handleClose={handleClose} show={show} data={data} /> */}
-					<Link to="/user">
-						<Button
-							className="buttonColor loginButton"
-							variant="light"
-							// onClick={handleShow}
-						>
-							{t("user0")}
+				(data.username === "niklas" && data.lName === "Little") ||
+				(data.username === "heidi" && data.lName === "Holzapfel-Little") ||
+				(data.username === "tom" && data.lName === "Little") ? (
+					<>
+						<Link to="/bookings">
+							<Button className="buttonColor loginButton" variant="light">
+								Management
+							</Button>
+						</Link>
+						<Button className="buttonColor" variant="light" onClick={logout}>
+							{t("login4")}
 						</Button>
-					</Link>
-					<Button className="buttonColor" variant="light" onClick={logout}>
-						{t("login4")}
-					</Button>
-				</>
+					</>
+				) : (
+					<>
+						<Link to="/user">
+							<Button className="buttonColor loginButton" variant="light">
+								{t("user0")}
+							</Button>
+						</Link>
+						<Button className="buttonColor" variant="light" onClick={logout}>
+							{t("login4")}
+						</Button>
+					</>
+				)
 			) : (
 				showLogin()
 			)}
