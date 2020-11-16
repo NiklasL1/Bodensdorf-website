@@ -84,12 +84,40 @@ i18n
           aText3: "Somewhat further away at the southwest end of the lake is the fortess Castle Landskron. The castle area has been inhabited since the 9th century BC. The castle itself, protected by a double curtain wall with seven towers, was a splendid mansion during the Renaissance. The main building had four stories, a high central tower and a number of defensive towers.",
           dTitle: "Directions",
           dSubTitle: "How to find us",
-          dT1: "With your car coming from the north (Salzburg, Germany etc.)",
-          dT2: "With your car coming from the east (Graz, Vienna etc.)",
-          dT3: "With the train",
-          d1: "Leave the autobahn A10 at the exit Villach-Ossiacher See and turn left at the light at the end of the exit ramp. Follow the road (B94) to Bodensdorf. On the left you will see a BILLA market, on the right a petrol station. Turn right immediately after the petrol station onto Fischerweg and follow Fischerweg for 200 metres, cross the railway line and turn right immediately. Continue 400 metres past the tennis courts, turn left just past a small white building (real estate agency). Proceed 100 metres, turn left and pass the first building (brown/orange) into a parking area. Park in the car park. The building on the left with murals on the end wall is St. Urban Weg 5, where the flat is situated. Go through the metal gates, turn left up the steps to the building entrance. Apartment 16 is on the 1st floor on the left.",
-          d2: "Drive to Feldkirchen in Kärten and leave Feldkirchen on the Ossiacher See Straße (B94). Proceed to Bodensdorf and continue until you see a Spar market on the right. Around 300 metres further, turn left immediately before the petrol station onto Fischerweg and follow Fischerweg for 200 metres, cross the railway line and turn right immediately. Continue 400 metres past the tennis courts, turn left just past a small white building (real estate agency). Proceed 100 metres, turn left and pass the first building (brown/orange) into a parking area. Park in the car park. The building on the left with murals on the end wall is St. Urban Weg 5, where the flat is situated. Go through the metal gates, turn left up the steps to the building entrance. Apartment 16 is on the 1st floor on the left.",
-          d3: 'Get off the train at the stop "Ossiach-Bodensdorf". From the train station it is a 10-minute walk to the apartment. Turn left when you leave the station and cross the train trcks at the first opportunity. Then immediately turn right and follow the walkway next to the tracks until you pass the tennis club (around 500 metres). On your left you will see a small white building (real estate office); turn left directly thereafter. The road leads to a car park bteween two buildings. The building on the left with murals on the end wall is St. Urban Weg 5, where the flat is situated. Go through the metal gates, turn left up the steps to the building entrance. Apartment 16 is on the 1st floor on the left.',
+          dT1: "By car coming from the north (Salzburg, Germany etc.)",
+          dT2: "By car coming from the east (Graz, Vienna etc.)",
+          dT3: "By train",
+          d1: `Leave the autobahn A10 at the exit Villach-Ossiacher See and turn left at the light at the end of the exit ramp. 
+          Follow the road (B94) to Bodensdorf. On the left you will see a BILLA market, on the right a petrol station. 
+          Turn right immediately after the petrol station onto Fischerweg and follow Fischerweg for 200 metres, cross the 
+          railway line and turn right immediately. Continue 400 metres past the tennis courts, turn left just past a small 
+          white building (real estate agency). Proceed 100 metres, turn left and pass the first building (brown/orange) into a parking area. 
+          Park in the car park. The building on the left with murals on the end wall is St. Urban Weg 5, where the flat is situated. 
+          Go through the metal gates, turn left up the steps to the building entrance. Apartment 16 is on the 1st floor on the left.`,
+          d1a: `In the event that there is no space free in the parking lot (which can happen during peak season), you can instead
+          park on the other side of the building. To do this you will have to exit, turning right and passing the tennis courts once again.
+          Then turn right at the next crossing by the railway line and then once again turn right at the next opportunity. At the end of this 
+          short street there is another parking lot, essentially right on the other side of the fence from the one next to the two
+          apartment buildings. You can simply pass through the fence gate between the parking lots on foot to reach the building.`,
+          d2: `Drive to Feldkirchen in Kärten and leave Feldkirchen on the Ossiacher See Straße (B94). Proceed to Bodensdorf and 
+          continue until you see a Spar market on the right. Around 300 metres further, turn left immediately before the petrol 
+          station onto Fischerweg and follow Fischerweg for 200 metres, cross the railway line and turn right immediately. Continue 
+          400 metres past the tennis courts, turn left just past a small white building (real estate agency). Proceed 100 metres, turn 
+          left and pass the first building (brown/orange) into a parking area. Park in the car park. The building on the left with murals 
+          on the end wall is St. Urban Weg 5, where the flat is situated. Go through the metal gates, turn left up the steps to the 
+          building entrance. Apartment 16 is on the 1st floor on the left.`,
+          d2a: `In the event that there is no space free in the parking lot (which can happen during peak season), you can instead
+          park on the other side of the building. To do this you will have to exit, turning right and passing the tennis courts once again.
+          Then turn right at the next crossing by the railway line and then once again turn right at the next opportunity. At the end of this 
+          short street there is another parking lot, essentially right on the other side of the fence from the one next to the two
+          apartment buildings. You can simply pass through the fence gate between the parking lots on foot to reach the building.`,
+          d3: `Get off the train at the stop "Ossiach-Bodensdorf". From the train station it is a 10-minute walk to the apartment. 
+          Turn left when you leave the station and cross the train trcks at the first opportunity. Then immediately turn right and 
+          follow the walkway next to the tracks until you pass the tennis club (around 500 metres). On your left you will see a small 
+          white building (real estate office); turn left directly thereafter. The road leads to a car park between two buildings. 
+          The building on the left with murals on the end wall is St. Urban Weg 5, where the flat is situated. Go through the metal gates, 
+          turn left up the steps to the building entrance. Apartment 16 is on the 1st floor on the left.`,
+          d3a: `If you would rather call a taxi, there are two nearby options. Travel agency Wernitzig (+43 4243 2249) and Christian Nindler (+43 4243 8775).`,
           imprint: "Imprint",
           b1: "Book Here!",
           b2: "Check availability",
@@ -107,11 +135,11 @@ i18n
           bAlert5a: "Your payment was successful. Thank you!",
           bookMoTitle: "Your reservation",
           bookMoDateFunc: "EN",
-          bookMo1: "Dates:",
+          bookMo1: "Dates: ",
           bookMo2: "days",
           bookMo3: "nights",
-          bookMo4: "Total price:",
-          bookMo5: "Payable upon booking:",
+          bookMo4: "Total price (including 40€ cleaning fee): ",
+          bookMo5: "Payable upon booking: ",
           bookMo6: "Remainder due on ",
           bookMo6a: " (30 days before arrival date): ",
           bookMo7: "Book!",
@@ -153,7 +181,7 @@ i18n
           user7: "Arrival date: ",
           user8: "Departure date: ",
           user9: "Guests: ",
-          user10: "Total price: ",
+          user10: "Total price (including 40€ cleaning fee): ",
           user11: "Paid: ",
           user12: "Outstanding balance: ",
           user13: "Exit",
@@ -184,12 +212,66 @@ i18n
           c18: "Deposit of 15% is due immediately when booking",
           c19: "Balance to be paid at least 30 days before arrival",
           c20: "Check-in from 5 PM on the day of arrival (or as agreed)",
+          c21: "Check-out by 10 AM on the day of departure",
           payment1: "Pay",
           payment2: "Outstanding balance payable by",
           payment3: "This booking is fully paid. Thank you!",
           payment4: "Pay balance",
           payment5: "Credit card payment",
-          payment6: "SEPA direct debit"
+          payment6: "SEPA direct debit",
+          imprint1: "Imprint",
+          imprint2: "Information required by § 5 TMG",
+          imprint3: "Operator:",
+          imprint4: "Contact:",
+          imprint5: "Telephone: ",
+          imprint6: "Limitation of liability:",
+          imprint7: "Liability for Content",
+          imprint8: `This website was created with great care to ensure the legality of all content. 
+          However, we cannot be held liable for the correctness or completeness of the content. 
+          As a service provider we are generally responsible for content on these pages which we have 
+          created as specified in § 7 Paragraph 1 of the TMG. However, according to §§ 8 to 10 TMG we 
+          are not required to monitor data created by others that we may store or transmit, nor are we 
+          required to determine whether these data may be violating the law. Our duty to remove or block 
+          information as required by other laws remains in effect, but liability in these cases can only 
+          be determined after a concrete violation is discovered. In the case of a violation we will remove 
+          the offending content immediately.`,
+          imprint9: "Liability for Links",
+          imprint10: `This website contains ones to external websites operated by third parties. 
+          We cannot influence the content of such websites and therefore we cannot be held liable 
+          for any such content. The individual operator of a website is responsible for his/her 
+          content. When the links were created, the target websites were inspected and it was 
+          determined that they contained no illegal content. Continuous monitoring of third-party 
+          websites in the absence of evidence of illegal content is not possible. In the case the 
+          illegal content is discovered we will remove the offending link immediately.`,
+          imprint11: "Copyright",
+          imprint12: `The texts and images contained in this website are subject to German copyright 
+          law (Urheberrecht). Copying, processing, distribution or any other use of this content which 
+          exceeds the limits of copyright law requires the prior written permission of the copyright 
+          owner. Downloads and copies of these pages are permitted only for private, non-commercial use. 
+          Content which was not created by the operator of this website is used as permitted by copyright 
+          law and with full recognition of third-party copyrights. If any content of this website is shown 
+          to violate the copyright laws, we will either remove the content or obtain permission for use at once.`,
+          imprint13: "Data Protection",
+          imprint14: `Use of this website without providing is personal data is generally possible. 
+          Should we request personal data (e.g. name, address or email address) you may - but are not 
+          required to - provide these data on a voluntary basis. The data will not be made available 
+          to third parties without your explicit consent.`,
+          imprint15: `Please be aware that the transfer of data via the internet (e.g. per email) 
+          is in general not secure. Seamless protection of data is not possible.`,
+          imprint16: `The use of the contact information provided in this imprint for third-party purposes 
+          of any kind is strictly forbidden. The operator of this website reserves the right to take legal 
+          steps should the data be use in any unauthorized fashion.`,
+          imprint17: "Google Analytics",
+          imprint18: `We partner with Google Analytics to allowing tracking activities through the use of 
+          first-party and third-party cookies to e.g. track users’ use of the site, determine the popularity 
+          of certain content and better understand online activity. By accessing this site, you consent to the 
+          collection and use of your information by Google Analytics. You are encouraged to read their privacy 
+          policy and contact them directly for responses to your questions. We do not transfer personal information 
+          to Google Analytics.`,
+          imprint19: "",
+          imprint20: "",
+          imprint21: "",
+          imprint22: "",
         }
       },
       de: {
@@ -255,12 +337,39 @@ i18n
           dSubTitle: "Wie Sie gut ankommen",
           dT1: "mit dem Auto aus dem Norden (Salzburg, Deutschland etc.)",
           dT2: "mit dem Auto aus dem Osten (Graz, Wien etc.)",
-          dT3: "mit der Bahn",
-          d1: "Verlassen Sie die Autobahn A10 an der Ausfahrt Villach-Ossiacher See und biegen Sie am Ende der Ausfahrt links Richtung Ossiacher See ab. Fahren Sie bis zum Ortseingang Bodensdorf (Sie sehen auf der linken Seite einen Billa Markt) und biegen dann rechts nach der Tankstelle in den Fischerweg ab. Überkreuzen Sie den Bahnübergang und biegen Sie sofort danach rechts in den Sankt-Urban-Weg ab. Fahren Sie an dem Tennis-Club vorbei und biegen Sie links nach einem Flachbau (Immobilienbüro) in den Weg zum Haus ab. Am Ende des Wegs finden Sie den Parkplatz (vorbei an den Holzbalkonen vom ersten Haus). \
-Falls dieser keinen freien Platz mehr hat (Hochsaison), kann man auch auf der anderen Seite des Zauns parken. Dazu muss man um den Tennisplatz herum fahren, bzw. nach dem Überqueren des Bahnübergangs geradeaus und dann der Straße nach rechts folgen, am Ende des Parkplatzes kommt man ganz nahe an das Apartment Haus und sieht sogar den Balkon unserer Wohnung. Dort gibt es einen Durchgang in dem Zaun zu dem Parkplatz und dem Haus.",
-          d2: "Fahren Sie zunächst nach Feldkirchen in Kärten. Verlassen Sie Feldkirchen auf der Ossiacher See Straße (B94). Fahren Sie durch Bodensdorf auf der B94 bis kurz vor dem Ortsausgang. Wenn Sie einen Spar Markt auf der rechten Seite sehen, fahren Sie ca. 300m weiter und biegen dann links vor der Tankstelle in den Fischerweg ab. Überkreuzen Sie den Bahnübergang und biegen sofort danach rechts in den Sankt-Urban-Weg ab. Fahren Sie an dem Tennis-Club vorbei und biegen Sie links nach einem Flachbau (Immobilienbüro) in den Weg zum Haus ab. Am Ende des Wegs finden Sie den Parkplatz (vorbei an den Holzbalkonen vom ersten Haus). \
-Falls dieser keinen freien Platz mehr hat (Hochsaison), kann man auch auf der anderen Seite des Zauns parken. Dazu muss man um den Tennisplatz herum fahren, bzw. nach dem Überqueren des Bahnübergangs geradeaus und dann der Straße nach rechts folgen, am Ende des Parkplatzes kommt man ganz nahe an das Apartment Haus und sieht sogar den Balkon unserer Wohnung. Dort gibt es einen Durchgang in dem Zaun zu dem Parkplatz und dem Haus.",
-          d3: 'Steigen Sie am Bahnhof "Ossiach-Bodensdorf" aus. Von hier ist es ca. 10 Gehminuten zum Haus. Gehen Sie sofort links wenn Sie den Bahnhof verlassen und überkreuzen Sie die Bahnschienen bei der ersten Möglichkeit. Danach biegen Sie sofort rechts ab und gehen weiter an dem Tennis-Club vorbei (ca. 500m). Biegen Sie dann links ab (nach einem Immobilienbüro) in den Weg zum Haus. Wenn Sie lieber ein Taxi rufen, gibt es zwei naheliegende Taxi-Anbieter, das Reisebüro Wernitzig (+43 4243 2249) und Christian Nindler (+43 4243 8775).',
+          dT3: "mit der Bahn",          
+          d1: `Verlassen Sie die Autobahn A10 an der Ausfahrt Villach-Ossiacher See und biegen Sie 
+          am Ende der Ausfahrt links Richtung Ossiacher See ab. Fahren Sie bis zum Ortseingang Bodensdorf 
+          (Sie sehen auf der linken Seite einen Billa Markt) und biegen dann rechts nach der Tankstelle 
+          in den Fischerweg ab. Überkreuzen Sie den Bahnübergang und biegen Sie sofort danach rechts 
+          in den Sankt-Urban-Weg ab. Fahren Sie an dem Tennis-Club vorbei und biegen Sie links nach 
+          einem Flachbau (Immobilienbüro) in den Weg zum Haus ab. Am Ende des Wegs finden Sie den Parkplatz 
+          (vorbei an den Holzbalkonen vom ersten Haus). Die Wohnung ist in dem Haus Sankt-Urban-Weg 5, 
+          links vom Parkplatz, das grüne Haus mit dem Mosaik.`,
+          d1a: `Falls dieser keinen freien Platz mehr hat (Hochsaison), kann man auch auf der anderen Seite 
+          des Zauns parken. Dazu muss man um den Tennisplatz herum fahren, bzw. nach dem Überqueren des 
+          Bahnübergangs geradeaus und dann der Straße nach rechts folgen, am Ende des Parkplatzes kommt 
+          man ganz nahe an das Apartment Haus und sieht sogar den Balkon unserer Wohnung. Dort gibt es 
+          einen Durchgang in dem Zaun zu dem Parkplatz und dem Haus.`,          
+          d2:`Fahren Sie zunächst nach Feldkirchen in Kärten. Verlassen Sie Feldkirchen auf der Ossiacher See Straße (B94). 
+          Fahren Sie durch Bodensdorf auf der B94 bis kurz vor dem Ortsausgang. Wenn Sie einen Spar Markt auf der rechten 
+          Seite sehen, fahren Sie ca. 300m weiter und biegen dann links vor der Tankstelle in den Fischerweg ab. Überkreuzen 
+          Sie den Bahnübergang und biegen sofort danach rechts in den Sankt-Urban-Weg ab. Fahren Sie an dem Tennis-Club vorbei 
+          und biegen Sie links nach einem Flachbau (Immobilienbüro) in den Weg zum Haus ab. Am Ende des Wegs finden Sie den 
+          Parkplatz (vorbei an den Holzbalkonen vom ersten Haus). Die Wohnung ist in dem Haus Sankt-Urban-Weg 5, links vom 
+          Parkplatz, das grüne Haus mit dem Mosaik.`,
+          d2a:`Falls dieser keinen freien Platz mehr hat (Hochsaison), kann man auch auf der anderen Seite 
+          des Zauns parken. Dazu muss man um den Tennisplatz herum fahren, bzw. nach dem Überqueren des 
+          Bahnübergangs geradeaus und dann der Straße nach rechts folgen, am Ende des Parkplatzes kommt 
+          man ganz nahe an das Apartment Haus und sieht sogar den Balkon unserer Wohnung. Dort gibt es 
+          einen Durchgang in dem Zaun zu dem Parkplatz und dem Haus.`,
+          d3: `Steigen Sie am Bahnhof "Ossiach-Bodensdorf" aus. Von hier ist es ca. 10 Gehminuten zum Haus. 
+          Gehen Sie sofort links wenn Sie den Bahnhof verlassen und überkreuzen Sie die Bahnschienen bei der 
+          ersten Möglichkeit. Danach biegen Sie sofort rechts ab und gehen weiter an dem Tennis-Club vorbei 
+          (ca. 500m). Biegen Sie dann links ab (nach einem Immobilienbüro) in den Weg zum Haus. Die Wohnung 
+          ist in dem Haus Sankt-Urban-Weg 5, links vom Parkplatz, das grüne Haus mit dem Mosaik.`,
+          d3a: `Wenn Sie lieber ein Taxi rufen, gibt es zwei naheliegende Taxi-Anbieter, das 
+          Reisebüro Wernitzig (+43 4243 2249) und Christian Nindler (+43 4243 8775).`,
           imprint: "Impressum",
           b1: "Hier Buchen!",
           b2: "Prüfen Sie Ihren Wunschtermin",
@@ -281,7 +390,7 @@ Falls dieser keinen freien Platz mehr hat (Hochsaison), kann man auch auf der an
           bookMo1: "Ausgewählter Zeitraum:",
           bookMo2: "Tage",
           bookMo3: "Nächte",
-          bookMo4: "Gesamtpreis:",
+          bookMo4: "Gesamtpreis (inkl. 40€ Reinigungsgebühr):",
           bookMo5: "Bei Buchung fällig:",
           bookMo6: "Restpreis fällig am ",
           bookMo6a: " (30 Tage vor Anreisedatum): ",
@@ -324,7 +433,7 @@ Falls dieser keinen freien Platz mehr hat (Hochsaison), kann man auch auf der an
           user7: "Anreise: ",
           user8: "Abreise: ",
           user9: "Personen: ",
-          user10: "Gesamtpreiß: ",
+          user10: "Gesamtpreis (inkl. 40€ Reinigungsgebühr): ",
           user11: "Anzahlung: ",
           user12: "Austehender Betrag: ",
           user13: "Schließen",
@@ -361,7 +470,97 @@ Falls dieser keinen freien Platz mehr hat (Hochsaison), kann man auch auf der an
           payment3: "Diese Buchung ist vollständig bezahlt. Danke!",
           payment4: "Restbetrag zahlen",
           payment5: "Kreditkartenzahlung",
-          payment6: "SEPA-Überweisung"
+          payment6: "SEPA-Überweisung",
+          imprint1: "Impressum",
+          imprint2: "Angaben gemäß § 5 TMG",
+          imprint3: "Betreiber:",
+          imprint4: "Kontakt:",
+          imprint5: "Telefon: ",
+          imprint6: "Haftungsausschluss:",
+          imprint7: "Haftung für Inhalte",
+          imprint8: `Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für
+					die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir
+					jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7
+					Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
+					Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+					Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
+					gespeicherte fremde Informationen zu überwachen oder nach Umständen zu
+					forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
+					Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
+					Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
+					Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+					Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden
+					von entsprechenden Rechtsverletzungen werden wir diese Inhalte
+					umgehend entfernen.`,
+          imprint9: "Haftung für Links",
+          imprint10: `Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren
+					Inhalte wir keinen Einfluss haben. Deshalb können wir für diese
+					fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
+					verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der
+					Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
+					Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige
+					Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine
+					permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne
+					konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei
+					Bekanntwerden von Rechtsverletzungen werden wir derartige Links
+					umgehend entfernen.`,
+          imprint11: "Urheberrecht",
+          imprint12: `Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
+					Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung,
+					Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
+					Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
+					jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite
+					sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+					Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt
+					wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden
+					Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf
+					eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen
+					entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
+					werden wir derartige Inhalte umgehend entfernen.`,
+          imprint13: "Datenschutz",
+          imprint14: `Die Nutzung unserer Webseite ist in der Regel ohne Angabe
+					personenbezogener Daten möglich. Soweit auf unseren Seiten
+					personenbezogene Daten (beispielsweise Name, Anschrift oder
+					eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets
+					auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche
+					Zustimmung nicht an Dritte weitergegeben.`,
+          imprint15: `Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei
+            der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein
+            lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht
+            möglich.`,
+          imprint16: `Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten
+					Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich
+					angeforderter Werbung und Informationsmaterialien wird hiermit
+					ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich
+					ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung
+					von Werbeinformationen, etwa durch Spam-Mails, vor.`,
+          imprint17: "Google Analytics",
+          imprint18: `Diese Website benutzt Google Analytics, einen Webanalysedienst der
+					Google Inc. (''Google''). Google Analytics verwendet sog. ''Cookies'',
+					Textdateien, die auf Ihrem Computer gespeichert werden und die eine
+					Analyse der Benutzung der Website durch Sie ermöglicht. Die durch den
+					Cookie erzeugten Informationen über Ihre Benutzung dieser Website
+					(einschließlich Ihrer IP-Adresse) wird an einen Server von Google in
+					den USA übertragen und dort gespeichert. Google wird diese
+					Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um
+					Reports über die Websiteaktivitäten für die Websitebetreiber
+					zusammenzustellen und um weitere mit der Websitenutzung und der
+					Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird
+					Google diese Informationen gegebenenfalls an Dritte übertragen, sofern
+					dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im
+					Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre
+					IP-Adresse mit anderen Daten der Google in Verbindung bringen. Sie
+					können die Installation der Cookies durch eine entsprechende
+					Einstellung Ihrer Browser Software verhindern; wir weisen Sie jedoch
+					darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche
+					Funktionen dieser Website voll umfänglich nutzen können. Durch die
+					Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über
+					Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und
+					Weise und zu dem zuvor benannten Zweck einverstanden.`,
+          imprint19: "Impressum von ",
+          imprint20: "impressum-generator.de",
+          imprint21: " der ",
+          imprint22: "Rechtsanwältin Franziska Hasselbach, Bonn",
         }
       }
     },

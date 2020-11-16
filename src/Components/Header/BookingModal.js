@@ -19,10 +19,16 @@ const BookingModal = ({ handleClose, show }) => {
 
 	const { t } = useTranslation();
 
+	const logit = () => {
+		console.log("restpayment:", restpaymentCost)
+		console.log("total:", totalBookingCost)
+		console.log("prepay:", prepaymentCost)
+	}
+
 	return (
 		<Modal show={show} onHide={handleClose} centered>
 			<Modal.Header closeButton>
-				<Modal.Title>{t("bookMoTitle")}</Modal.Title>
+				<Modal.Title onClick={logit} >{t("bookMoTitle")}</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
 				<div>

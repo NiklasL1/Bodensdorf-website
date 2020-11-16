@@ -31,6 +31,10 @@ export default function CheckoutForm() {
 
 	const [disabled, setDisabled] = useState(true);
 
+	const [disabled2, setDisabled2] = useState(true);
+
+	const [disabled3, setDisabled3] = useState(true);
+
 	const [clientSecret, setClientSecret] = useState("");
 
 	const stripe = useStripe();
@@ -114,11 +118,19 @@ export default function CheckoutForm() {
 	};
 
 	const handleChange = async (event) => {
-		// Listen for changes in the CardElement
-
-		// and display any errors as the customer types their card details
-
 		setDisabled(event.empty);
+
+		setError(event.error ? event.error.message : "");
+	};
+
+	const handleChange2 = async (event) => {
+		setDisabled2(event.empty);
+
+		setError(event.error ? event.error.message : "");
+	};
+
+	const handleChange3 = async (event) => {
+		setDisabled3(event.empty);
 
 		setError(event.error ? event.error.message : "");
 	};
@@ -172,7 +184,7 @@ export default function CheckoutForm() {
 						{" "}
 						{moment(bookingDetails.arriveStr, "DD/MM/YYYY").format(
 							"DD.MM.YYYY"
-						)}
+						)}{" "}
 						-{" "}
 						{moment(bookingDetails.departStr, "DD/MM/YYYY").format(
 							"DD.MM.YYYY"
@@ -190,16 +202,19 @@ export default function CheckoutForm() {
 				<CardExpiryElement
 					className="card-element"
 					options={cardStyle}
-					onChange={handleChange}
+					onChange={handleChange2}
 				/>
 				<CardCvcElement
 					className="card-element"
 					options={cardStyle}
-					onChange={handleChange}
+					onChange={handleChange3}
 				/>
 			</div>
 
-			<button disabled={processing || disabled || succeeded} id="submit">
+			<button
+				disabled={processing || disabled || disabled2 || disabled3 || succeeded}
+				id="submit"
+			>
 				<span id="button-text">
 					{processing ? (
 						<div className="spinner" id="spinner"></div>

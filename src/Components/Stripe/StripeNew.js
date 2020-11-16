@@ -3,6 +3,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
 import CheckoutFormIban from "./CheckoutFormIban";
+import CheckoutFormSofort from "./CheckoutFormSofort";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import "./StripeNew.css";
@@ -29,11 +30,11 @@ const promise = loadStripe(
 export default function StripeNew() {
 	const { t } = useTranslation();
 
-	const [paymentMethod, setPaymentMethod] = useState("creditCard")
+	const [paymentMethod, setPaymentMethod] = useState("creditCard");
 
 	const handleChange = (e) => {
-		setPaymentMethod(e.target.value)		
-	}
+		setPaymentMethod(e.target.value);
+	};
 
 	const {
 		succeeded,
@@ -41,7 +42,7 @@ export default function StripeNew() {
 		showStripe,
 		handleCloseStripe,
 		payingRemainder,
-		outstandingPayment,		
+		outstandingPayment,
 		thisBooking,
 	} = useContext(PaymentContext);
 
@@ -91,7 +92,7 @@ export default function StripeNew() {
 			handleCloseStripe();
 		}
 
-		if (succeeded && payingRemainder) {			
+		if (succeeded && payingRemainder) {
 			update(thisBooking._id, thisBooking);
 			setSucceeded(false);
 			Swal.fire({
@@ -112,14 +113,20 @@ export default function StripeNew() {
 			{/* <Modal.Header closeButton>
 				<Modal.Title>title</Modal.Title>
 			</Modal.Header> */}
-			<Modal.Body>				
-				<select value={paymentMethod} onChange={handleChange} id="selectPaymentMethod">
+			<Modal.Body>
+				<select
+					value={paymentMethod}
+					onChange={handleChange}
+					id="selectPaymentMethod"
+				>
 					<option value="creditCard">{t("payment5")}</option>
 					<option value="SEPA">{t("payment6")}</option>
+					<option value="sofort">Sofortüberweisung</option>
 				</select>
 				<Elements stripe={promise}>
 					{paymentMethod === "creditCard" ? <CheckoutForm /> : undefined}
-					{paymentMethod === "SEPA" ? <CheckoutFormIban /> : undefined}					
+					{paymentMethod === "SEPA" ? <CheckoutFormIban /> : undefined}
+					{paymentMethod === "sofort" ? <CheckoutFormSofort /> : undefined}
 				</Elements>
 			</Modal.Body>
 			<Modal.Footer>

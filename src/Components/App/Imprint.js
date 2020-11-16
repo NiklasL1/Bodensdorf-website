@@ -3,109 +3,73 @@ import { Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useTranslation } from "react-i18next";
 
 const Imprint = () => {
+	const { t } = useTranslation();
 	return (
 		<>
 			<section className="impressum">
-				<h1>Impressum</h1>
-				<h3>Angaben gemäß § 5 TMG</h3> <br />
+				<h1>{t("imprint1")}</h1>
+				<h3>{t("imprint2")}</h3> <br />
 				<p>
-					<strong>Betreiber:</strong> <br />
-				</p>
-				<p>
+					<strong>{t("imprint3")}</strong> <br />
+				
 					Heidrun Holzapfel-Little <br />
 					Hügelstraße 14
 					<br />
 					65527 Niedernhausen <br />
 				</p>
 				<p>
-					<strong>Kontakt:</strong> <br />
-					Telefon: +49 151 1135 3000
+					<strong>{t("imprint4")}</strong> <br />
+					{t("imprint5")} +49 151 1135 3000
 					<br />
 					E-Mail: heidi (at) tomlittle.org
 				</p>
 				<br />
-				<p>
-					<strong>Haftungsausschluss: </strong>
+				<div>
+					<h4>{t("imprint6")}</h4>
+					<br />
+					<strong>{t("imprint7")}</strong>
 					<br />
 					<br />
-					<strong>Haftung für Inhalte</strong>
+					{t("imprint8")}
 					<br />
 					<br />
-					Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für
-					die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir
-					jedoch keine Gewähr übernehmen. Als Diensteanbieter sind wir gemäß § 7
-					Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen
-					Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
-					Diensteanbieter jedoch nicht verpflichtet, übermittelte oder
-					gespeicherte fremde Informationen zu überwachen oder nach Umständen zu
-					forschen, die auf eine rechtswidrige Tätigkeit hinweisen.
-					Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
-					Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt.
-					Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
-					Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden
-					von entsprechenden Rechtsverletzungen werden wir diese Inhalte
-					umgehend entfernen.
+					<strong>{t("imprint9")}</strong>
 					<br />
 					<br />
-					<strong>Haftung für Links</strong>
+					{t("imprint10")}
 					<br />
 					<br />
-					Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren
-					Inhalte wir keinen Einfluss haben. Deshalb können wir für diese
-					fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte der
-					verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der
-					Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt der
-					Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige
-					Inhalte waren zum Zeitpunkt der Verlinkung nicht erkennbar. Eine
-					permanente inhaltliche Kontrolle der verlinkten Seiten ist jedoch ohne
-					konkrete Anhaltspunkte einer Rechtsverletzung nicht zumutbar. Bei
-					Bekanntwerden von Rechtsverletzungen werden wir derartige Links
-					umgehend entfernen.
+					<strong>{t("imprint11")}</strong>
 					<br />
 					<br />
-					<strong>Urheberrecht</strong>
+					{t("imprint12")}
 					<br />
 					<br />
-					Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
-					Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung,
-					Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der
-					Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des
-					jeweiligen Autors bzw. Erstellers. Downloads und Kopien dieser Seite
-					sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
-					Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt
-					wurden, werden die Urheberrechte Dritter beachtet. Insbesondere werden
-					Inhalte Dritter als solche gekennzeichnet. Sollten Sie trotzdem auf
-					eine Urheberrechtsverletzung aufmerksam werden, bitten wir um einen
-					entsprechenden Hinweis. Bei Bekanntwerden von Rechtsverletzungen
-					werden wir derartige Inhalte umgehend entfernen.
+					<strong>{t("imprint13")}</strong>
 					<br />
 					<br />
-					<strong>Datenschutz</strong>
+					{t("imprint14")}
 					<br />
+					{t("imprint15")}
 					<br />
-					Die Nutzung unserer Webseite ist in der Regel ohne Angabe
-					personenbezogener Daten möglich. Soweit auf unseren Seiten
-					personenbezogene Daten (beispielsweise Name, Anschrift oder
-					eMail-Adressen) erhoben werden, erfolgt dies, soweit möglich, stets
-					auf freiwilliger Basis. Diese Daten werden ohne Ihre ausdrückliche
-					Zustimmung nicht an Dritte weitergegeben. <br />
-					Wir weisen darauf hin, dass die Datenübertragung im Internet (z.B. bei
-					der Kommunikation per E-Mail) Sicherheitslücken aufweisen kann. Ein
-					lückenloser Schutz der Daten vor dem Zugriff durch Dritte ist nicht
-					möglich. <br />
-					Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten
-					Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich
-					angeforderter Werbung und Informationsmaterialien wird hiermit
-					ausdrücklich widersprochen. Die Betreiber der Seiten behalten sich
-					ausdrücklich rechtliche Schritte im Falle der unverlangten Zusendung
-					von Werbeinformationen, etwa durch Spam-Mails, vor.
-				</p>
+					{t("imprint16")}
+				</div>
 				<br />
-				{/* <br /><br /><strong>Google Analytics</strong><br /><br />
-            Diese Website benutzt Google Analytics, einen Webanalysedienst der Google Inc. (''Google''). Google Analytics verwendet sog. ''Cookies'', Textdateien, die auf Ihrem Computer gespeichert werden und die eine Analyse der Benutzung der Website durch Sie ermöglicht. Die durch den Cookie erzeugten Informationen über Ihre Benutzung dieser Website (einschließlich Ihrer IP-Adresse) wird an einen Server von Google in den USA übertragen und dort gespeichert. Google wird diese Informationen benutzen, um Ihre Nutzung der Website auszuwerten, um Reports über die Websiteaktivitäten für die Websitebetreiber zusammenzustellen und um weitere mit der Websitenutzung und der Internetnutzung verbundene Dienstleistungen zu erbringen. Auch wird Google diese Informationen gegebenenfalls an Dritte übertragen, sofern dies gesetzlich vorgeschrieben oder soweit Dritte diese Daten im Auftrag von Google verarbeiten. Google wird in keinem Fall Ihre IP-Adresse mit anderen Daten der Google in Verbindung bringen. Sie können die Installation der Cookies durch eine entsprechende Einstellung Ihrer Browser Software verhindern; wir weisen Sie jedoch darauf hin, dass Sie in diesem Fall gegebenenfalls nicht sämtliche Funktionen dieser Website voll umfänglich nutzen können. Durch die Nutzung dieser Website erklären Sie sich mit der Bearbeitung der über Sie erhobenen Daten durch Google in der zuvor beschriebenen Art und Weise und zu dem zuvor benannten Zweck einverstanden.</p><br />
-            Impressum vom <a href="http://www.impressum-generator.de">impressum-generator.de</a> der <a href="http://www.kanzlei-hasselbach.de/rechtsanwalt-arbeitsrecht-bonn/">Rechtsanwältin Franziska Hasselbach, Bonn</a> */}
+				<strong>{t("imprint17")}</strong>
+				<br />
+				<br />
+				<p>{t("imprint18")}</p>
+				<br />
+				{t("imprint19")}
+				<a href="http://www.impressum-generator.de">{t("imprint20")}</a>
+				{t("imprint21")}
+				<a href="http://www.kanzlei-hasselbach.de/rechtsanwalt-arbeitsrecht-bonn/">
+					{t("imprint22")}
+				</a>
+				<br />
 			</section>
 			<div className="style">
 				<Container fluid>

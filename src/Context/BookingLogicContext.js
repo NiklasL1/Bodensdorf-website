@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 import moment from "moment";
 
 export const BookingLogicContext = createContext();
@@ -14,7 +14,7 @@ const BookingLogicContextProvider = ({ children }) => {
 	const [prepaymentCost, setPrepaymentCost] = useState(0);
 	const [restpaymentCost, setRestpaymentCost] = useState(0);
 
-	const [bookingDetails, setBookingDetails] = useState()
+	const [bookingDetails, setBookingDetails] = useState();
 
 	const bodensdorf = {
 		cleaningFee: 40,
@@ -25,6 +25,10 @@ const BookingLogicContextProvider = ({ children }) => {
 		mainSeasonPrice: 63,
 		aftSeasonPrice: 50,
 		offSeasonPrice: 40,
+		preSeasonPrice3: 56,
+		mainSeasonPrice3: 79,
+		aftSeasonPrice3: 63,
+		offSeasonPrice3: 50,
 		preSeasonRange: [3, 6],
 		mainSeasonRange: [7, 8],
 		aftSeasonRange: [9, 10],
@@ -52,8 +56,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					moment(date).format("MM") >= startOff &&
 					moment(date).format("MM") <= endOff
 				) {
-					bookingCostArray.push(b.offSeasonPrice);
-					// console.log('offseasonPrice')
+					if (extraPerson === false) {
+						bookingCostArray.push(b.offSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.offSeasonPrice3);
+					}
 				}
 			} else if (startOff > endOff) {
 				if (
@@ -62,8 +70,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					(moment(date).format("MM") >= 1 &&
 						moment(date).format("MM") <= endOff)
 				) {
-					// console.log('offseasonPriceW')
-					bookingCostArray.push(b.offSeasonPrice);
+					if (extraPerson === false) {
+						bookingCostArray.push(b.offSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.offSeasonPrice3);
+					}
 				}
 			}
 		};
@@ -74,8 +86,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					moment(date).format("MM") >= startPre &&
 					moment(date).format("MM") <= endPre
 				) {
-					// console.log('preseasonPrice')
-					bookingCostArray.push(b.preSeasonPrice);
+					if (extraPerson === false) {
+						bookingCostArray.push(b.preSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.preSeasonPrice3);
+					}
 				}
 			} else if (startPre > endPre) {
 				if (
@@ -84,8 +100,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					(moment(date).format("MM") >= 1 &&
 						moment(date).format("MM") <= endPre)
 				) {
-					// console.log('preseasonPriceW')
-					bookingCostArray.push(b.preSeasonPrice);
+					if (extraPerson === false) {
+						bookingCostArray.push(b.preSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.preSeasonPrice3);
+					}
 				}
 			}
 		};
@@ -96,8 +116,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					moment(date).format("MM") >= startMain &&
 					moment(date).format("MM") <= endMain
 				) {
-					// console.log('mainseasonPrice')
-					bookingCostArray.push(b.mainSeasonPrice);
+					if (extraPerson === false) {
+						bookingCostArray.push(b.mainSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.mainSeasonPrice3);
+					}
 				}
 			} else if (startMain > endMain) {
 				if (
@@ -106,8 +130,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					(moment(date).format("MM") >= 1 &&
 						moment(date).format("MM") <= endMain)
 				) {
-					// console.log('mainseasonPriceW')
-					bookingCostArray.push(b.mainSeasonPrice);
+					if (extraPerson === false) {
+						bookingCostArray.push(b.mainSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.mainSeasonPrice3);
+					}
 				}
 			}
 		};
@@ -118,8 +146,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					moment(date).format("MM") >= startAft &&
 					moment(date).format("MM") <= endAft
 				) {
-					// console.log('aftseasonPrice')
-					bookingCostArray.push(b.aftSeasonPrice);
+					if (extraPerson === false) {
+						bookingCostArray.push(b.aftSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.aftSeasonPrice3);
+					}
 				}
 			} else if (startAft > endAft) {
 				if (
@@ -128,8 +160,12 @@ const BookingLogicContextProvider = ({ children }) => {
 					(moment(date).format("MM") >= 1 &&
 						moment(date).format("MM") <= endAft)
 				) {
-					// console.log('aftseasonPriceW')
-					bookingCostArray.push(b.aftSeasonPrice);
+					if (extraPerson === false) {
+						bookingCostArray.push(b.aftSeasonPrice);
+					}
+					if (extraPerson === true) {
+						bookingCostArray.push(b.aftSeasonPrice3);
+					}
 				}
 			}
 		};
@@ -140,41 +176,32 @@ const BookingLogicContextProvider = ({ children }) => {
 			preSeason(arrayOfDates[i]);
 			mainSeason(arrayOfDates[i]);
 			aftSeason(arrayOfDates[i]);
-			// console.log(bookingCostArray)
 		}
-		if (extraPerson === false) {
-			let cost = bookingCostArray.reduce(function (all, amount) {
-				return all + amount;
-			});
-			let fullCost = cost + b.cleaningFee;
-			let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
-			// console.log(fullCost)
-			if (startEpoch - Date.now() <= 2592000000) {
-				setTotalBookingCost(fullCost);
-				setPrepaymentCost(fullCost);
-			} else {
-				setTotalBookingCost(fullCost);
-				setPrepaymentCost(fullCost * 0.15);
-				setRestpaymentCost(fullCost * 0.8499);
-			}
-		}
-		if (extraPerson === true) {
-			let cost = bookingCostArray.reduce(function (all, amount) {
-				return all + amount;
-			});
-			let fullCost = Math.round(cost * 1.25 + b.cleaningFee);
-			let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
-			// console.log(fullCost)
-			if (startEpoch - Date.now() <= 2592000000) {
-				setTotalBookingCost(fullCost);
-				setPrepaymentCost(fullCost);
-			} else {
-				setTotalBookingCost(fullCost);
-				setPrepaymentCost(fullCost * 0.15);
-				setRestpaymentCost(fullCost * 0.8499);
-			}
+		let removeLastDay = bookingCostArray.slice(0, bookingCostArray.length - 1);
+
+		let cost = removeLastDay.reduce(function (all, amount) {
+			return all + amount;
+		});
+		let fullCost = cost + b.cleaningFee;
+		let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
+		if (startEpoch - Date.now() <= 2592000000) {
+			setTotalBookingCost(fullCost);
+			setPrepaymentCost(fullCost);
+		} else {
+			setTotalBookingCost(fullCost);
+			setRestpaymentCost(fullCost * 0.8499);
+			// setPrepaymentCost(fullCost - restpaymentCost);
 		}
 	};
+
+	useEffect(() => {
+		if (
+			restpaymentCost &&
+			moment(startDate, "YYYY-MM-DD").valueOf() - Date.now() > 2592000000
+		) {
+			setPrepaymentCost(totalBookingCost - restpaymentCost);
+		}
+	}, [restpaymentCost]);
 
 	const showDates = (lang) => {
 		const arrivalDate = arrayOfDates[0];
@@ -210,7 +237,7 @@ const BookingLogicContextProvider = ({ children }) => {
 				extraPerson,
 				setExtraPerson,
 				bookingDetails,
-				setBookingDetails
+				setBookingDetails,
 			}}
 		>
 			{children}

@@ -40,7 +40,7 @@ export default function IbanForm({
 	onSubmit,
 	processing,
 	succeeded,
-	disabled,
+	noStripe,
 }) {
 	const { t } = useTranslation();
 	const { data } = useContext(AuthContext);
@@ -108,7 +108,7 @@ export default function IbanForm({
 			</button> */}
 
 			<button
-				disabled={processing || succeeded || disabled}
+				disabled={processing || succeeded || noStripe}
 				id="submit"
 				type="submit"
 			>
