@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -6,9 +6,12 @@ import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
 import "./auth.css";
 import { useTranslation } from "react-i18next";
+import { AuthContext } from "../../Context/AuthContext";
 
-const Register = () => {
+const Register = ({handleRegister}) => {
 	const { t } = useTranslation();
+
+	const { showLogin } = useContext(AuthContext);
 
 	const [registerUsername, setRegisterUsername] = useState("");
 	const [registerFirstName, setRegisterFirstName] = useState("");
@@ -57,7 +60,11 @@ const Register = () => {
 				});
 				handleClose();
 			}
-		});
+		}).then(() => {
+			if(showLogin) {
+				handleRegister()
+			}
+		})
 	};
 
 	const checkRegister = (event) => {
@@ -109,9 +116,9 @@ const Register = () => {
 
 	return (
 		<>
-			<p className="registerText" onClick={handleShow}>
+			<Button variant="secondary" onClick={handleShow}>
 				{t("register1")}
-			</p>
+			</Button>
 			<Modal show={show} onHide={handleClose} centered>
 				<Modal.Header closeButton>
 					<Modal.Title>{t("register2")}</Modal.Title>

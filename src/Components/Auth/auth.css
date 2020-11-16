@@ -15,16 +15,19 @@
 
 .forgotPassword {
 	font-size: 0.8rem !important;
+	margin-bottom: -10px;	
 }
 
 .register {
-	margin-left: 10%;
-	margin-bottom: -10%;
+	display: flex;
+	justify-content: center;
 }
 
-.registerText {
-	cursor: pointer;
+#loginModalFooter {
+	display: flex;
+	justify-content: space-between;
 }
+
 
 #userProfileContainer {
 	display: block;

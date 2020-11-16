@@ -18,6 +18,7 @@ import { getDefaultLocale } from "react-datepicker";
 import addDays from "date-fns/addDays";
 import { AuthContext } from "../../Context/AuthContext";
 import StripeNew from "../Stripe/StripeNew";
+import LoginModal from "../Auth/LoginModal";
 
 const BookingMenu = () => {
 	const {
@@ -34,7 +35,7 @@ const BookingMenu = () => {
 		available,
 	} = useContext(BookingLogicContext);
 	const { bookingsList } = useContext(BookingsContext);
-	const { data } = useContext(AuthContext);
+	const { data, handleShowLogin } = useContext(AuthContext);
 
 	const { t } = useTranslation();
 
@@ -45,13 +46,13 @@ const BookingMenu = () => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => {
 		setShow(true);
-	};
+	};	
 
-	const [showStripe, setShowStripe] = useState(false);
-	const handleCloseStripe = () => setShowStripe(false);
-	const handleShowStripe = () => {
-		setShowStripe(true);
-	};
+	// const [showStripe, setShowStripe] = useState(false);
+	// const handleCloseStripe = () => setShowStripe(false);
+	// const handleShowStripe = () => {
+	// 	setShowStripe(true);
+	// };
 
 	useEffect(() => {
 		if (arrayOfDates) {
@@ -63,6 +64,16 @@ const BookingMenu = () => {
 		//     setAvailable(true)
 		// }
 	}, [arrayOfDates]);
+
+	const minStartDate = moment(Date.now()).format("YYYY-MM-DD");
+
+	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
+
+	let endEpoch = moment(endDate, "YYYY-MM-DD").valueOf();
+
+	const minEndDate = startDate
+		? moment(startEpoch + 345600000).format("YYYY-MM-DD")
+		: moment(Date.now() + 345600000).format("YYYY-MM-DD");
 
 	const checkAvailability = () => {
 		bookingsList.forEach((element) => {
@@ -89,6 +100,11 @@ const BookingMenu = () => {
 				icon: "warning",
 				title: `${t("bAlert")}`,
 			});
+		} else if (startEpoch < Date.now()) {
+			Swal.fire({
+				icon: "warning",
+				title: `${t("bAlert6")}`,
+			});
 		} else if (arrayOfDates.length < 5) {
 			Swal.fire({
 				icon: "warning",
@@ -105,25 +121,12 @@ const BookingMenu = () => {
 					window.scrollTo(0, top);
 				},
 			});
-		} else if (!data._id) {
-			Swal.fire({
-				icon: "warning",
-				title: `${t("bAlert4")}`,
-			});
+		} else if (data === null || !data._id) {
+			handleShowLogin()
 		} else {
 			handleShow();
 		}
 	};
-
-	const minStartDate = moment(Date.now()).format("YYYY-MM-DD");
-
-	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
-
-	let endEpoch = moment(endDate, "YYYY-MM-DD").valueOf();
-
-	const minEndDate = startDate
-		? moment(startEpoch + 345600000).format("YYYY-MM-DD")
-		: moment(Date.now() + 345600000).format("YYYY-MM-DD");
 
 	const handleChangeS = (event) => {
 		event.persist();
@@ -291,6 +294,7 @@ const BookingMenu = () => {
 				arrayOfDates={arrayOfDates}
 				extraPerson={extraPerson}
 			/>
+			<LoginModal handleShowBookingModal = {handleShow}/>
 			<StripeNew />
 		</>
 	);

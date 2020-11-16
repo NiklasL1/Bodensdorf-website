@@ -5,10 +5,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Register from "./Register";
 import "./auth.css";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../Context/AuthContext";
 // import UserProfile from "./UserProfile";
-import { useHistory } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -22,6 +20,8 @@ const Login = () => {
 		setLoginUsername,
 		loginPassword,
 		setLoginPassword,
+		login,
+		getUser
 	} = useContext(AuthContext);
 
 	// const [show, setShow] = useState(false);
@@ -29,87 +29,6 @@ const Login = () => {
 	// const handleShow = () => {
 	// 	setShow(true);
 	// };
-
-	let history = useHistory();
-
-	const login = (event) => {
-		event.preventDefault();
-
-		axios({
-			method: "POST",
-			data: {
-				username: loginUsername,
-				password: loginPassword,
-			},
-			withCredentials: true,
-			url:
-				process.env.REACT_APP_LOCATION === "development"
-					? "http://localhost:4000/api/login"
-					: "https://bodensdorf-server.herokuapp.com/api/login",
-		}).then((res) => {
-			console.log(res);
-			if (res.data === "No user exists") {
-				Swal.fire({
-					icon: "error",
-					title: `${t("loginAlert1")}`,
-				});
-			}
-			if (res.data === "successfully authenticated") {
-				getUser();
-				if (
-					loginPassword !== "65527" &&
-					loginUsername !== "niklas" &&
-					loginUsername !== "heidi" &&
-					loginUsername !== "tom"
-				) {
-					let timerInterval;
-					Swal.fire({
-						icon: "success",
-						title: `${t("loginAlert2")}`,
-						timer: 2000,
-						timerProgressBar: true,
-						onBeforeOpen: () => {
-							timerInterval = setInterval(() => {
-								const content = Swal.getContent();
-								if (content) {
-									const b = content.querySelector("b");
-									if (b) {
-										b.textContent = Swal.getTimerLeft();
-									}
-								}
-							}, 100);
-						},
-						onClose: () => {
-							clearInterval(timerInterval);
-						},
-					});
-				}
-			}
-		});
-
-		if (
-			loginPassword === "65527" &&
-			(loginUsername === "niklas" ||
-				loginUsername === "heidi" ||
-				loginUsername === "tom")
-		) {
-			history.push("/bookings");
-		}
-	};
-
-	const getUser = () => {
-		axios({
-			method: "GET",
-			withCredentials: true,
-			url:
-				process.env.REACT_APP_LOCATION === "development"
-					? "http://localhost:4000/api/user"
-					: "https://bodensdorf-server.herokuapp.com/api/user",
-		}).then((res) => {
-			setData(res.data);
-			console.log(res);
-		});
-	};
 
 	const logout = () => {
 		axios({
@@ -153,10 +72,10 @@ const Login = () => {
 							{/* <Form.Group controlId="formGroupEmail">                
                                 <Form.Control type="text" placeholder="E-mail" onChange={e => setLoginEmail(e.target.value)} />
                             </Form.Group> */}
-							<Form.Group controlId="formGroupPassword">
+							<Form.Group controlId="formPassword">
 								<Form.Control
 									type="password"
-									placeholder="Password"
+									placeholder={t("login5")}
 									onChange={(e) => setLoginPassword(e.target.value)}
 								/>
 								<Form.Label className="forgotPassword">
