@@ -30,8 +30,8 @@ const UsersContextProvider = ({ children }) => {
 	const getUsers = async () => {
 		const url =
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/users/`
-				: `https://bodensdorf-server.herokuapp.com/api/users/`;
+				? `${process.env.REACT_APP_DEV_API}/api/users/`
+				: `${process.env.REACT_APP_PROD_API}/api/users/`;
 		const response = await fetch(url);
 		const data = await response.json();
 		setList(data);
@@ -42,8 +42,8 @@ const UsersContextProvider = ({ children }) => {
 	const getUserByID = async (id) => {
 		const url =
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/users/${id}`
-				: `https://bodensdorf-server.herokuapp.com/api/users/${id}`;
+				? `${process.env.REACT_APP_DEV_API}/api/users/${id}`
+				: `${process.env.REACT_APP_PROD_API}/api/users/${id}`;
 		const response = await fetch(url);
 		const data = await response.json();
 		setList(data);
@@ -61,8 +61,8 @@ const UsersContextProvider = ({ children }) => {
 	const update = (_id, values) => {
 		fetch(
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/users/${_id}`
-				: `https://bodensdorf-server.herokuapp.com/api/users/${_id}`,
+				? `${process.env.REACT_APP_DEV_API}/api/users/${_id}`
+				: `${process.env.REACT_APP_PROD_API}/api/users/${_id}`,
 			{
 				method: "put",
 				headers: {
@@ -89,8 +89,8 @@ const UsersContextProvider = ({ children }) => {
 	const deleteItem = (_id) => {
 		fetch(
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/users/${_id}`
-				: `https://bodensdorf-server.herokuapp.com/api/users/${_id}`,
+				? `${process.env.REACT_APP_DEV_API}/api/users/${_id}`
+				: `${process.env.REACT_APP_PROD_API}/api/users/${_id}`,
 			{
 				method: "delete",
 			}

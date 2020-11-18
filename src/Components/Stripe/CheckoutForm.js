@@ -68,8 +68,8 @@ export default function CheckoutForm() {
 
 			.fetch(
 				process.env.REACT_APP_LOCATION === "development"
-					? "http://localhost:4000/api/payments/create-payment-intent"
-					: "https://bodensdorf-server.herokuapp.com/api/payments/create-payment-intent",
+					? `${process.env.REACT_APP_DEV_API}/api/payments/create-payment-intent`
+					: `${process.env.REACT_APP_PROD_API}/api/payments/create-payment-intent`,
 				{
 					method: "POST",
 

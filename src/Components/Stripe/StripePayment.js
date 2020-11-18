@@ -35,8 +35,8 @@ const StripePayment = ({ handleClose }) => {
 		};		
 		return fetch(
 			process.env.REACT_APP_LOCATION === "development"
-				? "http://localhost:4000/api/payment"
-				: "https://bodensdorf-server.herokuapp.com/api/payment",
+				? `${process.env.REACT_APP_DEV_API}/api/payment`
+				: `${process.env.REACT_APP_PROD_API}/api/payment`,
 			{
 				method: "POST",
 				headers: headers,

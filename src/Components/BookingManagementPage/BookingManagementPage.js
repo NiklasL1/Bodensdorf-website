@@ -19,8 +19,8 @@ const ManagementPage = () => {
 			withCredentials: true,
 			url:
 				process.env.REACT_APP_LOCATION === "development"
-					? "http://localhost:4000/api/user"
-					: "https://bodensdorf-server.herokuapp.com/api/user",
+					? `${process.env.REACT_APP_DEV_API}/api/user`
+					: `${process.env.REACT_APP_PROD_API}/api/user`,
 		}).then((res) => {
 			setData(res.data);
 			console.log(res);

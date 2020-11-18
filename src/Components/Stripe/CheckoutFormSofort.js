@@ -68,8 +68,8 @@ export default function CheckoutFormSofort() {
 
 			.fetch(
 				process.env.REACT_APP_LOCATION === "development"
-					? "http://localhost:4000/api/payments/create-sofort-payment-intent"
-					: "https://bodensdorf-server.herokuapp.com/api/payments/create-sofort-payment-intent",
+					? `${process.env.REACT_APP_DEV_API}/api/payments/create-sofort-payment-intent`
+					: `${process.env.REACT_APP_PROD_API}/api/payments/create-sofort-payment-intent`,
 				{
 					method: "POST",
 
@@ -123,8 +123,8 @@ export default function CheckoutFormSofort() {
 			},
 			return_url:
 				process.env.REACT_APP_LOCATION === "development"
-					? "http://localhost:3000"
-					: "https://ferienwohnung-ossiachersee.herokuapp.com",
+					? `${process.env.REACT_APP_DEV_API}/???`
+					: `${process.env.REACT_APP_PROD_API}/???`,
 		});
 
 		if (payload.error) {

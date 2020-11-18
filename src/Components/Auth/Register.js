@@ -44,8 +44,8 @@ const Register = ({handleRegister}) => {
 			withCredentials: true,
 			url:
 				process.env.REACT_APP_LOCATION === "development"
-					? "http://localhost:4000/api/register"
-					: "https://bodensdorf-server.herokuapp.com/api/register",
+					? `${process.env.REACT_APP_DEV_API}/api/register`
+					: `${process.env.REACT_APP_PROD_API}/api/register`,
 		}).then((res) => {
 			console.log(res);
 			if (res.data === "User Already Exists") {

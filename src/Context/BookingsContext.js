@@ -12,8 +12,8 @@ const BookingsContextProvider = ({ children }) => {
 	const createWithID = (userID, values) => {
 		fetch(
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/bookings/${userID}`
-				: `https://bodensdorf-server.herokuapp.com/api/bookings/${userID}`,
+				? `${process.env.REACT_APP_DEV_API}/api/bookings/${userID}`
+				: `${process.env.REACT_APP_PROD_API}/api/bookings/${userID}`,
 			{
 				method: "post",
 				headers: {
@@ -34,8 +34,8 @@ const BookingsContextProvider = ({ children }) => {
 	const create = (values) => {
 		fetch(
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/bookings/`
-				: `https://bodensdorf-server.herokuapp.com/api/bookings/`,
+				? `${process.env.REACT_APP_DEV_API}/api/bookings/`
+				: `${process.env.REACT_APP_PROD_API}/api/bookings/`,
 			{
 				method: "post",
 				headers: {
@@ -56,8 +56,8 @@ const BookingsContextProvider = ({ children }) => {
 	const getData = async () => {
 		const url =
 			process.env.REACT_APP_LOCATION === "development"
-				? "http://localhost:4000/api/bookings/"
-				: "https://bodensdorf-server.herokuapp.com/api/bookings/";
+				? `${process.env.REACT_APP_DEV_API}/api/bookings/`
+				: `${process.env.REACT_APP_PROD_API}/api/bookings/`;
 		const response = await fetch(url);
 		const data = await response.json();
 		setBookingsList(data);
@@ -67,8 +67,8 @@ const BookingsContextProvider = ({ children }) => {
 	const getDataPerUser = async (userID) => {
 		const url =
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/bookings/${userID}`
-				: `https://bodensdorf-server.herokuapp.com/api/bookings/${userID}`;
+				? `${process.env.REACT_APP_DEV_API}/api/bookings/${userID}`
+				: `${process.env.REACT_APP_PROD_API}/api/bookings/${userID}`;
 		const response = await fetch(url);
 		const data = await response.json();
 		setBookingsList(data);
@@ -86,8 +86,8 @@ const BookingsContextProvider = ({ children }) => {
 	const update = (_id, values) => {
 		fetch(
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/bookings/${_id}`
-				: `https://bodensdorf-server.herokuapp.com/api/bookings/${_id}`,
+				? `${process.env.REACT_APP_DEV_API}/api/bookings/${_id}`
+				: `${process.env.REACT_APP_PROD_API}/api/bookings/${_id}`,
 			{
 				method: "put",
 				headers: {
@@ -115,8 +115,8 @@ const BookingsContextProvider = ({ children }) => {
 	const deleteItem = (_id) => {
 		fetch(
 			process.env.REACT_APP_LOCATION === "development"
-				? `http://localhost:4000/api/bookings/${_id}`
-				: `https://bodensdorf-server.herokuapp.com/api/bookings/${_id}`,
+				? `${process.env.REACT_APP_DEV_API}/api/bookings/${_id}`
+				: `${process.env.REACT_APP_PROD_API}/api/bookings/${_id}`,
 			{
 				method: "delete",
 			}
