@@ -175,24 +175,6 @@ export default function CheckoutForm() {
 
 	return (
 		<form className="payment-form" onSubmit={handleSubmit}>
-			{payingRemainder ? (
-				<h2> {outstandingPayment}€ </h2>
-			) : (
-				<>
-					<h2> {bookingDetails.prepayment}€ </h2>
-					<h3>
-						{" "}
-						{moment(bookingDetails.arriveStr, "DD/MM/YYYY").format(
-							"DD.MM.YYYY"
-						)}{" "}
-						-{" "}
-						{moment(bookingDetails.departStr, "DD/MM/YYYY").format(
-							"DD.MM.YYYY"
-						)}{" "}
-					</h3>
-				</>
-			)}
-
 			<CardNumberElement
 				className="card-element"
 				options={cardStyle}

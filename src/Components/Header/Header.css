@@ -61,3 +61,11 @@
 	display: flex;
 	justify-content: space-between;
 }
+
+.alignVert {
+	vertical-align: middle !important;
+}
+
+.noBotMarg {
+	margin-bottom: 0px !important;
+}

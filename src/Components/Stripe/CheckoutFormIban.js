@@ -129,23 +129,6 @@ export default function CheckoutForm() {
 
 	return (
 		<>
-			{payingRemainder ? (
-				<h2> {outstandingPayment}€ </h2>
-			) : (
-				<>
-					<h2> {bookingDetails.prepayment}€ </h2>
-					<h3>
-						{" "}
-						{moment(bookingDetails.arriveStr, "DD/MM/YYYY").format(
-							"DD.MM.YYYY"
-						)}{" "}
-						-{" "}
-						{moment(bookingDetails.departStr, "DD/MM/YYYY").format(
-							"DD.MM.YYYY"
-						)}{" "}
-					</h3>
-				</>
-			)}
 			<IbanForm
 				onSubmit={handleSubmit}
 				// handleChange={handleChange}

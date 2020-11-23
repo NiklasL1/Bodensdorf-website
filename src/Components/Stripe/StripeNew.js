@@ -110,22 +110,48 @@ export default function StripeNew() {
 			centered
 			className="StripeNew"
 		>
-			{/* <Modal.Header closeButton>
-				<Modal.Title>title</Modal.Title>
-			</Modal.Header> */}
+			<Modal.Header closeButton>
+				<Modal.Title>{t("payment7")}</Modal.Title>
+			</Modal.Header>
 			<Modal.Body>
-				<select
-					value={paymentMethod}
-					onChange={handleChange}
-					id="selectPaymentMethod"
-				>
-					<option value="creditCard">{t("payment5")}</option>
-					<option value="SEPA">{t("payment6")}</option>
-					<option value="sofort">Sofortüberweisung</option>
-				</select>
+				{bookingDetails ? (
+					payingRemainder ? (
+						<h3>
+							{" "}
+							{t("payment9")} {outstandingPayment}€{" "}
+						</h3>
+					) : totalBookingCost === prepaymentCost ? (
+						<>
+							<h3>
+								{" "}
+								{t("payment12")} {bookingDetails.prepayment}€{" "}
+							</h3>							
+						</>
+					) : (
+						<>
+							<h3>
+								{" "}
+								{t("payment10")} {bookingDetails.prepayment}€{" "}
+							</h3>
+							<p>{t("payment11")}</p>
+						</>
+					)
+				) : undefined}
+				<span className="flexIt">
+					<p className="rightMarg">{t("payment8")}</p>
+					<select
+						value={paymentMethod}
+						onChange={handleChange}
+						id="selectPaymentMethod"
+					>
+						<option value="creditCard">{t("payment5")}</option>
+						{/* <option value="SEPA">{t("payment6")}</option> */}
+						<option value="sofort">Sofortüberweisung</option>
+					</select>
+				</span>
 				<Elements stripe={promise}>
 					{paymentMethod === "creditCard" ? <CheckoutForm /> : undefined}
-					{paymentMethod === "SEPA" ? <CheckoutFormIban /> : undefined}
+					{/* {paymentMethod === "SEPA" ? <CheckoutFormIban /> : undefined} */}
 					{paymentMethod === "sofort" ? <CheckoutFormSofort /> : undefined}
 				</Elements>
 			</Modal.Body>

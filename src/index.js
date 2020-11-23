@@ -11,10 +11,8 @@ import BookingLogicContextProvider from "./Context/BookingLogicContext";
 import BookingsContextProvider from "./Context/BookingsContext";
 import PaymentContextProvider from "./Context/PaymentContext";
 import AuthContextProvider from "./Context/AuthContext";
-import HttpsRedirect from "react-https-redirect";
 
-ReactDOM.render(
-	<HttpsRedirect>
+ReactDOM.render(	
 		<React.StrictMode>
 			<UsersContextProvider>
 				<BookingsContextProvider>
@@ -29,8 +27,7 @@ ReactDOM.render(
 					</BookingLogicContextProvider>
 				</BookingsContextProvider>
 			</UsersContextProvider>
-		</React.StrictMode>
-	</HttpsRedirect>,
+		</React.StrictMode>,
 	document.getElementById("root")
 );
 

@@ -66,7 +66,7 @@ export default function IbanForm({
 		<form className="paymentForm" onSubmit={onSubmit}>
 			<div className="form-row inline">
 				<div className="col">
-					<label>
+					<label className="boldIt">
 						Name
 						<input
 							name="name"
@@ -79,8 +79,8 @@ export default function IbanForm({
 				</div>
 
 				<div className="col">
-					<label>
-						Email Address
+					<label className="boldIt">
+						{t("user5")}
 						<input
 							name="email"
 							type="email"

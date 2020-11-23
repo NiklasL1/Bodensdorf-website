@@ -302,6 +302,20 @@
     display: flex;
   }
 
+  .flexIt {
+    display: flex;    
+  }
+
   #selectPaymentMethod {
     margin-bottom: 10px;
+  }
+
+  .rightMarg {
+    margin-right: 10px;
+    margin-top: 5px;
+    font-weight: bold;
+  }
+
+  .boldIt {
+    font-weight: bold;
   }

@@ -64,6 +64,8 @@ export default function CheckoutFormSofort() {
 			? outstandingPayment
 			: bookingDetails.prepayment;
 
+		let bookingData = payingRemainder ? thisBooking : bookingDetails;
+
 		window
 
 			.fetch(
@@ -82,6 +84,7 @@ export default function CheckoutFormSofort() {
 						bookingStart: timeStart,
 						bookingEnd: timeEnd,
 						bookingType: paymentType,
+						bookingData: JSON.stringify(bookingData),
 					}),
 				}
 			)
@@ -111,6 +114,12 @@ export default function CheckoutFormSofort() {
 
 		setSucceeded(false);
 
+		if(payingRemainder){
+			localStorage.setItem('booking', JSON.stringify(thisBooking))
+		} else if(!payingRemainder){
+			localStorage.setItem('booking', JSON.stringify(bookingDetails))
+		}
+
 		const payload = await stripe.confirmSofortPayment(clientSecret, {
 			payment_method: {
 				sofort: {
@@ -123,14 +132,16 @@ export default function CheckoutFormSofort() {
 			},
 			return_url:
 				process.env.REACT_APP_LOCATION === "development"
-					? `${process.env.REACT_APP_DEV_API}/???`
-					: `${process.env.REACT_APP_PROD_API}/???`,
+					? `http://localhost:3000/return`
+					: `https://3.122.248.100:3000/return`,
 		});
 
 		if (payload.error) {
 			setError(`Payment failed ${payload.error.message}`);
 
 			setProcessing(false);
+
+			console.log("error", payload.error.message);
 		} else {
 			setError(null);
 
@@ -138,7 +149,7 @@ export default function CheckoutFormSofort() {
 
 			setSucceeded(true);
 
-			// console.log("succeeded", succeeded);
+			console.log("succeeded", succeeded);
 		}
 	};
 
@@ -150,27 +161,10 @@ export default function CheckoutFormSofort() {
 
 	return (
 		<>
-			{payingRemainder ? (
-				<h2> {outstandingPayment}€ </h2>
-			) : (
-				<>
-					<h2> {bookingDetails.prepayment}€ </h2>
-					<h3>
-						{" "}
-						{moment(bookingDetails.arriveStr, "DD/MM/YYYY").format(
-							"DD.MM.YYYY"
-						)}{" "}
-						-{" "}
-						{moment(bookingDetails.departStr, "DD/MM/YYYY").format(
-							"DD.MM.YYYY"
-						)}{" "}
-					</h3>
-				</>
-			)}
 			<form className="paymentForm" onSubmit={handleSubmit}>
 				<div className="form-row inline">
 					<div className="col">
-						<label>
+						<label className="boldIt">
 							Name
 							<input
 								name="name"
@@ -183,8 +177,8 @@ export default function CheckoutFormSofort() {
 					</div>
 
 					<div className="col">
-						<label>
-							Email Address
+						<label className="boldIt">
+							{t("user5")}
 							<input
 								name="email"
 								type="email"
@@ -196,21 +190,20 @@ export default function CheckoutFormSofort() {
 						</label>
 					</div>
 				</div>
+				<button
+					disabled={processing || succeeded || !stripe}
+					id="submit"
+					type="submit"
+				>
+					<span id="button-text">
+						{processing ? (
+							<div className="spinner" id="spinner"></div>
+						) : (
+							`${t("payment1")}`
+						)}
+					</span>
+				</button>
 			</form>
-
-			<button
-				disabled={processing || succeeded || !stripe}
-				id="submit"
-				type="submit"
-			>
-				<span id="button-text">
-					{processing ? (
-						<div className="spinner" id="spinner"></div>
-					) : (
-						`${t("payment1")}`
-					)}
-				</span>
-			</button>
 
 			{error && (
 				<div className="card-error" role="alert">

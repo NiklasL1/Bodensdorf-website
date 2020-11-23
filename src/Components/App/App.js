@@ -8,11 +8,13 @@ import BookingManagementPage from "../BookingManagementPage/BookingManagementPag
 import PageNotFound from "../PageNotFound";
 import StripeNew from "../Stripe/StripeNew";
 import UserProfilePage from "../Auth/UserProfilePage";
+import SofortReturnPage from "../Stripe/SofortReturnPage";
 
 function App() {
 	return (
 		<div className="App">
 			<Switch>
+				<Route exact path="/return/" children={<SofortReturnPage />} />
 				<Route exact path="/user/" children={<UserProfilePage />} />
 				<Route exact path="/checkout/" children={<StripeNew />} />
 				<Route exact path="/impressum/" children={<Imprint />} />
