@@ -13,9 +13,9 @@ import { useTranslation } from "react-i18next";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import { BookingsContext } from "../../Context/BookingsContext";
 import Swal from "sweetalert2";
-import DatePicker from "react-datepicker";
-import { getDefaultLocale } from "react-datepicker";
-import addDays from "date-fns/addDays";
+// import DatePicker from "react-datepicker";
+// import { getDefaultLocale } from "react-datepicker";
+// import addDays from "date-fns/addDays";
 import { AuthContext } from "../../Context/AuthContext";
 import StripeNew from "../Stripe/StripeNew";
 import LoginModal from "../Auth/LoginModal";
@@ -46,13 +46,7 @@ const BookingMenu = () => {
 	const handleClose = () => setShow(false);
 	const handleShow = () => {
 		setShow(true);
-	};	
-
-	// const [showStripe, setShowStripe] = useState(false);
-	// const handleCloseStripe = () => setShowStripe(false);
-	// const handleShowStripe = () => {
-	// 	setShowStripe(true);
-	// };
+	};
 
 	useEffect(() => {
 		if (arrayOfDates) {
@@ -60,9 +54,6 @@ const BookingMenu = () => {
 			calculateDaysCost();
 			checkAvailability();
 		}
-		// if (!show) {
-		//     setAvailable(true)
-		// }
 	}, [arrayOfDates]);
 
 	const minStartDate = moment(Date.now()).format("YYYY-MM-DD");
@@ -122,7 +113,7 @@ const BookingMenu = () => {
 				},
 			});
 		} else if (data === null || !data._id) {
-			handleShowLogin()
+			handleShowLogin();
 		} else {
 			handleShow();
 		}
@@ -144,10 +135,6 @@ const BookingMenu = () => {
 		setEndDate(value);
 	};
 
-	// useEffect(() => {
-	//     console.log(startDate, endDate)
-	// }, [startDate, endDate])
-
 	let myArray = [];
 
 	const calculateDates = () => {
@@ -157,14 +144,8 @@ const BookingMenu = () => {
 		}
 	};
 
-	const determinePeople = (event) => {
+	const determinePeople = () => {
 		setExtraPerson(!extraPerson);
-		// if (event.target.value == 2) {
-		//     setExtraPerson(false)
-		// }
-		// if (event.target.value == 3) {
-		//     setExtraPerson(true)
-		// }
 	};
 
 	function CustomToggle({ eventKey }) {
@@ -294,7 +275,7 @@ const BookingMenu = () => {
 				arrayOfDates={arrayOfDates}
 				extraPerson={extraPerson}
 			/>
-			<LoginModal handleShowBookingModal = {handleShow}/>
+			<LoginModal handleShowBookingModal={handleShow} />
 			<StripeNew />
 		</>
 	);

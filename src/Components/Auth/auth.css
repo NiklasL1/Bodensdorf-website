@@ -15,7 +15,7 @@
 
 .forgotPassword {
 	font-size: 0.8rem !important;
-	margin-bottom: -10px;	
+	margin-bottom: -10px;
 }
 
 .register {
@@ -27,7 +27,6 @@
 	display: flex;
 	justify-content: space-between;
 }
-
 
 #userProfileContainer {
 	display: block;
@@ -59,16 +58,16 @@
 
 .individualBooking {
 	border: 1px solid #ccc;
-  	box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+	box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
 }
 
-#userProfilePage {	
-	margin: 0px 20px 0px 20px
+#userProfilePage {
+	margin: 0px 20px 0px 20px;
 }
 
-.userProfileTitle{
-	margin-top:20px;
-	margin-bottom:20px;
+.userProfileTitle {
+	margin-top: 20px;
+	margin-bottom: 20px;
 }
 
 .paymentDueWarning {

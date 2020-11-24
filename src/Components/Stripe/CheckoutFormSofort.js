@@ -114,10 +114,10 @@ export default function CheckoutFormSofort() {
 
 		setSucceeded(false);
 
-		if(payingRemainder){
-			localStorage.setItem('booking', JSON.stringify(thisBooking))
-		} else if(!payingRemainder){
-			localStorage.setItem('booking', JSON.stringify(bookingDetails))
+		if (payingRemainder) {
+			localStorage.setItem("booking", JSON.stringify(thisBooking));
+		} else if (!payingRemainder) {
+			localStorage.setItem("booking", JSON.stringify(bookingDetails));
 		}
 
 		const payload = await stripe.confirmSofortPayment(clientSecret, {
@@ -152,12 +152,6 @@ export default function CheckoutFormSofort() {
 			console.log("succeeded", succeeded);
 		}
 	};
-
-	// const logit = () => {
-	// 	console.log("from new booking", bookingDetails);
-	// 	console.log("from paying balance", thisBooking);
-	// 	console.log("from", timeStart, "to", timeEnd);
-	// };
 
 	return (
 		<>

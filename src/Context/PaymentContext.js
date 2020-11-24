@@ -3,7 +3,6 @@ import React, { createContext, useState } from "react";
 export const PaymentContext = createContext();
 
 const PaymentContextProvider = ({ children }) => {
-
 	const [showStripe, setShowStripe] = useState(false);
 	const handleCloseStripe = () => setShowStripe(false);
 	const handleShowStripe = () => {
@@ -28,7 +27,7 @@ const PaymentContextProvider = ({ children }) => {
 				handleCloseStripe,
 				showStripe,
 				thisBooking,
-				setThisBooking
+				setThisBooking,
 			}}
 		>
 			{children}

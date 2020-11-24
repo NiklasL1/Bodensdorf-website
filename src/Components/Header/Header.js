@@ -4,10 +4,8 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
-// import Image from "react-bootstrap/Image";
 import { useTranslation } from "react-i18next";
 import i18n from "../../i18n";
-// import ReactImageAppear from 'react-image-appear';
 import "./Header.css";
 import BookingMenu from "./BookingMenu";
 import Button from "react-bootstrap/Button";
@@ -18,7 +16,6 @@ import Login from "../Auth/Login";
 import { PaymentContext } from "../../Context/PaymentContext";
 registerLocale("de", de);
 registerLocale("en", en);
-
 
 function Page() {
 	const { setPayingRemainder } = useContext(PaymentContext);
@@ -31,7 +28,7 @@ function Page() {
 
 	useEffect(() => {
 		setDefaultLocale("de");
-		setPayingRemainder(false)
+		setPayingRemainder(false);
 	}, []);
 
 	return (
@@ -89,15 +86,6 @@ function Page() {
 			</Row>
 		</Container>
 	);
-	// return (
-	//     <div>
-	//         <ReactImageAppear id="headerPic"
-	//         src="static/media/lage-haeuservomsee2.540225a1.jpg"
-	//         animation="blurIn"
-	//         animationDuration="2s"
-	//         />
-	//     </div>
-	// )
 }
 
 const Header = () => {

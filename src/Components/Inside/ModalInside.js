@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { useTranslation } from "react-i18next";
 import Table from "react-bootstrap/Table";
 
-const ModalInside = ({ handleClose, show, handleShow }) => {
+const ModalInside = ({ handleClose, show }) => {
 	const { t } = useTranslation();
 
 	return (

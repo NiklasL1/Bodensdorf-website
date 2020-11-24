@@ -37,10 +37,9 @@ const AuthContextProvider = ({ children }) => {
 	};
 
 	const login = (event) => {
-		if(event) {
+		if (event) {
 			event.preventDefault();
 		}
-		
 
 		axios({
 			method: "POST",
@@ -118,7 +117,7 @@ const AuthContextProvider = ({ children }) => {
 				handleCloseLogin,
 				handleShowLogin,
 				login,
-				getUser
+				getUser,
 			}}
 		>
 			{children}

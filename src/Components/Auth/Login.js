@@ -6,7 +6,6 @@ import Button from "react-bootstrap/Button";
 import Register from "./Register";
 import "./auth.css";
 import { AuthContext } from "../../Context/AuthContext";
-// import UserProfile from "./UserProfile";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -16,19 +15,11 @@ const Login = () => {
 	const {
 		data,
 		setData,
-		loginUsername,
 		setLoginUsername,
-		loginPassword,
 		setLoginPassword,
 		login,
-		getUser
+		getUser,
 	} = useContext(AuthContext);
-
-	// const [show, setShow] = useState(false);
-	// const handleClose = () => setShow(false);
-	// const handleShow = () => {
-	// 	setShow(true);
-	// };
 
 	const logout = () => {
 		axios({

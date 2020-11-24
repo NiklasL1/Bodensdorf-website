@@ -69,3 +69,7 @@
 .noBotMarg {
 	margin-bottom: 0px !important;
 }
+
+.noWhite {
+	white-space: nowrap;
+}

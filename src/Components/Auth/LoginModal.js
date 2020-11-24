@@ -11,12 +11,8 @@ const LoginModal = ({ handleShowBookingModal }) => {
 	const { t } = useTranslation();
 
 	const {
-		data,
 		showLogin,
-		setData,
-		loginUsername,
 		setLoginUsername,
-		loginPassword,
 		setLoginPassword,
 		handleCloseLogin,
 		login,
@@ -27,12 +23,12 @@ const LoginModal = ({ handleShowBookingModal }) => {
 		login();
 		handleCloseLogin();
 		handleShowBookingModal();
-    };
-    
-    const handleRegister = () => {
-        handleCloseLogin();
+	};
+
+	const handleRegister = () => {
+		handleCloseLogin();
 		handleShowBookingModal();
-    }
+	};
 
 	return (
 		<Modal show={showLogin} onHide={handleCloseLogin} centered>

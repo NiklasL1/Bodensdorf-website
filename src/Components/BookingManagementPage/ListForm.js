@@ -9,7 +9,7 @@ import Col from "react-bootstrap/Col";
 import "./Bookings.css";
 import Swal from "sweetalert2";
 
-const AddToList = ({ handleClose, show, handleShow }) => {
+const AddToList = ({ handleClose, show }) => {
 	const { create, bookingsList } = useContext(BookingsContext);
 	const { list } = useContext(UsersContext);
 
@@ -165,14 +165,6 @@ const AddToList = ({ handleClose, show, handleShow }) => {
 			});
 		}
 	}, [formState.departStr]);
-
-	// const logit = () => {
-	//     console.log(formState)
-	//     console.log("overlap", overlapAdd)
-	//     console.log("tooshort", tooShortAdd)
-	//     console.log(list)
-	//     console.log(Date.now())
-	// }
 
 	return (
 		<Modal show={show} onHide={handleClose} centered>

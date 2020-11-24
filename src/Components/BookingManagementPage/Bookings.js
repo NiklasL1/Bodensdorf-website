@@ -6,7 +6,7 @@ import "./Bookings.css";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 
-const Bookings = ({handleShow}) => {
+const Bookings = ({ handleShow }) => {
 	const { bookingsList, loading } = useContext(BookingsContext);
 
 	const sortedList = bookingsList.sort((a, b) => a.arriveEpoch > b.arriveEpoch);

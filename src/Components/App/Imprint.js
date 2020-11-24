@@ -14,7 +14,6 @@ const Imprint = () => {
 				<h3>{t("imprint2")}</h3> <br />
 				<p>
 					<strong>{t("imprint3")}</strong> <br />
-				
 					Heidrun Holzapfel-Little <br />
 					Hügelstraße 14
 					<br />

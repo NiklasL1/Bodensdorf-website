@@ -43,7 +43,7 @@ const UserProfile = ({ handleClose, show, data }) => {
 							/>
 						</Col>
 						<Form.Label column md="12">
-						{t("user4")}
+							{t("user4")}
 						</Form.Label>
 						<Col md="12">
 							<Form.Control
@@ -53,7 +53,7 @@ const UserProfile = ({ handleClose, show, data }) => {
 							/>
 						</Col>
 						<Form.Label column md="12">
-						{t("user5")}
+							{t("user5")}
 						</Form.Label>
 						<Col md="12">
 							<Form.Control
@@ -70,12 +70,30 @@ const UserProfile = ({ handleClose, show, data }) => {
 							return (
 								<div>
 									<hr />
-									<p>{t("user7")}{booking.arriveStr}</p>
-									<p>{t("user8")}{booking.departStr}</p>
-									<p>{t("user9")}{booking.people}</p>
-									<p>{t("user10")}{booking.totalPrice}</p>
-									<p>{t("user11")}{booking.amtPaid} </p>
-									<p>{t("user12")}{booking.amtOwed}</p>
+									<p>
+										{t("user7")}
+										{booking.arriveStr}
+									</p>
+									<p>
+										{t("user8")}
+										{booking.departStr}
+									</p>
+									<p>
+										{t("user9")}
+										{booking.people}
+									</p>
+									<p>
+										{t("user10")}
+										{booking.totalPrice}
+									</p>
+									<p>
+										{t("user11")}
+										{booking.amtPaid}{" "}
+									</p>
+									<p>
+										{t("user12")}
+										{booking.amtOwed}
+									</p>
 								</div>
 							);
 					  })

@@ -72,7 +72,7 @@ export default function IbanForm({
 							name="name"
 							value={userData.name}
 							required
-							className="ibanOtherInput"							
+							className="ibanOtherInput"
 							onChange={handleChange}
 						/>
 					</label>
@@ -86,7 +86,7 @@ export default function IbanForm({
 							type="email"
 							value={userData.email}
 							required
-							className="ibanOtherInput"							
+							className="ibanOtherInput"
 							onChange={handleChange}
 						/>
 					</label>

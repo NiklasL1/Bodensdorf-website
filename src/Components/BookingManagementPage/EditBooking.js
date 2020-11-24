@@ -101,10 +101,6 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 		});
 	};
 
-	// const checkFieldFormats = () => {
-	//     if()
-	// }
-
 	useEffect(() => {
 		setOverlap(false);
 		setTooShort(false);

@@ -416,7 +416,7 @@ i18n
           loginAlert2: "Erfolgreich angemeldet!",
           login1: "Anmelden",
           login2: "Passwort vergessen",
-          login3: "Einloggen",
+          login3: "Anmelden",
           login4: "Abmelden",
           login5: "Passwort",
           loginModal1:"Ihr selektierter Buchungszeitraum ist verfügbar!",

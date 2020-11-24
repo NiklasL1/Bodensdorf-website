@@ -121,12 +121,6 @@ export default function CheckoutForm() {
 		}
 	};
 
-	// const logit = () => {
-	// 	console.log("from new booking", bookingDetails);
-	// 	console.log("from paying balance", thisBooking);
-	// 	console.log("from", timeStart, "to", timeEnd);
-	// };
-
 	return (
 		<>
 			<IbanForm

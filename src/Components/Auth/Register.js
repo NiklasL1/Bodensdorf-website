@@ -8,7 +8,7 @@ import "./auth.css";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../Context/AuthContext";
 
-const Register = ({handleRegister}) => {
+const Register = ({ handleRegister }) => {
 	const { t } = useTranslation();
 
 	const { showLogin } = useContext(AuthContext);
@@ -20,9 +20,6 @@ const Register = ({handleRegister}) => {
 	const [registerTelNo, setRegisterTelNo] = useState("");
 	const [registerPassword, setRegisterPassword] = useState("");
 	const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState("");
-	// const [loginUsername, setLoginUsername] = useState("")
-	// const [loginPassword, setLoginPassword] = useState("")
-	// const [data, setData] = useState(null)
 
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -46,25 +43,27 @@ const Register = ({handleRegister}) => {
 				process.env.REACT_APP_LOCATION === "development"
 					? `${process.env.REACT_APP_DEV_API}/api/register`
 					: `${process.env.REACT_APP_PROD_API}/api/register`,
-		}).then((res) => {
-			console.log(res);
-			if (res.data === "User Already Exists") {
-				Swal.fire({
-					icon: "error",
-					title: `${t("registerAlert1")}`,
-				});
-			} else if (res.data === "User Created") {
-				Swal.fire({
-					icon: "success",
-					title: `${t("registerAlert2")}`,
-				});
-				handleClose();
-			}
-		}).then(() => {
-			if(showLogin) {
-				handleRegister()
-			}
 		})
+			.then((res) => {
+				console.log(res);
+				if (res.data === "User Already Exists") {
+					Swal.fire({
+						icon: "error",
+						title: `${t("registerAlert1")}`,
+					});
+				} else if (res.data === "User Created") {
+					Swal.fire({
+						icon: "success",
+						title: `${t("registerAlert2")}`,
+					});
+					handleClose();
+				}
+			})
+			.then(() => {
+				if (showLogin) {
+					handleRegister();
+				}
+			});
 	};
 
 	const checkRegister = (event) => {

@@ -16,12 +16,12 @@ import StripeNew from "../Stripe/StripeNew";
 const UserProfilePage = () => {
 	const { t } = useTranslation();
 
-	const {		
-		setPayingRemainder,		
+	const {
+		setPayingRemainder,
 		setOutstandingPayment,
 		handleShowStripe,
 		thisBooking,
-		setThisBooking
+		setThisBooking,
 	} = useContext(PaymentContext);
 
 	const {
@@ -66,7 +66,7 @@ const UserProfilePage = () => {
 
 	const handleClick = (amountOwed, _id) => {
 		setOutstandingPayment(amountOwed);
-		setThisBooking(filteredList.filter(booking => booking._id === _id)[0])
+		setThisBooking(filteredList.filter((booking) => booking._id === _id)[0]);
 		setThisBooking((PrevState) => {
 			return { ...PrevState, ["amtOwed"]: PrevState.amtOwed - amountOwed };
 		});
@@ -74,13 +74,15 @@ const UserProfilePage = () => {
 	};
 
 	return (
-		<div id="userProfilePage">			
+		<div id="userProfilePage">
 			<StripeNew />
 			<span id="userProfileTop">
-			<h4 className="userProfileTitle" onClick={logit}>
-				{t("user6a")}
-			</h4>
-			<Link to="/"><Button className="userProfileTitle">{t("user14")}</Button></Link>
+				<h4 className="userProfileTitle" onClick={logit}>
+					{t("user6a")}
+				</h4>
+				<Link to="/">
+					<Button className="userProfileTitle">{t("user14")}</Button>
+				</Link>
 			</span>
 			{data ? (
 				<Form inline id="userDataForm">

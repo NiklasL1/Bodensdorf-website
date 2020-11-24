@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
-import CheckoutFormIban from "./CheckoutFormIban";
+// import CheckoutFormIban from "./CheckoutFormIban";
 import CheckoutFormSofort from "./CheckoutFormSofort";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
@@ -125,7 +125,7 @@ export default function StripeNew() {
 							<h3>
 								{" "}
 								{t("payment12")} {bookingDetails.prepayment}€{" "}
-							</h3>							
+							</h3>
 						</>
 					) : (
 						<>

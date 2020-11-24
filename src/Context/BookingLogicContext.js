@@ -203,17 +203,25 @@ const BookingLogicContextProvider = ({ children }) => {
 		}
 	}, [restpaymentCost]);
 
-	const showDates = (lang) => {
+	// const showDates = (lang) => {
+	// 	const arrivalDate = arrayOfDates[0];
+	// 	const departureDate = arrayOfDates[arrayOfDates.length - 1];
+	// 	if (lang === "DE")
+	// 		return `${moment(arrivalDate).format("DD/MM/YYYY")} - ${moment(
+	// 			departureDate
+	// 		).format("DD/MM/YYYY")}`;
+	// 	if (lang === "EN")
+	// 		return `${moment(arrivalDate).format("MM/DD/YYYY")} - ${moment(
+	// 			departureDate
+	// 		).format("MM/DD/YYYY")}`;
+	// };
+
+	const showDates = () => {
 		const arrivalDate = arrayOfDates[0];
 		const departureDate = arrayOfDates[arrayOfDates.length - 1];
-		if (lang === "DE")
-			return `${moment(arrivalDate).format("DD/MM/YYYY")} - ${moment(
-				departureDate
-			).format("DD/MM/YYYY")}`;
-		if (lang === "EN")
-			return `${moment(arrivalDate).format("MM/DD/YYYY")} - ${moment(
-				departureDate
-			).format("MM/DD/YYYY")}`;
+		return `${moment(arrivalDate).format("DD.MM.YYYY")} - ${moment(
+			departureDate
+		).format("DD.MM.YYYY")}`;
 	};
 
 	return (
