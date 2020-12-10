@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import { useStripe } from "@stripe/react-stripe-js";
 import { BookingsContext } from "../../Context/BookingsContext";
+import { MailContext } from "../../Context/MailContext";
 import { useHistory } from "react-router-dom";
 
 const SofortReturnPageInside = () => {
@@ -12,6 +13,8 @@ const SofortReturnPageInside = () => {
 	let history = useHistory();
 
 	const { create, update } = useContext(BookingsContext);
+
+	const { sendEmail } = useContext(MailContext);
 
 	const getPaymentIntent = async () => {
 		const url = new URL(window.location);
@@ -38,6 +41,7 @@ const SofortReturnPageInside = () => {
 			// console.log("succeeded on booking");
 			if (bookingData.amtOwed > 0) {
 				create(bookingData);
+				sendEmail()
 				// setSucceeded(false);
 				Swal.fire({
 					title: `${t("bAlert5")}`,
@@ -48,6 +52,7 @@ const SofortReturnPageInside = () => {
 			if (bookingData.amtOwed === 0) {
 				// console.log("succeeded on restpayment");
 				update(bookingData._id, bookingData);
+				sendEmail()
 				// setSucceeded(false);
 				Swal.fire({
 					title: `${t("bAlert5a")}`,

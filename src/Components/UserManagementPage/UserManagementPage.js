@@ -9,7 +9,7 @@ const ManagementPage = () => {
 	const { loginUsername, loginPassword } = useContext(AuthContext);
 	return (
 		<>
-			{loginPassword == "65527" &&
+			{loginPassword === "65527" &&
 			(loginUsername === "niklas" ||
 				loginUsername === "heidi" ||
 				loginUsername === "tom") ? (

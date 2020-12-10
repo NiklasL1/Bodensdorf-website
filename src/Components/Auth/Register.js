@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
@@ -7,11 +7,19 @@ import Swal from "sweetalert2";
 import "./auth.css";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../Context/AuthContext";
+import { MailContext } from "../../Context/MailContext";
 
 const Register = ({ handleRegister }) => {
 	const { t } = useTranslation();
 
-	const { showLogin } = useContext(AuthContext);
+	const {
+		showLogin,
+		setLoginUsername,
+		setLoginPassword,
+		login,
+		data,
+	} = useContext(AuthContext);
+	const { setMessage, setEmail, sendEmail, message } = useContext(MailContext);
 
 	const [registerUsername, setRegisterUsername] = useState("");
 	const [registerFirstName, setRegisterFirstName] = useState("");
@@ -56,15 +64,35 @@ const Register = ({ handleRegister }) => {
 						icon: "success",
 						title: `${t("registerAlert2")}`,
 					});
-					handleClose();
+					setLoginUsername(registerUsername);
+					setLoginPassword(registerPassword);
+					setMessage("register");
+					setEmail(registerUsername);
+					console.log("register success");
 				}
 			})
 			.then(() => {
 				if (showLogin) {
 					handleRegister();
+					console.log(message);
 				}
 			});
 	};
+
+	useEffect(() => {
+		if (message === "register") {
+			console.log("logging in");
+			login();
+		}
+	}, [message]);
+
+	useEffect(() => {
+		if (message === "register") {
+			console.log("email sent");
+			sendEmail();
+			setMessage("")
+		}
+	}, [data]);
 
 	const checkRegister = (event) => {
 		event.preventDefault();
@@ -103,7 +131,7 @@ const Register = ({ handleRegister }) => {
 				icon: "warning",
 				title: `${t("registerAlert9")}`,
 			});
-		} else if (registerPassword != registerPasswordConfirm) {
+		} else if (registerPassword !== registerPasswordConfirm) {
 			Swal.fire({
 				icon: "warning",
 				title: `${t("registerAlert10")}`,
@@ -113,6 +141,10 @@ const Register = ({ handleRegister }) => {
 		}
 	};
 
+	const logit = () => {
+		console.log(message)
+	}
+
 	return (
 		<>
 			<Button variant="secondary" onClick={handleShow}>
@@ -120,7 +152,7 @@ const Register = ({ handleRegister }) => {
 			</Button>
 			<Modal show={show} onHide={handleClose} centered>
 				<Modal.Header closeButton>
-					<Modal.Title>{t("register2")}</Modal.Title>
+					<Modal.Title onClick={logit}>{t("register2")}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form className="registerForm">

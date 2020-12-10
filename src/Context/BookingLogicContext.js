@@ -190,7 +190,7 @@ const BookingLogicContextProvider = ({ children }) => {
 		} else {
 			setTotalBookingCost(fullCost);
 			setRestpaymentCost(fullCost * 0.8499);
-			// setPrepaymentCost(fullCost - restpaymentCost);
+			setPrepaymentCost(fullCost - restpaymentCost);
 		}
 	};
 

@@ -27,7 +27,7 @@ function Page() {
 	};
 
 	useEffect(() => {
-		setDefaultLocale("de");
+		setDefaultLocale("en");
 		setPayingRemainder(false);
 	}, []);
 

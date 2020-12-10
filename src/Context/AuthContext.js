@@ -99,7 +99,9 @@ const AuthContextProvider = ({ children }) => {
 				loginUsername === "heidi" ||
 				loginUsername === "tom")
 		) {
+			
 			history.push("/bookings");
+			
 		}
 	};
 

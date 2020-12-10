@@ -6,6 +6,7 @@ import moment from "moment";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import BookingButton from "./BookingButton";
 import Table from "react-bootstrap/Table";
+import { MailContext } from "../../Context/MailContext";
 
 const BookingModal = ({ handleClose, show }) => {
 	const {
@@ -17,12 +18,15 @@ const BookingModal = ({ handleClose, show }) => {
 		startDate,
 	} = useContext(BookingLogicContext);
 
+	const { message } = useContext(MailContext);
+
 	const { t } = useTranslation();
 
 	const logit = () => {
 		console.log("restpayment:", restpaymentCost);
 		console.log("total:", totalBookingCost);
 		console.log("prepay:", prepaymentCost);
+		console.log("message:", message)
 	};
 
 	return (
@@ -47,7 +51,7 @@ const BookingModal = ({ handleClose, show }) => {
 							</td>
 						</tr>
 						<tr>
-							<td className="alignVert">{t("bookMo4")}</td>
+							<td className="alignVert">{t("bookMo4")}<br/>{t("bookMo4a")}</td>
 							<td className="alignVert">
 								{arrayOfDates ? totalBookingCost : null}€
 							</td>
@@ -75,12 +79,12 @@ const BookingModal = ({ handleClose, show }) => {
 									</td>
 								</tr>
 								<tr>
-									<td className="alignVert">
+									<td className="alignVert">										
 										{t("bookMo6")}
 										{moment(
 											moment(startDate, "YYYY-MM-DD").valueOf() - 2592000000
-										).format("DD.MM.YYYY")}
-										{t("bookMo6a")}
+										).format("DD.MM.YYYY")} <br/>
+										{t("bookMo6a")}										
 									</td>
 									<td className="alignVert">
 										{arrayOfDates ? Math.round(restpaymentCost) : null}€

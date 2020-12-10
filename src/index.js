@@ -11,6 +11,7 @@ import BookingLogicContextProvider from "./Context/BookingLogicContext";
 import BookingsContextProvider from "./Context/BookingsContext";
 import PaymentContextProvider from "./Context/PaymentContext";
 import AuthContextProvider from "./Context/AuthContext";
+import MailContextProvider from "./Context/MailContext";
 
 ReactDOM.render(
 	<React.StrictMode>
@@ -19,9 +20,11 @@ ReactDOM.render(
 				<BookingLogicContextProvider>
 					<PaymentContextProvider>
 						<AuthContextProvider>
-							<BrowserRouter>
-								<App />
-							</BrowserRouter>
+							<MailContextProvider>
+								<BrowserRouter>
+									<App />
+								</BrowserRouter>
+							</MailContextProvider>
 						</AuthContextProvider>
 					</PaymentContextProvider>
 				</BookingLogicContextProvider>

@@ -3,6 +3,7 @@ import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { PaymentContext } from "../../Context/PaymentContext";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import { AuthContext } from "../../Context/AuthContext";
+import { MailContext } from "../../Context/MailContext";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
 
@@ -29,6 +30,8 @@ export default function CheckoutFormSofort() {
 	const { bookingDetails } = useContext(BookingLogicContext);
 
 	const { data } = useContext(AuthContext);
+
+	const { setEmail, setMessage, message } = useContext(MailContext);
 
 	const [userData, setUserData] = useState({
 		name: `${data.fName} ${data.lName}`,
@@ -59,6 +62,28 @@ export default function CheckoutFormSofort() {
 		// Create PaymentIntent as soon as the page loads
 
 		setSucceeded(false);
+
+		// if (message !== "register") {
+		// 	setEmail(data.email);
+		// 	if (!payingRemainder) {
+		// 		if (bookingDetails.totalBookingCost !== bookingDetails.prepaymentCost) {
+		// 			setMessage("bookingPrePaid");
+		// 			console.log("paying deposit");
+		// 		}
+		// 		if (bookingDetails.totalBookingCost === bookingDetails.prepaymentCost) {
+		// 			if (bookingDetails.startEpoch - Date.now() <= 2592000000) {
+		// 				setMessage("bookingPreForceFull");
+		// 				console.log("forced to pay full amount", message);
+		// 			} else {
+		// 				setMessage("bookingPreChoseFull");
+		// 				console.log("choosing to pay full amount");
+		// 			}
+		// 		}
+		// 	}
+		// 	if (payingRemainder) {
+		// 		setMessage("bookingRestPaid");
+		// 	}
+		// }
 
 		let payment = payingRemainder
 			? outstandingPayment
@@ -114,6 +139,10 @@ export default function CheckoutFormSofort() {
 
 		setSucceeded(false);
 
+		localStorage.setItem("message", JSON.stringify(message));		
+		localStorage.setItem("data", JSON.stringify(data));
+		localStorage.setItem("payment", JSON.stringify("sofort"));
+
 		if (payingRemainder) {
 			localStorage.setItem("booking", JSON.stringify(thisBooking));
 		} else if (!payingRemainder) {
@@ -160,6 +189,7 @@ export default function CheckoutFormSofort() {
 					<div className="col">
 						<label className="boldIt">
 							Name
+							<br />
 							<input
 								name="name"
 								value={userData.name}

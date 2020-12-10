@@ -12,6 +12,7 @@ import { BookingsContext } from "../../Context/BookingsContext";
 import moment from "moment";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import { AuthContext } from "../../Context/AuthContext";
+import { MailContext } from "../../Context/MailContext";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 
@@ -58,6 +59,7 @@ export default function StripeNew() {
 		setBookingDetails,
 	} = useContext(BookingLogicContext);
 	const { data } = useContext(AuthContext);
+	const { sendEmail, setEmail, setMessage, message } = useContext(MailContext);
 
 	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
 	let endEpoch = moment(endDate, "YYYY-MM-DD").valueOf();
@@ -78,13 +80,42 @@ export default function StripeNew() {
 				departEpoch: endEpoch,
 				people: peopleNum,
 			});
+			if (message !== "register") {
+				setEmail(data.email);
+				if (!payingRemainder) {
+					if (totalBookingCost !== prepaymentCost) {
+						setMessage("bookingPrePaid");
+						console.log("paying deposit");
+					}
+					if (totalBookingCost === prepaymentCost) {
+						if (startEpoch - Date.now() <= 2592000000) {
+							setMessage("bookingPreForceFull");
+							console.log("forced to pay full amount");
+						} else {
+							setMessage("bookingPreChoseFull");
+							console.log("choosing to pay full amount");
+						}
+					}
+				}
+				if (payingRemainder) {
+					setMessage("bookingRestPaid");
+				}
+			}
 		}
-	}, [totalBookingCost, prepaymentCost, restpaymentCost, extraPerson, data]);
+	}, [
+		totalBookingCost,
+		prepaymentCost,
+		restpaymentCost,
+		extraPerson,
+		data,
+		payingRemainder,
+	]);
 
 	useEffect(() => {
 		if (succeeded && !payingRemainder) {
 			create(bookingDetails);
 			setSucceeded(false);
+			sendEmail();
 			Swal.fire({
 				title: `${t("bAlert5")}`,
 				icon: "success",
@@ -95,6 +126,7 @@ export default function StripeNew() {
 		if (succeeded && payingRemainder) {
 			update(thisBooking._id, thisBooking);
 			setSucceeded(false);
+			sendEmail();
 			Swal.fire({
 				title: `${t("bAlert5a")}`,
 				icon: "success",
@@ -146,7 +178,7 @@ export default function StripeNew() {
 					>
 						<option value="creditCard">{t("payment5")}</option>
 						{/* <option value="SEPA">{t("payment6")}</option> */}
-						<option value="sofort">Sofortüberweisung</option>
+						<option value="sofort">{t("payment5a")}</option>
 					</select>
 				</span>
 				<Elements stripe={promise}>
