@@ -22,11 +22,7 @@ import { useTranslation } from "react-i18next";
 
 // loadStripe is initialized with your real test publishable API key.
 
-const promise = loadStripe(
-	process.env.REACT_APP_LOCATION === "development"
-		? process.env.REACT_APP_PUBLISHABLE_KEY
-		: "pk_test_51HJwTAKuLkk2F1U9lLls6bJYPxdFMeU0awqk5wcd3dcfkXr6QjjtdUPRM0hYD1gfkF5sZ6auf8vQbZsmotbAbqOo00i7iH5Fh9"
-);
+const promise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 
 export default function StripeNew() {
 	const { t } = useTranslation();

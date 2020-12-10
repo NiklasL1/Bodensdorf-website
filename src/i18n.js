@@ -25,6 +25,8 @@ i18n
     resources: {
       en: {
         translations: {
+          TabTitle: "Lake Ossiach holiday apartment",
+          MetaDescription: "english description",
           book: "Book now!",
           house: "The Apartment",
           sea: "On the Lake",
@@ -298,6 +300,8 @@ i18n
       },
       de: {
         translations: {
+          TabTitle: "Ossiacher See Ferienwohnung",
+          MetaDescription: "Deutsche Beschreibung",
           book: "Buchungskalender",
           house: "Wohnung",
           sea: "Direkt am See",

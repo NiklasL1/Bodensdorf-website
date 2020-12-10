@@ -51,7 +51,7 @@ const SofortReturnPageInside = () => {
 
 			if (bookingData.amtOwed === 0) {
 				// console.log("succeeded on restpayment");
-				update(bookingData._id, bookingData);
+				update(bookingData.userID, bookingData);
 				sendEmail()
 				// setSucceeded(false);
 				Swal.fire({

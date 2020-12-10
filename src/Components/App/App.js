@@ -9,10 +9,17 @@ import PageNotFound from "../PageNotFound";
 import StripeNew from "../Stripe/StripeNew";
 import UserProfilePage from "../Auth/UserProfilePage";
 import SofortReturnPage from "../Stripe/SofortReturnPage";
+import { Helmet } from "react-helmet";
+import { useTranslation } from "react-i18next";
 
 function App() {
+	const { t } = useTranslation();
 	return (
 		<div className="App">
+			<Helmet>
+				<title>{t("TabTitle")}</title>
+				<meta name="description" content={t("MetaContent")} />
+			</Helmet>
 			<Switch>
 				<Route exact path="/return/" children={<SofortReturnPage />} />
 				<Route exact path="/user/" children={<UserProfilePage />} />

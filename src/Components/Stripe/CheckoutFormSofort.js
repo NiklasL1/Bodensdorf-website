@@ -31,7 +31,7 @@ export default function CheckoutFormSofort() {
 
 	const { data } = useContext(AuthContext);
 
-	const { setEmail, setMessage, message } = useContext(MailContext);
+	const { message } = useContext(MailContext);
 
 	const [userData, setUserData] = useState({
 		name: `${data.fName} ${data.lName}`,
@@ -62,28 +62,6 @@ export default function CheckoutFormSofort() {
 		// Create PaymentIntent as soon as the page loads
 
 		setSucceeded(false);
-
-		// if (message !== "register") {
-		// 	setEmail(data.email);
-		// 	if (!payingRemainder) {
-		// 		if (bookingDetails.totalBookingCost !== bookingDetails.prepaymentCost) {
-		// 			setMessage("bookingPrePaid");
-		// 			console.log("paying deposit");
-		// 		}
-		// 		if (bookingDetails.totalBookingCost === bookingDetails.prepaymentCost) {
-		// 			if (bookingDetails.startEpoch - Date.now() <= 2592000000) {
-		// 				setMessage("bookingPreForceFull");
-		// 				console.log("forced to pay full amount", message);
-		// 			} else {
-		// 				setMessage("bookingPreChoseFull");
-		// 				console.log("choosing to pay full amount");
-		// 			}
-		// 		}
-		// 	}
-		// 	if (payingRemainder) {
-		// 		setMessage("bookingRestPaid");
-		// 	}
-		// }
 
 		let payment = payingRemainder
 			? outstandingPayment
@@ -139,7 +117,7 @@ export default function CheckoutFormSofort() {
 
 		setSucceeded(false);
 
-		localStorage.setItem("message", JSON.stringify(message));		
+		localStorage.setItem("message", JSON.stringify(message));
 		localStorage.setItem("data", JSON.stringify(data));
 		localStorage.setItem("payment", JSON.stringify("sofort"));
 
@@ -161,8 +139,8 @@ export default function CheckoutFormSofort() {
 			},
 			return_url:
 				process.env.REACT_APP_LOCATION === "development"
-					? `http://localhost:3000/return`
-					: `https://3.122.248.100:3000/return`,
+					? `${process.env.REACT_APP_DEV_URL}/return`
+					: `${process.env.REACT_APP_PROD_URL}/return`,
 		});
 
 		if (payload.error) {
