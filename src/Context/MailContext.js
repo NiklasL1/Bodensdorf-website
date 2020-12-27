@@ -4,6 +4,7 @@ import { PaymentContext } from "./PaymentContext";
 import { BookingLogicContext } from "./BookingLogicContext";
 import moment from "moment";
 import i18n from "../i18n";
+import dedent from "dedent-js";
 
 export const MailContext = createContext();
 
@@ -17,34 +18,34 @@ const MailContextProvider = ({ children }) => {
 	const { thisBooking } = useContext(PaymentContext);
 	const { bookingDetails } = useContext(BookingLogicContext);
 
-	let paymentType = JSON.parse(localStorage.getItem("payment"));
+	let paymentMethod = JSON.parse(localStorage.getItem("payment"));
 
 	let firstName =
-		paymentType === "sofort"
+		paymentMethod === "sofort"
 			? JSON.parse(localStorage.getItem("data")).fName
 			: data
 			? data.fName
 			: undefined;
 	let lastName =
-		paymentType === "sofort"
+		paymentMethod === "sofort"
 			? JSON.parse(localStorage.getItem("data")).lName
 			: data
 			? data.lName
 			: undefined;
 	let currentEmail =
-		paymentType === "sofort"
+		paymentMethod === "sofort"
 			? JSON.parse(localStorage.getItem("data")).email
 			: email;
 	let currentMessage =
-		paymentType === "sofort"
+		paymentMethod === "sofort"
 			? JSON.parse(localStorage.getItem("message"))
 			: message;
 	let currentBookingInitial =
-		paymentType === "sofort"
+		paymentMethod === "sofort"
 			? JSON.parse(localStorage.getItem("booking"))
 			: bookingDetails;
 	let currentBookingRemainder =
-		paymentType === "sofort"
+		paymentMethod === "sofort"
 			? JSON.parse(localStorage.getItem("booking"))
 			: thisBooking
 			? thisBooking
@@ -103,7 +104,7 @@ const MailContextProvider = ({ children }) => {
 				Kind Regards,\r
 				
 				The Holzapfel-Littles`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Buchungsbestätigung - Ossiacher See Ferienwohnung`);
 				let emailText = `Sehr geehrte(r) ${firstName} ${lastName},\r
@@ -131,7 +132,7 @@ const MailContextProvider = ({ children }) => {
 				Mit freundlichen Grüßen,
 				
 				Familie Holzapfel-Little`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			}
 		} else if (currentMessage === "bookingPreForceFull") {
 			if (i18n.language.substring(0, 2) === "en") {
@@ -161,7 +162,7 @@ const MailContextProvider = ({ children }) => {
 				Kind Regards,\r
 				
 				The Holzapfel-Littles`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Buchungsbestätigung - Ossiacher See Ferienwohnung`);
 				let emailText = `Sehr geehrte(r) ${firstName} ${lastName},
@@ -189,7 +190,7 @@ const MailContextProvider = ({ children }) => {
 				Mit freundlichen Grüßen,
 				
 				Familie Holzapfel-Little`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			}
 		} else if (currentMessage === "bookingPrePaid") {
 			if (i18n.language.substring(0, 2) === "en") {
@@ -226,7 +227,7 @@ const MailContextProvider = ({ children }) => {
 				Kind Regards,\r
 				
 				The Holzapfel-Littles`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Buchungsbestätigung - Ossiacher See Ferienwohnung`);
 				let emailText = `Sehr geehrte(r) ${firstName} ${lastName},
@@ -262,7 +263,7 @@ const MailContextProvider = ({ children }) => {
 				Mit freundlichen Grüßen,
 				
 				Familie Holzapfel-Little`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			}
 		} else if (
 			currentMessage === "bookingRestPaid" &&
@@ -298,7 +299,7 @@ const MailContextProvider = ({ children }) => {
 				Kind Regards,
 				
 				The Holzapfel-Littles`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Zahlungsbestätigung - Ossiacher See Ferienwohnung`);
 				let emailText = `Sehr geehrte(r) ${firstName} ${lastName},
@@ -329,7 +330,7 @@ const MailContextProvider = ({ children }) => {
 				Mit freundlichen Grüßen,
 				
 				Familie Holzapfel-Little`;
-				setContent(emailText.trim());
+				setContent(dedent(emailText));
 			}
 		} else if (currentMessage === "reminder14Days") {
 			setSubject("booking payment due in two weeks");
@@ -348,7 +349,7 @@ const MailContextProvider = ({ children }) => {
 				"your booking was cancelled because you did not pay the rest of it by the deadline"
 			);
 		}
-	}, [currentMessage, currentBookingRemainder]);
+	}, [currentMessage, currentBookingInitial, currentBookingRemainder]);
 
 	const sendEmail = async () => {
 		console.log(currentEmail, subject, content);

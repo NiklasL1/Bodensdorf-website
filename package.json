@@ -13,6 +13,7 @@
     "axios": "^0.20.0",
     "bootstrap": "^4.5.2",
     "date-fns": "^2.16.1",
+    "dedent-js": "^1.0.1",
     "dotenv": "^8.2.0",
     "i18next": "^19.6.3",
     "i18next-browser-languagedetector": "^5.0.1",

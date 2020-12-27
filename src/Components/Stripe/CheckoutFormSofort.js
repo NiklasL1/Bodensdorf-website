@@ -27,7 +27,7 @@ export default function CheckoutFormSofort() {
 
 	const [clientSecret, setClientSecret] = useState("");
 
-	const { bookingDetails } = useContext(BookingLogicContext);
+	const { bookingDetails, chooseFullPay } = useContext(BookingLogicContext);
 
 	const { data } = useContext(AuthContext);
 
@@ -56,7 +56,11 @@ export default function CheckoutFormSofort() {
 
 	let paymentType = payingRemainder
 		? "Restzahlung vor Ankunft"
-		: "Zahlung bei Buchung";
+		: chooseFullPay
+		? "Gesamtbetrag freiwilling gezahlt bei Buchung"
+		: (moment(timeStart, "DD.MM.YYY").valueOf() - Date.now()) <= 2592000000
+		? "Gesamtbetrag gezahlt da innerhalb 30 Tage"
+		: "Anzahlung bei Buchung";
 
 	useEffect(() => {
 		// Create PaymentIntent as soon as the page loads
@@ -120,6 +124,7 @@ export default function CheckoutFormSofort() {
 		localStorage.setItem("message", JSON.stringify(message));
 		localStorage.setItem("data", JSON.stringify(data));
 		localStorage.setItem("payment", JSON.stringify("sofort"));
+		localStorage.setItem("payingRemainder", JSON.stringify(payingRemainder));
 
 		if (payingRemainder) {
 			localStorage.setItem("booking", JSON.stringify(thisBooking));

@@ -9,6 +9,8 @@ const BookingLogicContextProvider = ({ children }) => {
 	const [arrayOfDates, setArrayOfDates] = useState();
 	const [extraPerson, setExtraPerson] = useState(false);
 	const [available, setAvailable] = useState(true);
+	const [within30, setWithin30] = useState(false);
+	const [chooseFullPay, setChooseFullPay] = useState(false);
 
 	const [totalBookingCost, setTotalBookingCost] = useState(0);
 	const [prepaymentCost, setPrepaymentCost] = useState(0);
@@ -179,18 +181,25 @@ const BookingLogicContextProvider = ({ children }) => {
 		}
 		let removeLastDay = bookingCostArray.slice(0, bookingCostArray.length - 1);
 
-		let cost = removeLastDay.reduce(function (all, amount) {
+		let cost = arrayOfDates && available ? removeLastDay.reduce(function (all, amount) {
 			return all + amount;
-		});
+		}) : undefined
 		let fullCost = cost + b.cleaningFee;
 		let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
 		if (startEpoch - Date.now() <= 2592000000) {
 			setTotalBookingCost(fullCost);
 			setPrepaymentCost(fullCost);
+			setRestpaymentCost(0);
+			setWithin30(true);
+		} else if (chooseFullPay) {
+			setTotalBookingCost(fullCost);
+			setPrepaymentCost(fullCost);
+			setWithin30(false);
 		} else {
 			setTotalBookingCost(fullCost);
 			setRestpaymentCost(fullCost * 0.8499);
 			setPrepaymentCost(fullCost - restpaymentCost);
+			setWithin30(false);
 		}
 	};
 
@@ -202,6 +211,17 @@ const BookingLogicContextProvider = ({ children }) => {
 			setPrepaymentCost(totalBookingCost - restpaymentCost);
 		}
 	}, [restpaymentCost]);
+
+	useEffect(() => {
+		if (chooseFullPay) {
+			setPrepaymentCost(totalBookingCost);
+			setRestpaymentCost(0);
+		}
+		if (!chooseFullPay && (moment(startDate, "YYYY-MM-DD").valueOf() - Date.now() > 2592000000)) {
+			setRestpaymentCost(totalBookingCost * 0.8499);
+			setPrepaymentCost(totalBookingCost - restpaymentCost);
+		}
+	}, [chooseFullPay]);
 
 	// const showDates = (lang) => {
 	// 	const arrivalDate = arrayOfDates[0];
@@ -246,6 +266,9 @@ const BookingLogicContextProvider = ({ children }) => {
 				setExtraPerson,
 				bookingDetails,
 				setBookingDetails,
+				within30,
+				chooseFullPay,
+				setChooseFullPay,
 			}}
 		>
 			{children}

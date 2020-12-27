@@ -20,6 +20,7 @@ const SofortReturnPageInside = () => {
 		const url = new URL(window.location);
 		const clientSecret = url.searchParams.get("payment_intent_client_secret");
 		let bookingData = JSON.parse(localStorage.getItem("booking"));
+		let payingRemainder = JSON.parse(localStorage.getItem("payingRemainder"));
 		const { paymentIntent, error } = await stripe.retrievePaymentIntent(
 			clientSecret
 		);
@@ -39,7 +40,7 @@ const SofortReturnPageInside = () => {
 		) {
 			// Handle successful payment here
 			// console.log("succeeded on booking");
-			if (bookingData.amtOwed > 0) {
+			if (payingRemainder === false) {
 				create(bookingData);
 				sendEmail()
 				// setSucceeded(false);
@@ -49,9 +50,9 @@ const SofortReturnPageInside = () => {
 				});
 			}
 
-			if (bookingData.amtOwed === 0) {
+			if (payingRemainder === true) {
 				// console.log("succeeded on restpayment");
-				update(bookingData.userID, bookingData);
+				update(bookingData._id, bookingData);
 				sendEmail()
 				// setSucceeded(false);
 				Swal.fire({

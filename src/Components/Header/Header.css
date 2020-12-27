@@ -73,3 +73,12 @@
 .noWhite {
 	white-space: nowrap;
 }
+
+.padLeft {
+	padding-left: 10px;
+}
+
+.flex{
+	display: flex;
+	padding-top: 10px;
+}

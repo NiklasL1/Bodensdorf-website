@@ -41,7 +41,7 @@ export default function CheckoutForm() {
 
 	const elements = useElements();
 
-	const { bookingDetails } = useContext(BookingLogicContext);
+	const { bookingDetails, chooseFullPay } = useContext(BookingLogicContext);
 
 	let timeStart = payingRemainder
 		? moment(thisBooking.arriveStr, "DD-MM-YYYY").format("DD.MM.YYYY")
@@ -53,7 +53,11 @@ export default function CheckoutForm() {
 
 	let paymentType = payingRemainder
 		? "Restzahlung vor Ankunft"
-		: "Zahlung bei Buchung";
+		: chooseFullPay
+		? "Gesamtbetrag freiwilling gezahlt bei Buchung"
+		: (moment(timeStart, "DD.MM.YYY").valueOf() - Date.now()) <= 2592000000
+		? "Gesamtbetrag gezahlt da innerhalb 30 Tage"
+		: "Anzahlung bei Buchung";
 
 	useEffect(() => {
 		// Create PaymentIntent as soon as the page loads
