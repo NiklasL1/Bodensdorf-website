@@ -15,6 +15,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import { MailContext } from "../../Context/MailContext";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
+import { LogContext } from "../../Context/LogContext";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
 
@@ -56,6 +57,7 @@ export default function StripeNew() {
 	} = useContext(BookingLogicContext);
 	const { data } = useContext(AuthContext);
 	const { sendEmail, setEmail, setMessage, message } = useContext(MailContext);
+	const { logThis } = useContext(LogContext);
 
 	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
 	let endEpoch = moment(endDate, "YYYY-MM-DD").valueOf();
@@ -81,15 +83,15 @@ export default function StripeNew() {
 				if (!payingRemainder) {
 					if (totalBookingCost !== prepaymentCost) {
 						setMessage("bookingPrePaid");
-						console.log("paying deposit");
+						logThis("paying deposit");
 					}
 					if (totalBookingCost === prepaymentCost) {
 						if (startEpoch - Date.now() <= 2592000000) {
 							setMessage("bookingPreForceFull");
-							console.log("forced to pay full amount");
+							logThis("forced to pay full amount");
 						} else {
 							setMessage("bookingPreChoseFull");
-							console.log("choosing to pay full amount");
+							logThis("choosing to pay full amount");
 						}
 					}
 				}

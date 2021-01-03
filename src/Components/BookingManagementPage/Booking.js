@@ -5,6 +5,7 @@ import { BookingsContext } from "../../Context/BookingsContext";
 import { UsersContext } from "../../Context/UsersContext";
 import "./Bookings.css";
 import Button from "react-bootstrap/Button";
+import { LogContext } from "../../Context/LogContext";
 
 const Booking = ({
 	_id,
@@ -30,6 +31,7 @@ const Booking = ({
 
 	const { update } = useContext(BookingsContext);
 	const { list, getUsers } = useContext(UsersContext);
+	const { logThis } = useContext(LogContext);
 	const [value, setValue] = useState({
 		userID: userID,
 		airBnB: airBnB,
@@ -54,7 +56,7 @@ const Booking = ({
 
 	const handleKeypress = (event) => {
 		if (event.key === "Enter") {
-			console.log(event.key);
+			logThis(event.key);
 			saveChanges();
 		}
 	};

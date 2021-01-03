@@ -12,6 +12,7 @@ import moment from "moment";
 import "./auth.css";
 import { PaymentContext } from "../../Context/PaymentContext";
 import StripeNew from "../Stripe/StripeNew";
+import { LogContext } from "../../Context/LogContext";
 
 const UserProfilePage = () => {
 	const { t } = useTranslation();
@@ -33,6 +34,8 @@ const UserProfilePage = () => {
 		setLoginPassword,
 	} = useContext(AuthContext);
 
+	const { logThis } = useContext(LogContext);
+
 	const getUser = () => {
 		axios({
 			method: "GET",
@@ -43,7 +46,7 @@ const UserProfilePage = () => {
 					: `${process.env.REACT_APP_PROD_API}/api/user`,
 		}).then((res) => {
 			setData(res.data);
-			console.log(res);
+			logThis(res);
 		});
 	};
 
@@ -60,9 +63,9 @@ const UserProfilePage = () => {
 		? filteredList.sort((a, b) => a.arriveEpoch < b.arriveEpoch)
 		: undefined;
 
-	const logit = () => {
-		console.log(thisBooking);
-	};
+	// const logit = () => {
+	// 	logThis(thisBooking);
+	// };
 
 	const handleClick = (amountOwed, _id) => {
 		setOutstandingPayment(amountOwed);
@@ -77,7 +80,7 @@ const UserProfilePage = () => {
 		<div id="userProfilePage">
 			<StripeNew />
 			<span id="userProfileTop">
-				<h4 className="userProfileTitle" onClick={logit}>
+				<h4 className="userProfileTitle">
 					{t("user6a")}
 				</h4>
 				<Link to="/">

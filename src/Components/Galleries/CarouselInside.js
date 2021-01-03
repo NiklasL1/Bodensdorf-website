@@ -15,7 +15,7 @@ const CarouselInside = () => {
 			dynamicHeight={true}
 		>
 			{insidePhotosNew.map((photo) => (
-				<div>
+				<div key={photo.key}>
 					<img src={photo.src} alt={photo.src} />
 				</div>
 			))}

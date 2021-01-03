@@ -28,7 +28,7 @@ const SofortReturnPageInside = () => {
 		// console.log(bookingData)
 		if (error) {
 			// Handle error here
-			console.log("failed");
+			// console.log("failed");
 			Swal.fire({
 				title: `${t("paymentFail")}payment failed`,
 				icon: "error",

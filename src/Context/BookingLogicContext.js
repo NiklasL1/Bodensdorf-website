@@ -1,5 +1,7 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useContext } from "react";
 import moment from "moment";
+import { LogContext } from "./LogContext";
+import Swal from "sweetalert2";
 
 export const BookingLogicContext = createContext();
 
@@ -17,6 +19,8 @@ const BookingLogicContextProvider = ({ children }) => {
 	const [restpaymentCost, setRestpaymentCost] = useState(0);
 
 	const [bookingDetails, setBookingDetails] = useState();
+
+	const { logThis } = useContext(LogContext);
 
 	const bodensdorf = {
 		cleaningFee: 40,
@@ -181,25 +185,48 @@ const BookingLogicContextProvider = ({ children }) => {
 		}
 		let removeLastDay = bookingCostArray.slice(0, bookingCostArray.length - 1);
 
-		let cost = arrayOfDates && available ? removeLastDay.reduce(function (all, amount) {
-			return all + amount;
-		}) : undefined
-		let fullCost = cost + b.cleaningFee;
-		let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
-		if (startEpoch - Date.now() <= 2592000000) {
-			setTotalBookingCost(fullCost);
-			setPrepaymentCost(fullCost);
-			setRestpaymentCost(0);
-			setWithin30(true);
-		} else if (chooseFullPay) {
-			setTotalBookingCost(fullCost);
-			setPrepaymentCost(fullCost);
-			setWithin30(false);
+		if (arrayOfDates) {
+			// let cost = arrayOfDates && available ? removeLastDay.reduce(function (all, amount) {
+			// 	return all + amount;
+			// }) : 100
+			let cost = removeLastDay.reduce(function (all, amount) {
+				return all + amount;
+			});
+			// logThis(
+			// 	"from Bookinglogiccontext",
+			// 	"arrayofdates:",
+			// 	arrayOfDates,
+			// 	"available:",
+			// 	available
+			// );
+			console.log(				
+				"arrayofdates:",
+				arrayOfDates,
+				"available:",
+				available
+			);
+			let fullCost = cost + b.cleaningFee;
+			let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
+			if (startEpoch - Date.now() <= 2592000000) {
+				setTotalBookingCost(fullCost);
+				setPrepaymentCost(fullCost);
+				setRestpaymentCost(0);
+				setWithin30(true);
+			} else if (chooseFullPay) {
+				setTotalBookingCost(fullCost);
+				setPrepaymentCost(fullCost);
+				setWithin30(false);
+			} else {
+				setTotalBookingCost(fullCost);
+				setRestpaymentCost(fullCost * 0.8499);
+				setPrepaymentCost(fullCost - restpaymentCost);
+				setWithin30(false);
+			}
 		} else {
-			setTotalBookingCost(fullCost);
-			setRestpaymentCost(fullCost * 0.8499);
-			setPrepaymentCost(fullCost - restpaymentCost);
-			setWithin30(false);
+			Swal.fire({
+				icon: "error",
+				title: `An error has occurred! Please change one of the selected dates and then reselect your desired date!`,
+			});
 		}
 	};
 
@@ -217,7 +244,10 @@ const BookingLogicContextProvider = ({ children }) => {
 			setPrepaymentCost(totalBookingCost);
 			setRestpaymentCost(0);
 		}
-		if (!chooseFullPay && (moment(startDate, "YYYY-MM-DD").valueOf() - Date.now() > 2592000000)) {
+		if (
+			!chooseFullPay &&
+			moment(startDate, "YYYY-MM-DD").valueOf() - Date.now() > 2592000000
+		) {
 			setRestpaymentCost(totalBookingCost * 0.8499);
 			setPrepaymentCost(totalBookingCost - restpaymentCost);
 		}

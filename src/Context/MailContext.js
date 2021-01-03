@@ -5,6 +5,7 @@ import { BookingLogicContext } from "./BookingLogicContext";
 import moment from "moment";
 import i18n from "../i18n";
 import dedent from "dedent-js";
+import { LogContext } from "./LogContext";
 
 export const MailContext = createContext();
 
@@ -17,6 +18,7 @@ const MailContextProvider = ({ children }) => {
 	const { data } = useContext(AuthContext);
 	const { thisBooking } = useContext(PaymentContext);
 	const { bookingDetails } = useContext(BookingLogicContext);
+	const { logThis } = useContext(LogContext);
 
 	let paymentMethod = JSON.parse(localStorage.getItem("payment"));
 
@@ -52,12 +54,21 @@ const MailContextProvider = ({ children }) => {
 			: undefined;
 
 	useEffect(() => {
-		console.log(
+		console.log(	
+			"booking data if booking:",		
 			currentBookingInitial,
+			"booking data if paying balance:",
 			currentBookingRemainder,
 			currentMessage,
 			i18n.language
 		);
+		// logThis(
+		// 	"from MailContext",
+		// 	currentBookingInitial,
+		// 	currentBookingRemainder,
+		// 	currentMessage,
+		// 	i18n.language
+		// );
 		if (currentMessage === "register") {
 			if (i18n.language.substring(0, 2) === "en") {
 				setSubject(
@@ -91,15 +102,15 @@ const MailContextProvider = ({ children }) => {
 					"DD-MM-YYYY"
 				).format(
 					"DD.MM.YYYY"
-				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.\r			
+				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.\r
 
 				As you have chosen to immediately pay the full amount of ${
 					currentBookingInitial.amtPaid
 				}€, your booking is confirmed and no further action is required. Thank you! \r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
 				
-				We thank you for your booking and hope you have a fantasic stay in our apartment!\r
+				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
 				Kind Regards,\r
 				
@@ -125,7 +136,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung zu zahlen. Vielen Dank dafür! Es ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -155,9 +166,9 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€. No further action is required concerning payment.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
 				
-				We thank you for your booking and hope you have a fantasic stay in our apartment!\r
+				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
 				Kind Regards,\r
 				
@@ -183,7 +194,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung gezahlt. Daher ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -220,9 +231,9 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Should you fail to make the remaining payment by the due date, your reservation may be cancelled.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
 				
-				We thank you for your booking and hope you have a fantasic stay in our apartment!\r
+				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
 				Kind Regards,\r
 				
@@ -256,7 +267,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Sollten Sie bis zu dem Fälligkeitsdatum die restliche Zahlung nicht erbracht haben, könnte Ihre Reservierung storniert werden.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -292,9 +303,9 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, if possible in a timely manner, as it may take up to a week for you to receive a reply.
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner, as it may take up to a week for you to receive a reply.
 				
-				We thank you for your booking and hope you have a fantasic stay in our apartment!
+				We thank you for your booking and hope you have a fantastic stay in our apartment!
 				
 				Kind Regards,
 				
@@ -323,7 +334,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Bitte beachten Sie die Check-in und Check-out Zeiten: 16:00 bis 19:00 Uhr am Ankunftstag und bis 10:00 am Abreisetag.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -352,7 +363,7 @@ const MailContextProvider = ({ children }) => {
 	}, [currentMessage, currentBookingInitial, currentBookingRemainder]);
 
 	const sendEmail = async () => {
-		console.log(currentEmail, subject, content);
+		logThis(currentEmail, subject, content);
 		const response = await fetch(
 			process.env.REACT_APP_LOCATION === "development"
 				? `${process.env.REACT_APP_DEV_API}/api/mail/access`

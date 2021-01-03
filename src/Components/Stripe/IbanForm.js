@@ -58,9 +58,9 @@ export default function IbanForm({
 		});
 	};
 
-	const logit = () => {
-		console.log("succeeded:", succeeded, "processing:", processing);
-	};
+	// const logit = () => {
+	// 	console.log("succeeded:", succeeded, "processing:", processing);
+	// };
 
 	return (
 		<form className="paymentForm" onSubmit={onSubmit}>
@@ -122,7 +122,7 @@ export default function IbanForm({
 			</button>
 
 			{/* Display mandate acceptance text. */}
-			<div className="mandate-acceptance" onClick={logit}>
+			<div className="mandate-acceptance">
 				By providing your payment information and confirming this payment, you
 				authorise (A) Rocketship Inc and Stripe, our payment service provider,
 				to send instructions to your bank to debit your account and (B) your

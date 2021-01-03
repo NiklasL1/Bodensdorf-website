@@ -3,9 +3,11 @@ import StripeCheckout from "react-stripe-checkout";
 import BookingButton from "../Header/BookingButton";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import { PaymentContext } from "../../Context/PaymentContext";
+import { LogContext } from "../../Context/LogContext";
 
 const StripePayment = ({ handleClose }) => {
 	const { setSucceeded, succeeded } = useContext(PaymentContext);
+	const { logThis } = useContext(LogContext);
 	const {
 		startDate,
 		endDate,
@@ -44,13 +46,13 @@ const StripePayment = ({ handleClose }) => {
 			}
 		)
 			.then((res) => {
-				console.log("response", res);
+				logThis("response", res);
 				const { status } = res;
-				console.log("status", status);
+				logThis("status", status);
 				setSucceeded(true);
-				console.log(succeeded);
+				logThis(succeeded);
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => logThis(err));
 	};
 
 	return (

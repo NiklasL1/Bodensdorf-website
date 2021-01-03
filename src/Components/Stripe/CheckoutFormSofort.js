@@ -6,6 +6,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import { MailContext } from "../../Context/MailContext";
 import { useTranslation } from "react-i18next";
 import moment from "moment";
+import { LogContext } from "../../Context/LogContext";
 
 export default function CheckoutFormSofort() {
 	const stripe = useStripe();
@@ -32,6 +33,8 @@ export default function CheckoutFormSofort() {
 	const { data } = useContext(AuthContext);
 
 	const { message } = useContext(MailContext);
+
+	const { logThis } = useContext(LogContext);
 
 	const [userData, setUserData] = useState({
 		name: `${data.fName} ${data.lName}`,
@@ -153,7 +156,7 @@ export default function CheckoutFormSofort() {
 
 			setProcessing(false);
 
-			console.log("error", payload.error.message);
+			logThis("error", payload.error.message);
 		} else {
 			setError(null);
 
@@ -161,7 +164,7 @@ export default function CheckoutFormSofort() {
 
 			setSucceeded(true);
 
-			console.log("succeeded", succeeded);
+			logThis("succeeded", succeeded);
 		}
 	};
 

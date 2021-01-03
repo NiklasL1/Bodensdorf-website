@@ -12,24 +12,27 @@ import BookingsContextProvider from "./Context/BookingsContext";
 import PaymentContextProvider from "./Context/PaymentContext";
 import AuthContextProvider from "./Context/AuthContext";
 import MailContextProvider from "./Context/MailContext";
+import LogContextProvider from "./Context/LogContext";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<UsersContextProvider>
-			<BookingsContextProvider>
-				<BookingLogicContextProvider>
-					<PaymentContextProvider>
-						<AuthContextProvider>
-							<MailContextProvider>
-								<BrowserRouter>
-									<App />
-								</BrowserRouter>
-							</MailContextProvider>
-						</AuthContextProvider>
-					</PaymentContextProvider>
-				</BookingLogicContextProvider>
-			</BookingsContextProvider>
-		</UsersContextProvider>
+		<LogContextProvider>
+			<UsersContextProvider>
+				<BookingsContextProvider>
+					<BookingLogicContextProvider>
+						<PaymentContextProvider>
+							<AuthContextProvider>
+								<MailContextProvider>
+									<BrowserRouter>
+										<App />
+									</BrowserRouter>
+								</MailContextProvider>
+							</AuthContextProvider>
+						</PaymentContextProvider>
+					</BookingLogicContextProvider>
+				</BookingsContextProvider>
+			</UsersContextProvider>
+		</LogContextProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

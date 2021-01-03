@@ -199,6 +199,7 @@ const BookingMenu = () => {
 													type="date"
 													onChange={handleChangeS}
 													min={minStartDate}
+													placeholder="yyyy-mm-dd"
 												/>
 												{/* <DatePicker
                                                     locale= {getDefaultLocale()}

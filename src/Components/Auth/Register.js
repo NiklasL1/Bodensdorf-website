@@ -8,6 +8,7 @@ import "./auth.css";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../Context/AuthContext";
 import { MailContext } from "../../Context/MailContext";
+import { LogContext } from "../../Context/LogContext";
 
 const Register = ({ handleRegister }) => {
 	const { t } = useTranslation();
@@ -20,6 +21,7 @@ const Register = ({ handleRegister }) => {
 		data,
 	} = useContext(AuthContext);
 	const { setMessage, setEmail, sendEmail, message } = useContext(MailContext);
+	const { logThis } = useContext(LogContext);
 
 	const [registerUsername, setRegisterUsername] = useState("");
 	const [registerFirstName, setRegisterFirstName] = useState("");
@@ -39,11 +41,11 @@ const Register = ({ handleRegister }) => {
 		axios({
 			method: "POST",
 			data: {
-				username: registerUsername,
+				username: registerUsername.toLowerCase(),
 				password: registerPassword,
 				fName: registerFirstName,
 				lName: registerLastName,
-				email: registerEmail,
+				email: registerEmail.toLowerCase(),
 				telNo: registerTelNo,
 			},
 			withCredentials: true,
@@ -53,7 +55,7 @@ const Register = ({ handleRegister }) => {
 					: `${process.env.REACT_APP_PROD_API}/api/register`,
 		})
 			.then((res) => {
-				console.log(res);
+				logThis(res);
 				if (res.data === "User Already Exists") {
 					Swal.fire({
 						icon: "error",
@@ -68,27 +70,27 @@ const Register = ({ handleRegister }) => {
 					setLoginPassword(registerPassword);
 					setMessage("register");
 					setEmail(registerUsername);
-					console.log("register success");
+					logThis("register success");
 				}
 			})
 			.then(() => {
 				if (showLogin) {
 					handleRegister();
-					console.log(message);
+					logThis(message);
 				}
 			});
 	};
 
 	useEffect(() => {
 		if (message === "register") {
-			console.log("logging in");
+			logThis("logging in");
 			login();
 		}
 	}, [message]);
 
 	useEffect(() => {
 		if (message === "register") {
-			console.log("email sent");
+			logThis("email sent");
 			sendEmail();
 			setMessage("")
 		}
@@ -142,7 +144,7 @@ const Register = ({ handleRegister }) => {
 	};
 
 	const logit = () => {
-		console.log(message)
+		logThis(message)
 	}
 
 	return (

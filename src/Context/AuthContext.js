@@ -1,13 +1,16 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
+import { LogContext } from "./LogContext";
 
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
 	const { t } = useTranslation();
+
+	const { logThis } = useContext(LogContext);
 
 	const [data, setData] = useState(null);
 	const [loginUsername, setLoginUsername] = useState("");
@@ -32,7 +35,7 @@ const AuthContextProvider = ({ children }) => {
 					: `${process.env.REACT_APP_PROD_API}/api/user`,
 		}).then((res) => {
 			setData(res.data);
-			console.log(res);
+			logThis(res);
 		});
 	};
 
@@ -44,7 +47,7 @@ const AuthContextProvider = ({ children }) => {
 		axios({
 			method: "POST",
 			data: {
-				username: loginUsername,
+				username: loginUsername.toLowerCase(),
 				password: loginPassword,
 			},
 			withCredentials: true,
@@ -53,7 +56,7 @@ const AuthContextProvider = ({ children }) => {
 					? `${process.env.REACT_APP_DEV_API}/api/login`
 					: `${process.env.REACT_APP_PROD_API}/api/login`,
 		}).then((res) => {
-			console.log(res);
+			logThis(res);
 			if (res.data === "No user exists") {
 				Swal.fire({
 					icon: "error",

@@ -5,6 +5,7 @@ import "./Bookings.css";
 import { AuthContext } from "../../Context/AuthContext";
 import PageNotFound from "../PageNotFound";
 import axios from "axios";
+import { LogContext } from "../../Context/LogContext";
 
 const ManagementPage = () => {
 	const [show, setShow] = useState(false);
@@ -12,6 +13,7 @@ const ManagementPage = () => {
 	const handleShow = () => setShow(true);
 
 	const { data, setData } = useContext(AuthContext);
+	const { logThis } = useContext(LogContext);
 
 	const getUser = () => {
 		axios({
@@ -23,7 +25,7 @@ const ManagementPage = () => {
 					: `${process.env.REACT_APP_PROD_API}/api/user`,
 		}).then((res) => {
 			setData(res.data);
-			console.log(res);
+			logThis(res);
 		});
 	};
 

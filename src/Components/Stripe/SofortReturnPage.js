@@ -2,16 +2,16 @@ import React, { useState, useEffect, useContext } from "react";
 import { loadStripe } from "@stripe/stripe-js/pure";
 import SofortReturnPageInside from "./SofortReturnPageInside";
 import { Elements } from "@stripe/react-stripe-js";
-import { MailContext } from "../../Context/MailContext";
-import { BookingLogicContext } from "../../Context/BookingLogicContext";
-import { PaymentContext } from "../../Context/PaymentContext";
+import { LogContext } from "../../Context/LogContext";
 
 const promise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
 
 const SofortReturnPage = () => {
+	const { logThis } = useContext(LogContext);
+
 	const [promiseLoaded, setPromiseLoaded] = useState(false);
 
-	console.log(promise);
+	logThis(promise);
 
 	useEffect(() => {
 		if (promise) {
