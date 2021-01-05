@@ -69,9 +69,9 @@ const Login = () => {
 									placeholder={t("login5")}
 									onChange={(e) => setLoginPassword(e.target.value)}
 								/>
-								<Form.Label className="forgotPassword">
+								{/* <Form.Label className="forgotPassword">
 									{t("login2")}
-								</Form.Label>
+								</Form.Label> */}
 							</Form.Group>
 							<Button
 								variant="primary"

@@ -184,27 +184,20 @@ const BookingLogicContextProvider = ({ children }) => {
 			aftSeason(arrayOfDates[i]);
 		}
 		let removeLastDay = bookingCostArray.slice(0, bookingCostArray.length - 1);
+		let pattern = new RegExp("^20[0-9]{2}-((0[1-9])|(1[0-2]))-[0-3][0-9]$");
 
-		if (arrayOfDates) {
-			// let cost = arrayOfDates && available ? removeLastDay.reduce(function (all, amount) {
-			// 	return all + amount;
-			// }) : 100
+		if (pattern.test(startDate) && pattern.test(endDate) && arrayOfDates) {
 			let cost = removeLastDay.reduce(function (all, amount) {
 				return all + amount;
 			});
 			// logThis(
-			// 	"from Bookinglogiccontext",
+			// 	"from BookingLogicContext",
 			// 	"arrayofdates:",
 			// 	arrayOfDates,
 			// 	"available:",
 			// 	available
 			// );
-			console.log(				
-				"arrayofdates:",
-				arrayOfDates,
-				"available:",
-				available
-			);
+			console.log("arrayofdates:", arrayOfDates, "available:", available);
 			let fullCost = cost + b.cleaningFee;
 			let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
 			if (startEpoch - Date.now() <= 2592000000) {

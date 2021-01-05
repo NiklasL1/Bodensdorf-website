@@ -16,7 +16,7 @@ const AddToList = ({ handleClose, show }) => {
 	const [overlapAdd, setOverlapAdd] = useState(false);
 	const [tooShortAdd, setTooShortAdd] = useState(false);
 
-	const sortedList = list.sort((a, b) => a.lName > b.lName);
+	const sortedList = list.sort((a, b) => a.lName - b.lName);
 
 	const [formState, setFormState] = useState({
 		userID: "",

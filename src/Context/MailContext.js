@@ -220,8 +220,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.\r
 				
-				Your booking costs ${currentBookingInitial.totalPrice}€ in total.
-				You have paid a deposit of ${
+				Your booking costs ${currentBookingInitial.totalPrice}€ in total. You have paid a deposit of ${
 					currentBookingInitial.amtPaid
 				}€ to reserve the dates above. The payment remainder of ${
 					currentBookingInitial.amtOwed

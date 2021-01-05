@@ -468,7 +468,7 @@ i18n
           user8: "Abreise: ",
           user9: "Personen: ",
           user10: "Gesamtpreis (inkl. 40€ Reinigungsgebühr): ",
-          user11: "Anzahlung: ",
+          user11: "Bezahlt: ",
           user12: "Austehender Betrag: ",
           user13: "Schließen",
           user14: "Zurück zur Hauptseite",

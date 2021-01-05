@@ -9,7 +9,7 @@ import Button from "react-bootstrap/Button";
 const Bookings = ({ handleShow }) => {
 	const { bookingsList, loading } = useContext(BookingsContext);
 
-	const sortedList = bookingsList.sort((a, b) => a.arriveEpoch > b.arriveEpoch);
+	const sortedList = bookingsList.sort((a, b) => a.arriveEpoch - b.arriveEpoch);
 
 	const renderData = (data) => {
 		return (

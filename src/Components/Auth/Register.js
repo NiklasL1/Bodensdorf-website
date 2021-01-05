@@ -173,7 +173,7 @@ const Register = ({ handleRegister }) => {
 						<Form.Group controlId="formGroupTelNo">
 							<Form.Label>{t("register5")}</Form.Label>
 							<Form.Control
-								type="number"
+								type="tel"
 								onChange={(e) => setRegisterTelNo(e.target.value)}
 							/>
 						</Form.Group>

@@ -60,7 +60,7 @@ const UserProfilePage = () => {
 		? bookingsList.filter((booking) => booking.userID === data._id)
 		: undefined;
 	const sortedList = filteredList
-		? filteredList.sort((a, b) => a.arriveEpoch < b.arriveEpoch)
+		? filteredList.sort((a, b) => b.arriveEpoch - a.arriveEpoch)
 		: undefined;
 
 	// const logit = () => {
@@ -71,7 +71,11 @@ const UserProfilePage = () => {
 		setOutstandingPayment(amountOwed);
 		setThisBooking(filteredList.filter((booking) => booking._id === _id)[0]);
 		setThisBooking((PrevState) => {
-			return { ...PrevState, ["amtOwed"]: PrevState.amtOwed - amountOwed };
+			return {
+				...PrevState,
+				amtOwed: PrevState.amtOwed - amountOwed,
+				amtPaid: PrevState.amtPaid + amountOwed,
+			};
 		});
 		handleShowStripe();
 	};
@@ -80,9 +84,7 @@ const UserProfilePage = () => {
 		<div id="userProfilePage">
 			<StripeNew />
 			<span id="userProfileTop">
-				<h4 className="userProfileTitle">
-					{t("user6a")}
-				</h4>
+				<h4 className="userProfileTitle">{t("user6a")}</h4>
 				<Link to="/">
 					<Button className="userProfileTitle">{t("user14")}</Button>
 				</Link>
