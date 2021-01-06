@@ -119,20 +119,31 @@ const BookingMenu = () => {
 		}
 	};
 
+	let pattern = new RegExp(
+		"^(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$"
+	);
+
 	const handleChangeS = (event) => {
 		event.persist();
 		const { value } = event.target;
-		setStartDate(value);
+
+		if (pattern.test(value) && pattern.test(value)) {
+			setStartDate(value);
+		}
 	};
 
 	useEffect(() => {
-		calculateDates();
+		if (pattern.test(value) && pattern.test(value)) {
+			calculateDates();
+		}
 	}, [startEpoch, endEpoch, extraPerson]);
 
 	const handleChangeE = (event) => {
 		event.persist();
 		const { value } = event.target;
-		setEndDate(value);
+		if (pattern.test(value) && pattern.test(value)) {
+			setEndDate(value);
+		}
 	};
 
 	let myArray = [];
@@ -200,6 +211,7 @@ const BookingMenu = () => {
 													onChange={handleChangeS}
 													min={minStartDate}
 													placeholder="YYYY-MM-DD"
+													pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
 												/>
 												{/* <DatePicker
                                                     locale= {getDefaultLocale()}
@@ -226,6 +238,7 @@ const BookingMenu = () => {
 													onChange={handleChangeE}
 													min={minEndDate}
 													placeholder="YYYY-MM-DD"
+													pattern="(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))"
 												/>
 												{/* <DatePicker
                                                     locale= {getDefaultLocale()}                                                    
