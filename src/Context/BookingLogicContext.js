@@ -14,6 +14,9 @@ const BookingLogicContextProvider = ({ children }) => {
 	const [within30, setWithin30] = useState(false);
 	const [chooseFullPay, setChooseFullPay] = useState(false);
 
+	const [startDateValid, setStartDateValid] = useState();
+	const [endDateValid, setEndDateValid] = useState();
+
 	const [totalBookingCost, setTotalBookingCost] = useState(0);
 	const [prepaymentCost, setPrepaymentCost] = useState(0);
 	const [restpaymentCost, setRestpaymentCost] = useState(0);
@@ -292,6 +295,10 @@ const BookingLogicContextProvider = ({ children }) => {
 				within30,
 				chooseFullPay,
 				setChooseFullPay,
+				startDateValid,
+				setStartDateValid,
+				endDateValid,
+				setEndDateValid
 			}}
 		>
 			{children}
