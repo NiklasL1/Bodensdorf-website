@@ -103,6 +103,11 @@ const BookingMenu = () => {
 				icon: "warning",
 				title: `${t("bAlert2")}`,
 			});
+		} else if (startEpoch >= endEpoch) {
+			Swal.fire({
+				icon: "warning",
+				title: `${t("bAlert7")}`,
+			});
 		} else if (!available) {
 			Swal.fire({
 				icon: "error",
