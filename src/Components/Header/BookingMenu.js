@@ -56,7 +56,9 @@ const BookingMenu = () => {
 		}
 	}, [arrayOfDates]);
 
-	const minStartDate = moment(Date.now()).format("YYYY-MM-DD");
+	const minStartDate = moment(Date.now().valueOf() + 86400000).format(
+		"YYYY-MM-DD"
+	);
 
 	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
 
@@ -126,23 +128,24 @@ const BookingMenu = () => {
 	const handleChangeS = (event) => {
 		event.persist();
 		const { value } = event.target;
-
-		if (pattern.test(value)) {
-			setStartDate(value);
+		if (value) {
+			if (pattern.test(value)) {
+				setStartDate(value);
+			}
 		}
 	};
 
 	useEffect(() => {
-		if (pattern.test(value) && pattern.test(value)) {
-			calculateDates();
-		}
+		calculateDates();
 	}, [startEpoch, endEpoch, extraPerson]);
 
 	const handleChangeE = (event) => {
 		event.persist();
 		const { value } = event.target;
-		if (pattern.test(value)) {
-			setEndDate(value);
+		if (value) {
+			if (pattern.test(value)) {
+				setEndDate(value);
+			}
 		}
 	};
 

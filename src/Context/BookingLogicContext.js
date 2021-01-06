@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 export const BookingLogicContext = createContext();
 
 const BookingLogicContextProvider = ({ children }) => {
-	const [startDate, setStartDate] = useState(new Date());
+	const [startDate, setStartDate] = useState();
 	const [endDate, setEndDate] = useState();
 	const [arrayOfDates, setArrayOfDates] = useState();
 	const [extraPerson, setExtraPerson] = useState(false);
