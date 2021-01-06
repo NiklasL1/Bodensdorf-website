@@ -127,7 +127,7 @@ const BookingMenu = () => {
 		event.persist();
 		const { value } = event.target;
 
-		if (pattern.test(value) && pattern.test(value)) {
+		if (pattern.test(value)) {
 			setStartDate(value);
 		}
 	};
@@ -141,7 +141,7 @@ const BookingMenu = () => {
 	const handleChangeE = (event) => {
 		event.persist();
 		const { value } = event.target;
-		if (pattern.test(value) && pattern.test(value)) {
+		if (pattern.test(value)) {
 			setEndDate(value);
 		}
 	};
