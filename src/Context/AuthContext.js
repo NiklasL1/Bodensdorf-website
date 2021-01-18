@@ -12,10 +12,21 @@ const AuthContextProvider = ({ children }) => {
 
 	const { logThis } = useContext(LogContext);
 
+	const [hasRegistered, setHasRegistered] = useState(false);
+	const [loggedInAfterRegister, setLoggedInAfterRegister] = useState(false);
+
 	const [data, setData] = useState(null);
 	const [loginUsername, setLoginUsername] = useState("");
 	// const [loginEmail, setLoginEmail] = useState("");
 	const [loginPassword, setLoginPassword] = useState("");
+
+	const [registerUsername, setRegisterUsername] = useState("");
+	const [registerFirstName, setRegisterFirstName] = useState("");
+	const [registerLastName, setRegisterLastName] = useState("");
+	const [registerEmail, setRegisterEmail] = useState("");
+	const [registerTelNo, setRegisterTelNo] = useState("");
+	const [registerPassword, setRegisterPassword] = useState("");
+	const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState("");
 
 	const [showLogin, setShowLogin] = useState(false);
 	const handleCloseLogin = () => setShowLogin(false);
@@ -102,9 +113,7 @@ const AuthContextProvider = ({ children }) => {
 				loginUsername === "heidi" ||
 				loginUsername === "tom")
 		) {
-			
 			// history.push("/bookings");
-			
 		}
 	};
 
@@ -123,6 +132,24 @@ const AuthContextProvider = ({ children }) => {
 				handleShowLogin,
 				login,
 				getUser,
+				hasRegistered,
+				setHasRegistered,
+				loggedInAfterRegister,
+				setLoggedInAfterRegister,				
+				registerFirstName,
+				setRegisterFirstName,
+				registerLastName,
+				setRegisterLastName,
+				registerUsername,
+				setRegisterUsername,
+				registerEmail,
+				setRegisterEmail,
+				registerTelNo,
+				setRegisterTelNo,
+				registerPassword,
+				setRegisterPassword,
+				registerPasswordConfirm,
+				setRegisterPasswordConfirm
 			}}
 		>
 			{children}

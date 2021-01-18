@@ -61,7 +61,7 @@ export default function CheckoutFormSofort() {
 		? "Restzahlung vor Ankunft"
 		: chooseFullPay
 		? "Gesamtbetrag freiwilling gezahlt bei Buchung"
-		: (moment(timeStart, "DD.MM.YYY").valueOf() - Date.now()) <= 2592000000
+		: (moment(timeStart, "DD.MM.YYYY").valueOf() - Date.now()) <= 2592000000
 		? "Gesamtbetrag gezahlt da innerhalb 30 Tage"
 		: "Anzahlung bei Buchung";
 

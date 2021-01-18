@@ -2,10 +2,13 @@ import React, { createContext, useState, useEffect, useContext } from "react";
 import moment from "moment";
 import { LogContext } from "./LogContext";
 import Swal from "sweetalert2";
+import { useTranslation } from "react-i18next";
 
 export const BookingLogicContext = createContext();
 
 const BookingLogicContextProvider = ({ children }) => {
+	const { t } = useTranslation();
+
 	const [startDate, setStartDate] = useState();
 	const [endDate, setEndDate] = useState();
 	const [arrayOfDates, setArrayOfDates] = useState();
@@ -189,18 +192,17 @@ const BookingLogicContextProvider = ({ children }) => {
 		let removeLastDay = bookingCostArray.slice(0, bookingCostArray.length - 1);
 		let pattern = new RegExp("^(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$");
 
-		if (pattern.test(startDate) && pattern.test(endDate) && arrayOfDates) {
+		if (pattern.test(startDate) && pattern.test(endDate) && arrayOfDates && startDate !== endDate) {
 			let cost = removeLastDay.reduce(function (all, amount) {
 				return all + amount;
 			});
-			// logThis(
-			// 	"from BookingLogicContext",
-			// 	"arrayofdates:",
-			// 	arrayOfDates,
-			// 	"available:",
-			// 	available
-			// );
-			console.log("arrayofdates:", arrayOfDates, "available:", available);
+			logThis(
+				"from BookingLogicContext",
+				"arrayofdates:",
+				arrayOfDates,
+				"available:",
+				available
+			);
 			let fullCost = cost + b.cleaningFee;
 			let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
 			if (startEpoch - Date.now() <= 2592000000) {
@@ -221,7 +223,7 @@ const BookingLogicContextProvider = ({ children }) => {
 		} else {
 			Swal.fire({
 				icon: "error",
-				title: `An error has occurred! Please change one of the selected dates and then reselect your desired date!`,
+				title: `${t("bError")}`,
 			});
 		}
 	};

@@ -17,19 +17,34 @@ const Register = ({ handleRegister }) => {
 		showLogin,
 		setLoginUsername,
 		setLoginPassword,
-		login,
-		data,
+		login,		
+		registerFirstName,
+		setRegisterFirstName,
+		registerLastName,
+		setRegisterLastName,
+		registerUsername,
+		setRegisterUsername,
+		registerEmail,
+		setRegisterEmail,
+		registerTelNo,
+		setRegisterTelNo,
+		registerPassword,
+		setRegisterPassword,
+		registerPasswordConfirm,
+		setRegisterPasswordConfirm,
 	} = useContext(AuthContext);
-	const { setMessage, setEmail, sendEmail, message } = useContext(MailContext);
+	const { setMessage, setEmail, sendEmail, message, content, subject } = useContext(
+		MailContext
+	);
 	const { logThis } = useContext(LogContext);
 
-	const [registerUsername, setRegisterUsername] = useState("");
-	const [registerFirstName, setRegisterFirstName] = useState("");
-	const [registerLastName, setRegisterLastName] = useState("");
-	const [registerEmail, setRegisterEmail] = useState("");
-	const [registerTelNo, setRegisterTelNo] = useState("");
-	const [registerPassword, setRegisterPassword] = useState("");
-	const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState("");
+	// const [registerUsername, setRegisterUsername] = useState("");
+	// const [registerFirstName, setRegisterFirstName] = useState("");
+	// const [registerLastName, setRegisterLastName] = useState("");
+	// const [registerEmail, setRegisterEmail] = useState("");
+	// const [registerTelNo, setRegisterTelNo] = useState("");
+	// const [registerPassword, setRegisterPassword] = useState("");
+	// const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState("");
 
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -68,33 +83,47 @@ const Register = ({ handleRegister }) => {
 					});
 					setLoginUsername(registerUsername);
 					setLoginPassword(registerPassword);
-					setMessage("register");
 					setEmail(registerUsername);
-					logThis("register success");
+					logThis("register success");					
+					setMessage("register");
+				} else {
+					Swal.fire({
+						icon: "error",
+						title: `${t("registerAlert11")}`,
+					});
 				}
 			})
 			.then(() => {
 				if (showLogin) {
 					handleRegister();
-					logThis(message);
+					logThis("this should be register:", message);
 				}
 			});
 	};
 
-	useEffect(() => {
-		if (message === "register") {
-			logThis("logging in");
-			login();
-		}
-	}, [message]);
+	// useEffect(() => {
+	// 	if (message === "register") {
+			
+	// 	}
+	// }, [message]);
 
 	useEffect(() => {
 		if (message === "register") {
-			logThis("email sent");
-			sendEmail();
-			setMessage("")
+			login();
+			sendEmail();					
 		}
-	}, [data]);
+	}, [content]);
+
+	// useEffect(() => {
+	// 	if (loggedInAfterRegister) {
+	// 		// logThis("email sent");
+	// 		console.log("email sent");
+	// 		sendEmail();
+	// 		setMessage("");
+	// 		setHasRegistered(false);
+	// 		setLoggedInAfterRegister(false);
+	// 	}
+	// }, [loggedInAfterRegister]);
 
 	const checkRegister = (event) => {
 		event.preventDefault();
@@ -144,8 +173,8 @@ const Register = ({ handleRegister }) => {
 	};
 
 	const logit = () => {
-		logThis(message)
-	}
+		logThis(message, "subject:", subject, "content", content);
+	};
 
 	return (
 		<>
@@ -173,8 +202,9 @@ const Register = ({ handleRegister }) => {
 						<Form.Group controlId="formGroupTelNo">
 							<Form.Label>{t("register5")}</Form.Label>
 							<Form.Control
-								type="tel"
+								type="string"
 								onChange={(e) => setRegisterTelNo(e.target.value)}
+								pattern="^(\+|(00))[ ,0-9,\-]+$"
 							/>
 						</Form.Group>
 						<Form.Group controlId="formGroupEmail">

@@ -162,8 +162,9 @@ export default function StripeNew() {
 							<h3>
 								{" "}
 								{t("payment10")} {bookingDetails.prepayment}€{" "}
-							</h3>
+							</h3>							
 							<p>{t("payment11")}</p>
+							{prepaymentCost < 100 ? <p>{t("payment13")}</p> : null}
 						</>
 					)
 				) : undefined}
@@ -176,7 +177,7 @@ export default function StripeNew() {
 					>
 						<option value="creditCard">{t("payment5")}</option>
 						{/* <option value="SEPA">{t("payment6")}</option> */}
-						<option value="sofort">{t("payment5a")}</option>
+						{prepaymentCost < 100 && !payingRemainder ? <option disabled value="sofort">{t("payment5a")}</option> : <option value="sofort">{t("payment5a")}</option>}
 					</select>
 				</span>
 				<Elements stripe={promise}>
