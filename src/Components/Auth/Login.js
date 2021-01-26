@@ -95,9 +95,9 @@ const Login = () => {
 	return (
 		<div>
 			{data ? (
-				(data.username === "niklas" && data.lName === "Little") ||
-				(data.username === "heidi" && data.lName === "Holzapfel-Little") ||
-				(data.username === "tom" && data.lName === "Little") ? (
+				(data.username === "niklas" && data.lName === "Management") ||
+				(data.username === "heidi" && data.lName === "Management") ||
+				(data.username === "tom" && data.lName === "Management") ? (
 					<>
 						<Link to="/bookings">
 							<Button className="buttonColor loginButton" variant="light">
