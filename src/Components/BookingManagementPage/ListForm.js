@@ -29,7 +29,7 @@ const AddToList = ({ handleClose, show }) => {
 		prepayment: "",
 		amtPaid: "",
 		amtOwed: "",
-		people: "",
+		people: "2",
 	});
 
 	useEffect(() => {
@@ -76,6 +76,10 @@ const AddToList = ({ handleClose, show }) => {
 		checkOverlap();
 	}, [formState.arriveEpoch, formState.departEpoch]);
 
+	let pattern = new RegExp(
+		"^(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$"
+	);
+
 	const handleSubmit = (event) => {
 		event.preventDefault();
 		if (formState.arriveStr === "") {
@@ -87,6 +91,24 @@ const AddToList = ({ handleClose, show }) => {
 			Swal.fire({
 				icon: "warning",
 				title: "Abreise Datum ist nicht angegeben",
+			});
+		} else if (
+			!pattern.test(
+				moment(formState.arriveStr, "DD-MM-YYYY").format("YYYY-MM-DD")
+			)
+		) {
+			Swal.fire({
+				icon: "warning",
+				title: "Anreise Datum ist nicht gültig",
+			});
+		} else if (
+			!pattern.test(
+				moment(formState.departStr, "DD-MM-YYYY").format("YYYY-MM-DD")
+			)
+		) {
+			Swal.fire({
+				icon: "warning",
+				title: "Abreise Datum ist nicht gültig",
 			});
 		} else if (formState.totalPrice === "") {
 			Swal.fire({
@@ -183,6 +205,9 @@ const AddToList = ({ handleClose, show }) => {
 								// id="arriveStr"
 								onChange={handleUser}
 							>
+								<option disabled selected>
+									--- Gast auswählen ---
+								</option>
 								{sortedList.map((user) => (
 									<option key={user._id} value={user._id}>
 										{user.fName} {user.lName}
