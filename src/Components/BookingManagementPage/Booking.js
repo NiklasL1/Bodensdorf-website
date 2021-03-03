@@ -20,6 +20,7 @@ const Booking = ({
 	departEpoch,
 	people,
 	userID,
+	name,
 }) => {
 	const [show, setShow] = useState(false);
 	const handleClose = () => setShow(false);
@@ -44,6 +45,7 @@ const Booking = ({
 		arriveEpoch: arriveEpoch,
 		departEpoch: departEpoch,
 		people: people,
+		name: name,
 	});
 
 	const handleChange = (event) => {
@@ -88,31 +90,9 @@ const Booking = ({
 					show2={show2}
 					thisUser={thisUser}
 				/>
-				{/* <td>
-				<input 
-					className="resizedTextbox"
-					onChange={handleChange}
-					onKeyPress={handleKeypress}
-					name="arriveEpoch"
-					type="text"
-					readOnly="readonly"
-					value={value.arriveEpoch}
-				></input>
-			</td>
-			<td>
-				<input 
-					className="resizedTextbox"
-					onChange={handleChange}
-					onKeyPress={handleKeypress}
-					name="departEpoch"
-					type="text"
-					readOnly="readonly"
-					value={value.departEpoch}
-				></input>
-			</td> */}
 				<td className="col-1">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="airBnB"
@@ -121,20 +101,47 @@ const Booking = ({
 						value={value.airBnB}
 					></input>
 				</td>
-				<td onClick={handleShow2}>
+				{/* <td onClick={thisUser ? handleShow2 : undefined} style="cursor: pointer;">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="name"
 						type="text"
 						readOnly="readonly"
-						value={thisUser ? `${thisUser.fName} ${thisUser.lName}` : undefined}
+						value={
+							thisUser ? `${thisUser.fName} ${thisUser.lName}` : value.name
+						}
 					></input>
-				</td>
+				</td> */}
+				{thisUser ? (
+					<td onClick={handleShow2} className="clickable">
+						<input
+							className="resizedTextbox clickable"
+							onChange={handleChange}
+							onKeyPress={handleKeypress}
+							name="name"
+							type="text"
+							readOnly="readonly"
+							value={`${thisUser.fName} ${thisUser.lName}`}
+						></input>
+					</td>
+				) : (
+					<td>
+						<input
+							className="resizedTextbox notClickable"
+							onChange={handleChange}
+							onKeyPress={handleKeypress}
+							name="name"
+							type="text"
+							readOnly="readonly"
+							value={value.name}
+						></input>
+					</td>
+				)}
 				<td className="resizeTableCell">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="arriveStr"
@@ -145,7 +152,7 @@ const Booking = ({
 				</td>
 				<td className="resizeTableCell">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="departStr"
@@ -156,7 +163,7 @@ const Booking = ({
 				</td>
 				<td className="resizeTableCell">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="people"
@@ -167,7 +174,7 @@ const Booking = ({
 				</td>
 				<td className="resizeTableCell">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="totalPrice"
@@ -178,7 +185,7 @@ const Booking = ({
 				</td>
 				<td className="resizeTableCell">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="prepayment"
@@ -189,7 +196,7 @@ const Booking = ({
 				</td>
 				<td className="resizeTableCell">
 					<input
-						className="resizedTextbox"
+						className="resizedTextbox notClickable"
 						onChange={handleChange}
 						onKeyPress={handleKeypress}
 						name="amtPaid"
@@ -200,7 +207,7 @@ const Booking = ({
 				</td>
 				{/* <td>
 				<input 
-					className="resizedTextbox"
+					className="resizedTextbox notClickable"
 					onChange={handleChange}
 					onKeyPress={handleKeypress}
 					name="amtOwed"

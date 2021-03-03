@@ -5,7 +5,8 @@ import "./BookingCalendar.css";
 import { BookingsContext } from "../../Context/BookingsContext";
 // import subDays from "date-fns/subDays";
 import addDays from "date-fns/addDays";
-import { getDefaultLocale } from "react-datepicker";
+import i18n from "../../i18n";
+import moment from "moment";
 
 const BookingCalendar3 = () => {
 	const { bookingsList } = useContext(BookingsContext);
@@ -25,27 +26,51 @@ const BookingCalendar3 = () => {
 
 	const determinePreSeason = () => {
 		//2020d
-		for (let i = 1583020800000; i < 1593561600000; i = i + 86400000) {
+		for (
+			let i = moment("01-05-2020", "DD-MM-YYYY").valueOf();
+			i < moment("01-07-2020", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			preSeasonArray.push(new Date(i));
 		}
 		//2021
-		for (let i = 1614556800000; i < 1625097600000; i = i + 86400000) {
+		for (
+			let i = moment("01-05-2021", "DD-MM-YYYY").valueOf();
+			i < moment("01-07-2021", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			preSeasonArray.push(new Date(i));
 		}
 		//2022
-		for (let i = 1646092800000; i < 1656633600000; i = i + 86400000) {
+		for (
+			let i = moment("01-05-2022", "DD-MM-YYYY").valueOf();
+			i < moment("01-07-2022", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			preSeasonArray.push(new Date(i));
 		}
 		//2023
-		for (let i = 1677628800000; i < 1688169600000; i = i + 86400000) {
+		for (
+			let i = moment("01-05-2023", "DD-MM-YYYY").valueOf();
+			i < moment("01-07-2023", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			preSeasonArray.push(new Date(i));
 		}
 		//2024
-		for (let i = 1709251200000; i < 1719792000000; i = i + 86400000) {
+		for (
+			let i = moment("01-05-2024", "DD-MM-YYYY").valueOf();
+			i < moment("01-07-2024", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			preSeasonArray.push(new Date(i));
 		}
 		//2025
-		for (let i = 1740787200000; i < 1751328000000; i = i + 86400000) {
+		for (
+			let i = moment("01-05-2025", "DD-MM-YYYY").valueOf();
+			i < moment("01-07-2025", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			preSeasonArray.push(new Date(i));
 		}
 		setPreSeason(preSeasonArray);
@@ -53,27 +78,51 @@ const BookingCalendar3 = () => {
 
 	const determineMainSeason = () => {
 		//2020d
-		for (let i = 1593561600000; i < 1598918400000; i = i + 86400000) {
+		for (
+			let i = moment("01-07-2020", "DD-MM-YYYY").valueOf();
+			i < moment("01-09-2020", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			mainSeasonArray.push(new Date(i));
 		}
 		//2021
-		for (let i = 1625097600000; i < 1630454400000; i = i + 86400000) {
+		for (
+			let i = moment("01-07-2021", "DD-MM-YYYY").valueOf();
+			i < moment("01-09-2021", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			mainSeasonArray.push(new Date(i));
 		}
 		//2022
-		for (let i = 1656633600000; i < 1661990400000; i = i + 86400000) {
+		for (
+			let i = moment("01-07-2022", "DD-MM-YYYY").valueOf();
+			i < moment("01-09-2022", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			mainSeasonArray.push(new Date(i));
 		}
 		//2023
-		for (let i = 1688169600000; i < 1693526400000; i = i + 86400000) {
+		for (
+			let i = moment("01-07-2023", "DD-MM-YYYY").valueOf();
+			i < moment("01-09-2023", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			mainSeasonArray.push(new Date(i));
 		}
 		//2024
-		for (let i = 1719792000000; i < 1725148800000; i = i + 86400000) {
+		for (
+			let i = moment("01-07-2024", "DD-MM-YYYY").valueOf();
+			i < moment("01-09-2024", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			mainSeasonArray.push(new Date(i));
 		}
 		//2025
-		for (let i = 1751328000000; i < 1756684800000; i = i + 86400000) {
+		for (
+			let i = moment("01-07-2025", "DD-MM-YYYY").valueOf();
+			i < moment("01-09-2025", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			mainSeasonArray.push(new Date(i));
 		}
 		setMainSeason(mainSeasonArray);
@@ -81,27 +130,51 @@ const BookingCalendar3 = () => {
 
 	const determineAftSeason = () => {
 		//2020
-		for (let i = 1598918400000; i < 1604188800000; i = i + 86400000) {
+		for (
+			let i = moment("01-09-2020", "DD-MM-YYYY").valueOf();
+			i < moment("01-11-2020", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			aftSeasonArray.push(new Date(i));
 		}
 		//2021
-		for (let i = 1630454400000; i < 1635724800000; i = i + 86400000) {
+		for (
+			let i = moment("01-09-2021", "DD-MM-YYYY").valueOf();
+			i < moment("01-11-2021", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			aftSeasonArray.push(new Date(i));
 		}
 		//2022
-		for (let i = 1661990400000; i < 1667260800000; i = i + 86400000) {
+		for (
+			let i = moment("01-09-2022", "DD-MM-YYYY").valueOf();
+			i < moment("01-11-2022", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			aftSeasonArray.push(new Date(i));
 		}
 		//2023
-		for (let i = 1693526400000; i < 1698796800000; i = i + 86400000) {
+		for (
+			let i = moment("01-09-2023", "DD-MM-YYYY").valueOf();
+			i < moment("01-11-2023", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			aftSeasonArray.push(new Date(i));
 		}
 		//2024
-		for (let i = 1725148800000; i < 1730419200000; i = i + 86400000) {
+		for (
+			let i = moment("01-09-2024", "DD-MM-YYYY").valueOf();
+			i < moment("01-11-2024", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			aftSeasonArray.push(new Date(i));
 		}
 		//2025
-		for (let i = 1756684800000; i < 1761955200000; i = i + 86400000) {
+		for (
+			let i = moment("01-09-2025", "DD-MM-YYYY").valueOf();
+			i < moment("01-11-2025", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			aftSeasonArray.push(new Date(i));
 		}
 		setAftSeason(aftSeasonArray);
@@ -109,27 +182,51 @@ const BookingCalendar3 = () => {
 
 	const determineOffSeason = () => {
 		//2020
-		for (let i = 1604188800000; i < 1614556800000; i = i + 86400000) {
+		for (
+			let i = moment("01-11-2020", "DD-MM-YYYY").valueOf();
+			i < moment("01-05-2021", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			offSeasonArray.push(new Date(i));
 		}
 		//2021
-		for (let i = 1635724800000; i < 1646092800000; i = i + 86400000) {
+		for (
+			let i = moment("01-11-2021", "DD-MM-YYYY").valueOf();
+			i < moment("01-05-2022", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			offSeasonArray.push(new Date(i));
 		}
 		//2022
-		for (let i = 1667260800000; i < 1677628800000; i = i + 86400000) {
+		for (
+			let i = moment("01-11-2022", "DD-MM-YYYY").valueOf();
+			i < moment("01-05-2023", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			offSeasonArray.push(new Date(i));
 		}
 		//2023
-		for (let i = 1698796800000; i < 1709251200000; i = i + 86400000) {
+		for (
+			let i = moment("01-11-2023", "DD-MM-YYYY").valueOf();
+			i < moment("01-05-2024", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			offSeasonArray.push(new Date(i));
 		}
 		//2024
-		for (let i = 1730419200000; i < 1740787200000; i = i + 86400000) {
+		for (
+			let i = moment("01-11-2024", "DD-MM-YYYY").valueOf();
+			i < moment("01-05-2025", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			offSeasonArray.push(new Date(i));
 		}
 		//2025
-		for (let i = 1761955200000; i < 1772323200000; i = i + 86400000) {
+		for (
+			let i = moment("01-11-2025", "DD-MM-YYYY").valueOf();
+			i < moment("01-05-2026", "DD-MM-YYYY").valueOf();
+			i = i + 86400000
+		) {
 			offSeasonArray.push(new Date(i));
 		}
 		setOffSeason(offSeasonArray);
@@ -201,10 +298,18 @@ const BookingCalendar3 = () => {
 		},
 	];
 
+	const checkLanguage = () => {
+		if (i18n.language.substring(0, 2) === "en") {
+			return "en";
+		} else if (i18n.language.substring(0, 2) === "de") {
+			return "de";
+		}
+	};
+
 	return (
 		<>
 			<DatePicker
-				locale={getDefaultLocale()}
+				locale={checkLanguage()}
 				selected={startDate}
 				onChange={(date) => setStartDate(date)}
 				// excludeDates={excludeArray}
