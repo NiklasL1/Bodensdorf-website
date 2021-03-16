@@ -23,7 +23,11 @@ import { LogContext } from "../../Context/LogContext";
 
 // loadStripe is initialized with your real test publishable API key.
 
-const promise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
+const promise = loadStripe(
+	process.env.REACT_APP_LOCATION === "development"
+		? process.env.REACT_APP_PUBLISHABLE_KEY_DEV
+		: process.env.REACT_APP_PUBLISHABLE_KEY_PROD
+);
 
 export default function StripeNew() {
 	const { t } = useTranslation();
@@ -56,7 +60,9 @@ export default function StripeNew() {
 		setBookingDetails,
 	} = useContext(BookingLogicContext);
 	const { data } = useContext(AuthContext);
-	const { sendEmail, setEmail, setMessage, message } = useContext(MailContext);
+	const { sendEmail, setEmail, setMessage, registerMessage } = useContext(
+		MailContext
+	);
 	const { logThis } = useContext(LogContext);
 
 	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
@@ -78,7 +84,7 @@ export default function StripeNew() {
 				departEpoch: endEpoch,
 				people: peopleNum,
 			});
-			if (message !== "register") {
+			// if (!registerMessage) {
 				setEmail(data.email);
 				if (!payingRemainder) {
 					if (totalBookingCost !== prepaymentCost) {
@@ -98,7 +104,7 @@ export default function StripeNew() {
 				if (payingRemainder) {
 					setMessage("bookingRestPaid");
 				}
-			}
+			// }
 		}
 	}, [
 		totalBookingCost,
@@ -162,7 +168,7 @@ export default function StripeNew() {
 							<h3>
 								{" "}
 								{t("payment10")} {bookingDetails.prepayment}€{" "}
-							</h3>							
+							</h3>
 							<p>{t("payment11")}</p>
 							{prepaymentCost < 100 ? <p>{t("payment13")}</p> : null}
 						</>
@@ -177,7 +183,13 @@ export default function StripeNew() {
 					>
 						<option value="creditCard">{t("payment5")}</option>
 						{/* <option value="SEPA">{t("payment6")}</option> */}
-						{prepaymentCost < 100 && !payingRemainder ? <option disabled value="sofort">{t("payment5a")}</option> : <option value="sofort">{t("payment5a")}</option>}
+						{prepaymentCost < 100 && !payingRemainder ? (
+							<option disabled value="sofort">
+								{t("payment5a")}
+							</option>
+						) : (
+							<option value="sofort">{t("payment5a")}</option>
+						)}
 					</select>
 				</span>
 				<Elements stripe={promise}>

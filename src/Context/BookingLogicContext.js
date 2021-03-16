@@ -190,9 +190,16 @@ const BookingLogicContextProvider = ({ children }) => {
 			aftSeason(arrayOfDates[i]);
 		}
 		let removeLastDay = bookingCostArray.slice(0, bookingCostArray.length - 1);
-		let pattern = new RegExp("^(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$");
+		let pattern = new RegExp(
+			"^(?:19|20)[0-9]{2}-(?:(?:0[1-9]|1[0-2])-(?:0[1-9]|1[0-9]|2[0-9])|(?:(?!02)(?:0[1-9]|1[0-2])-(?:30))|(?:(?:0[13578]|1[02])-31))$"
+		);
 
-		if (pattern.test(startDate) && pattern.test(endDate) && arrayOfDates && startDate !== endDate) {
+		if (
+			pattern.test(startDate) &&
+			pattern.test(endDate) &&
+			arrayOfDates &&
+			startDate !== endDate
+		) {
 			let cost = removeLastDay.reduce(function (all, amount) {
 				return all + amount;
 			});
@@ -300,7 +307,7 @@ const BookingLogicContextProvider = ({ children }) => {
 				startDateValid,
 				setStartDateValid,
 				endDateValid,
-				setEndDateValid
+				setEndDateValid,
 			}}
 		>
 			{children}

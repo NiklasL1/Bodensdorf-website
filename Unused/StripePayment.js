@@ -34,7 +34,7 @@ const StripePayment = ({ handleClose }) => {
 		};
 		const headers = {
 			"Content-Type": "application/json",
-		};		
+		};
 		return fetch(
 			process.env.REACT_APP_LOCATION === "development"
 				? `${process.env.REACT_APP_DEV_API}/api/payment`
@@ -58,7 +58,11 @@ const StripePayment = ({ handleClose }) => {
 	return (
 		<div>
 			<StripeCheckout
-				stripeKey={process.env.REACT_APP_PUBLISHABLE_KEY}
+				stripeKey={
+					process.env.REACT_APP_LOCATION === "development"
+						? process.env.REACT_APP_PUBLISHABLE_KEY_DEV
+						: process.env.REACT_APP_PUBLISHABLE_KEY_PROD
+				}
 				token={makePayment}
 				name={`Anzahlung für ${
 					arrayOfDates ? arrayOfDates.length - 1 : null

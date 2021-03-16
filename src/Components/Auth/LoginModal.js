@@ -54,7 +54,7 @@ const LoginModal = ({ handleShowBookingModal }) => {
 							placeholder={t("login5")}
 							onChange={(e) => setLoginPassword(e.target.value)}
 						/>
-						<Form.Label className="forgotPassword">{t("login2")}</Form.Label>
+						{/* <Form.Label className="forgotPassword">{t("login2")}</Form.Label> */}
 					</Form.Group>
 					<Button
 						variant="primary"

@@ -12,8 +12,11 @@ export const MailContext = createContext();
 const MailContextProvider = ({ children }) => {
 	const [email, setEmail] = useState("");
 	const [message, setMessage] = useState("");
+	const [registerMessage, setRegisterMessage] = useState(false);
 	const [subject, setSubject] = useState("subject");
 	const [content, setContent] = useState("content");
+	const [registerSubject, setRegisterSubject] = useState("subject");
+	const [registerContent, setRegisterContent] = useState("content");
 
 	const {
 		data,
@@ -23,7 +26,7 @@ const MailContextProvider = ({ children }) => {
 		registerTelNo,
 	} = useContext(AuthContext);
 	const { thisBooking } = useContext(PaymentContext);
-	const { bookingDetails } = useContext(BookingLogicContext);
+	const { bookingDetails, setExtraPerson } = useContext(BookingLogicContext);
 	const { logThis } = useContext(LogContext);
 
 	let paymentMethod = JSON.parse(localStorage.getItem("payment"));
@@ -59,10 +62,10 @@ const MailContextProvider = ({ children }) => {
 			? thisBooking
 			: undefined;
 
-	useEffect(() => {
-		if (message === "register") {
+	useEffect(() => {		
+		if (registerMessage) {			
 			if (i18n.language.substring(0, 2) === "en") {
-				setSubject("Registration confirmation - Lake Ossiach holiday apartment");				
+				setRegisterSubject("Registration confirmation - Lake Ossiach holiday apartment");				
 				let emailText = `Dear ${registerFirstName} ${registerLastName}, \r
 
 				Thank you for registering an account with us. We have stored the following personal information you provided:\r\r
@@ -78,9 +81,9 @@ const MailContextProvider = ({ children }) => {
 				Kind regards,\r
 				
 				The Holzapfel-Littles`
-				setContent(dedent(emailText));				
+				setRegisterContent(dedent(emailText));				
 			} else if (i18n.language.substring(0, 2) === "de") {
-				setSubject(`Konto angelegt - Ossiacher See Ferienwohnung`);
+				setRegisterSubject(`Konto angelegt - Ossiacher See Ferienwohnung`);
 				let emailText = `Sehr geehrte(r) ${registerFirstName} ${registerLastName}, \r
 
 				ihr Konto wurde erfolgreich angelegt. Wir haben die Folgenden persönlichen Daten, die Sie angegeben haben, für Sie gespeichert:\r\r
@@ -89,17 +92,17 @@ const MailContextProvider = ({ children }) => {
 				E-mail: ${registerEmail}\r
 				Telefon Nr.: ${registerTelNo}\r
 
-				Ihre Daten sind sicher gespeichert und werden ohne Ihre ausdrückliche Erlaubnis nicht geteilt.\r
+				Ihre Daten sind sicher gespeichert und werden ohne Ihre ausdrückliche Erlaubnis nicht an Dritte weitergegeben.\r
 
 				Wir freuen uns, Sie bald in unserer Wohnung willkommen heißen zu dürfen!\r
 
 				Mit freundlichen Grüßen,
 				
 				Familie Holzapfel-Little`
-				setContent(dedent(emailText));
+				setRegisterContent(dedent(emailText));
 			}			
 		}
-	}, [message])
+	}, [registerMessage])
 
 	useEffect(() => {
 		logThis(
@@ -130,8 +133,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€, your booking is confirmed and no further action is required. Thank you! \r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, 
-				if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
@@ -159,8 +161,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung zu zahlen. Vielen Dank dafür! Es ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. 
-				Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -190,8 +191,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€. No further action is required concerning payment.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, 
-				if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
@@ -219,8 +219,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung gezahlt. Daher ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, 
-				da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -258,7 +257,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Should you fail to make the remaining payment by the due date, your reservation may be cancelled.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner, as it may take up to a week for you to receive a reply.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
@@ -294,7 +293,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Sollten Sie bis zu dem Fälligkeitsdatum die restliche Zahlung nicht erbracht haben, könnte Ihre Reservierung storniert werden.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -330,7 +329,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner, as it may take up to a week for you to receive a reply.
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!
 				
@@ -361,7 +360,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Bitte beachten Sie die Check-in und Check-out Zeiten: 16:00 bis 19:00 Uhr am Ankunftstag und bis 10:00 am Abreisetag.
 				
-				Für weitere Fragen, senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
@@ -387,7 +386,7 @@ const MailContextProvider = ({ children }) => {
 				"your booking was cancelled because you did not pay the rest of it by the deadline"
 			);
 		}
-	}, [currentMessage, currentBookingInitial, currentBookingRemainder]);
+	}, [currentMessage, currentBookingInitial, currentBookingRemainder, i18n.language]);
 
 	const sendEmail = async () => {
 		logThis(currentEmail, subject, content);
@@ -410,6 +409,34 @@ const MailContextProvider = ({ children }) => {
 		const resData = await response.json();
 		if (resData.status === "success") {
 			setMessage("");
+			logThis("email message sent successfully")
+		}
+		// else if (resData.status === "fail") {
+		// 	alert("Message failed to send.");
+		// }
+	};
+
+	const sendRegisterEmail = async () => {		
+		const response = await fetch(
+			process.env.REACT_APP_LOCATION === "development"
+				? `${process.env.REACT_APP_DEV_API}/api/mail/access`
+				: `${process.env.REACT_APP_PROD_API}/api/mail/access`,
+			{
+				method: "POST",
+				headers: {
+					"Content-type": "application/json",
+				},
+				body: JSON.stringify({
+					email: currentEmail,
+					subject: registerSubject,
+					content: registerContent,
+				}),
+			}
+		);
+		const resData = await response.json();
+		if (resData.status === "success") {
+			setRegisterMessage(false)					
+			logThis("register email sent")
 		}
 		// else if (resData.status === "fail") {
 		// 	alert("Message failed to send.");
@@ -417,7 +444,20 @@ const MailContextProvider = ({ children }) => {
 	};
 
 	return (
-		<MailContext.Provider value={{ sendEmail, setMessage, setEmail, message, content, subject }}>
+		<MailContext.Provider value={{ 
+			sendEmail, 
+			setMessage, 
+			setEmail, 
+			message, 
+			content, 
+			subject, 
+			registerMessage, 
+			setRegisterMessage, 
+			sendRegisterEmail, 
+			registerSubject,
+			currentMessage, 
+			currentBookingInitial, 
+			currentBookingRemainder }}>
 			{children}
 		</MailContext.Provider>
 	);

@@ -4,7 +4,11 @@ import SofortReturnPageInside from "./SofortReturnPageInside";
 import { Elements } from "@stripe/react-stripe-js";
 import { LogContext } from "../../Context/LogContext";
 
-const promise = loadStripe(process.env.REACT_APP_PUBLISHABLE_KEY);
+const promise = loadStripe(
+	process.env.REACT_APP_LOCATION === "development"
+		? process.env.REACT_APP_PUBLISHABLE_KEY_DEV
+		: process.env.REACT_APP_PUBLISHABLE_KEY_PROD
+);
 
 const SofortReturnPage = () => {
 	const { logThis } = useContext(LogContext);

@@ -64,9 +64,11 @@ const BookingMenu = () => {
 		"YYYY-MM-DD"
 	);
 
-	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf();
+	// add + 43200000 to set time to noon to avoid issues with DST
 
-	let endEpoch = moment(endDate, "YYYY-MM-DD").valueOf();
+	let startEpoch = moment(startDate, "YYYY-MM-DD").valueOf() + 43200000;
+
+	let endEpoch = moment(endDate, "YYYY-MM-DD").valueOf() + 43200000;
 
 	const minEndDate = startDate
 		? moment(startEpoch + 345600000).format("YYYY-MM-DD")
@@ -167,9 +169,9 @@ const BookingMenu = () => {
 		if (value) {
 			if (pattern.test(value)) {
 				setEndDate(value);
-				setEndDateValid(true)
+				setEndDateValid(true);
 			} else {
-				setEndDateValid(false)
+				setEndDateValid(false);
 			}
 		}
 	};
@@ -177,7 +179,7 @@ const BookingMenu = () => {
 	let myArray = [];
 
 	const calculateDates = () => {
-		for (let i = startEpoch; i < endEpoch + 1; i = i + 86400000) {
+		for (let i = startEpoch; i < endEpoch + 43200000; i = i + 86400000) {
 			myArray.push(i);
 			setArrayOfDates(myArray);
 		}
@@ -231,7 +233,7 @@ const BookingMenu = () => {
 									>
 										<Row className="d-flex justify-content-center verticalAlign">
 											<Col className="centerIt centerText">
-												<h5 className="boldIt">{t("b3")}</h5>
+												<h5 className="boldIt">{t("b3")} </h5>
 											</Col>
 											<Col className="centerIt">
 												<input

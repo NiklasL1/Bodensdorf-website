@@ -17,7 +17,7 @@ const Register = ({ handleRegister }) => {
 		showLogin,
 		setLoginUsername,
 		setLoginPassword,
-		login,		
+		login,
 		registerFirstName,
 		setRegisterFirstName,
 		registerLastName,
@@ -33,9 +33,13 @@ const Register = ({ handleRegister }) => {
 		registerPasswordConfirm,
 		setRegisterPasswordConfirm,
 	} = useContext(AuthContext);
-	const { setMessage, setEmail, sendEmail, message, content, subject } = useContext(
-		MailContext
-	);
+	const {
+		setEmail,
+		registerMessage,
+		setRegisterMessage,
+		sendRegisterEmail,
+		registerSubject
+	} = useContext(MailContext);
 	const { logThis } = useContext(LogContext);
 
 	// const [registerUsername, setRegisterUsername] = useState("");
@@ -84,8 +88,8 @@ const Register = ({ handleRegister }) => {
 					setLoginUsername(registerUsername);
 					setLoginPassword(registerPassword);
 					setEmail(registerUsername);
-					logThis("register success");					
-					setMessage("register");
+					logThis("register success");
+					setRegisterMessage(true);
 				} else {
 					Swal.fire({
 						icon: "error",
@@ -96,34 +100,17 @@ const Register = ({ handleRegister }) => {
 			.then(() => {
 				if (showLogin) {
 					handleRegister();
-					logThis("this should be register:", message);
+					logThis("this should be true:", registerMessage);
 				}
 			});
 	};
 
-	// useEffect(() => {
-	// 	if (message === "register") {
-			
-	// 	}
-	// }, [message]);
-
 	useEffect(() => {
-		if (message === "register") {
-			login();
-			sendEmail();					
+		if (registerMessage) {
+			login();			
+			sendRegisterEmail();
 		}
-	}, [content]);
-
-	// useEffect(() => {
-	// 	if (loggedInAfterRegister) {
-	// 		// logThis("email sent");
-	// 		console.log("email sent");
-	// 		sendEmail();
-	// 		setMessage("");
-	// 		setHasRegistered(false);
-	// 		setLoggedInAfterRegister(false);
-	// 	}
-	// }, [loggedInAfterRegister]);
+	}, [registerSubject]);
 
 	const checkRegister = (event) => {
 		event.preventDefault();
@@ -172,9 +159,9 @@ const Register = ({ handleRegister }) => {
 		}
 	};
 
-	const logit = () => {
-		logThis(message, "subject:", subject, "content", content);
-	};
+	// const logit = () => {
+	// 	logThis(message, "subject:", subject, "content", content);
+	// };
 
 	return (
 		<>
@@ -183,7 +170,7 @@ const Register = ({ handleRegister }) => {
 			</Button>
 			<Modal show={show} onHide={handleClose} centered>
 				<Modal.Header closeButton>
-					<Modal.Title onClick={logit}>{t("register2")}</Modal.Title>
+					<Modal.Title>{t("register2")}</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					<Form className="registerForm">
