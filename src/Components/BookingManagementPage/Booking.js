@@ -6,6 +6,7 @@ import { UsersContext } from "../../Context/UsersContext";
 import "./Bookings.css";
 import Button from "react-bootstrap/Button";
 import { LogContext } from "../../Context/LogContext";
+import Image from "react-bootstrap/Image";
 
 const Booking = ({
 	_id,
@@ -48,20 +49,20 @@ const Booking = ({
 		name: name,
 	});
 
-	const handleChange = (event) => {
-		event.persist();
-		const { name, value } = event.target;
-		setValue((prevState) => {
-			return { ...prevState, [name]: value };
-		});
-	};
+	// const handleChange = (event) => {
+	// 	event.persist();
+	// 	const { name, value } = event.target;
+	// 	setValue((prevState) => {
+	// 		return { ...prevState, [name]: value };
+	// 	});
+	// };
 
-	const handleKeypress = (event) => {
-		if (event.key === "Enter") {
-			logThis(event.key);
-			saveChanges();
-		}
-	};
+	// const handleKeypress = (event) => {
+	// 	if (event.key === "Enter") {
+	// 		logThis(event.key);
+	// 		saveChanges();
+	// 	}
+	// };
 
 	const saveChanges = () => {
 		update(_id, value);
@@ -90,133 +91,41 @@ const Booking = ({
 					show2={show2}
 					thisUser={thisUser}
 				/>
-				<td className="col-1">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="airBnB"
-						type="text"
-						readOnly="readonly"
-						value={value.airBnB}
-					></input>
+				<td className="tableCell">
+					{value.airBnB ? <Image src="/img/Airbnb_logo_small.png" rounded /> : <Image src="/img/web_logo.jpg" rounded />}					
 				</td>
-				{/* <td onClick={thisUser ? handleShow2 : undefined} style="cursor: pointer;">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="name"
-						type="text"
-						readOnly="readonly"
-						value={
-							thisUser ? `${thisUser.fName} ${thisUser.lName}` : value.name
-						}
-					></input>
-				</td> */}
 				{thisUser ? (
-					<td onClick={handleShow2} className="clickable">
-						<input
-							className="resizedTextbox clickable"
-							onChange={handleChange}
-							onKeyPress={handleKeypress}
-							name="name"
-							type="text"
-							readOnly="readonly"
-							value={`${thisUser.fName} ${thisUser.lName}`}
-						></input>
+					<td className="tableCell clickable" onDoubleClick={handleShow2}>
+						{`${thisUser.fName} ${thisUser.lName}`}
 					</td>
 				) : (
-					<td>
-						<input
-							className="resizedTextbox notClickable"
-							onChange={handleChange}
-							onKeyPress={handleKeypress}
-							name="name"
-							type="text"
-							readOnly="readonly"
-							value={value.name}
-						></input>
-					</td>
+					<td className="tableCell">{`${value.name}`}</td>
 				)}
-				<td className="resizeTableCell">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="arriveStr"
-						type="text"
-						readOnly="readonly"
-						value={value.arriveStr}
-					></input>
+				<td className="tableCell">{`${value.arriveStr}`}</td>
+				<td className="tableCell">{`${value.departStr}`}</td>
+				<td className="tableCell">
+					{`${(value.departEpoch - value.arriveEpoch) / 86400000}`}
 				</td>
-				<td className="resizeTableCell">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="departStr"
-						type="text"
-						readOnly="readonly"
-						value={value.departStr}
-					></input>
+				<td className="tableCell">{value.people}</td>
+				<td className="tableCell">
+					{JSON.stringify(value.totalPrice).replace(".", ",")}
 				</td>
-				<td className="resizeTableCell">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="people"
-						type="text"
-						readOnly="readonly"
-						value={value.people}
-					></input>
+				<td className="tableCell">
+					{JSON.stringify(value.prepayment).replace(".", ",")}
 				</td>
-				<td className="resizeTableCell">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="totalPrice"
-						type="text"
-						readOnly="readonly"
-						value={value.totalPrice}
-					></input>
-				</td>
-				<td className="resizeTableCell">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="prepayment"
-						type="text"
-						readOnly="readonly"
-						value={value.prepayment}
-					></input>
-				</td>
-				<td className="resizeTableCell">
-					<input
-						className="resizedTextbox notClickable"
-						onChange={handleChange}
-						onKeyPress={handleKeypress}
-						name="amtPaid"
-						type="text"
-						readOnly="readonly"
-						value={value.amtPaid}
-					></input>
+				<td className="tableCell">
+					{JSON.stringify(value.amtOwed).replace(".", ",")}
 				</td>
 				{/* <td>
 				<input 
-					className="resizedTextbox notClickable"
-					onChange={handleChange}
-					onKeyPress={handleKeypress}
+					className="resizedTextbox notClickabl
 					name="amtOwed"
 					type="text"
 					readOnly="readonly"
 					value={value.amtOwed}
 				></input>
 			</td>								 */}
-				<td className="d-flex justify-content-center resizeTableCell">
+				<td className="d-flex justify-content-center">
 					<Button variant="primary" onClick={handleShow}>
 						<i className="fa fa-pencil fa-lg" aria-hidden="true"></i>
 					</Button>

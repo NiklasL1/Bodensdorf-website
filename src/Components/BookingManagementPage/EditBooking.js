@@ -46,12 +46,12 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 				icon: "warning",
 				title: "Ausstehender Betrag ist nicht angegeben",
 			});
-		} else if (tooShort) {
-			Swal.fire({
-				icon: "warning",
-				title:
-					"Anreise Datum muss mindistens vier Tage nach Abreise Datum sein",
-			});
+			// } else if (tooShort) {
+			// 	Swal.fire({
+			// 		icon: "warning",
+			// 		title:
+			// 			"Anreise Datum muss mindistens vier Tage nach Abreise Datum sein",
+			// 	});
 		} else if (overlap) {
 			Swal.fire({
 				icon: "error",
@@ -62,7 +62,7 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 			handleClose();
 			Swal.fire({
 				icon: "success",
-				title: "Buchung wurde aktualisiert",
+				title: "Keine Fehler",
 			});
 		}
 	};
@@ -135,7 +135,7 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 				<Modal.Title>
 					{thisUser
 						? `Buchung von ${thisUser.fName} ${thisUser.lName} editieren`
-						: "oops"}
+						: `Buchung von ${value.name} editieren`}
 				</Modal.Title>
 			</Modal.Header>
 			<Modal.Body>
@@ -180,7 +180,7 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 							</Form.Control>
 						</Col>
 						<Form.Label column md="12">
-							Gesamtpreiß
+							Gesamtpreis
 						</Form.Label>
 						<Col md="12">
 							<Form.Control
@@ -265,13 +265,13 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 						</Col>
 					</Form.Group>
 					{checkOverlap}
-					<Button className="alignButton" variant="primary" type="submit">
-						Editieren
-					</Button>
 				</Form>
 			</Modal.Body>
-			<Modal.Footer>
+			<Modal.Footer className="alignFooter">
 				<DeleteBooking _id={_id} />
+				<Button variant="primary" onClick={handleSubmit}>
+					Überprüfen
+				</Button>
 			</Modal.Footer>
 		</Modal>
 	);

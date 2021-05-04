@@ -254,7 +254,7 @@ const AddToList = ({ handleClose, show }) => {
 							</Form.Control>
 						</Col>
 						<Form.Label column md="12">
-							Gesamtpreiß
+							Gesamtpreis
 						</Form.Label>
 						<Col md="12">
 							<Form.Control

@@ -36,3 +36,18 @@
 .notClickable {
 	cursor: default;
 }
+
+.tableCell {
+	text-align: center;
+	vertical-align: middle !important;
+}
+
+.blueIt {
+	color: #0275d8 ;
+}
+
+.alignFooter {
+	display: flex !important;
+	justify-content: space-between !important;
+	align-items: center !important;
+}

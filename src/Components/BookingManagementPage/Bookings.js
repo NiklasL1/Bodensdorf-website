@@ -18,9 +18,9 @@ const Bookings = ({ handleShow }) => {
 					striped
 					bordered
 					hover
-					responsive="md"
+					// responsive="md"
 					size="sm"
-					className="resizeTable"
+					// className="resizeTable"
 				>
 					<thead>
 						<tr>
@@ -30,10 +30,11 @@ const Bookings = ({ handleShow }) => {
 							<th className="resizedTextbox">Name</th>
 							<th className="resizedTextbox">Anreise</th>
 							<th className="resizedTextbox">Abreise</th>
+							<th className="resizedTextbox">Nächte</th>
 							<th className="resizedTextbox">Personen</th>
-							<th className="resizedTextbox">Gesamtpreiß</th>
+							<th className="resizedTextbox">Gesamtpreis</th>
 							<th className="resizedTextbox">Anzahlung</th>
-							<th className="resizedTextbox">Bisher bezahlt</th>
+							<th className="resizedTextbox">Ausstehend</th>
 							{/* <th>Amount Owed:</th> */}
 						</tr>
 					</thead>
