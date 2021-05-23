@@ -80,7 +80,10 @@ const MailContextProvider = ({ children }) => {
 
 				Kind regards,\r
 				
-				The Holzapfel-Littles`
+				The Holzapfel-Littles\r
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`
 				setRegisterContent(dedent(emailText));				
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setRegisterSubject(`Konto angelegt - Ossiacher See Ferienwohnung`);
@@ -98,7 +101,10 @@ const MailContextProvider = ({ children }) => {
 
 				Mit freundlichen Grüßen,
 				
-				Familie Holzapfel-Little`
+				Familie Holzapfel-Little
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`
 				setRegisterContent(dedent(emailText));
 			}			
 		}
@@ -133,13 +139,16 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€, your booking is confirmed and no further action is required. Thank you! \r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
 				Kind Regards,\r
 				
-				The Holzapfel-Littles`;
+				The Holzapfel-Littles\r
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Buchungsbestätigung - Ossiacher See Ferienwohnung`);
@@ -161,13 +170,16 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung zu zahlen. Vielen Dank dafür! Es ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
 				Mit freundlichen Grüßen,
 				
-				Familie Holzapfel-Little`;
+				Familie Holzapfel-Little
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			}
 		} else if (currentMessage === "bookingPreForceFull") {
@@ -191,13 +203,16 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€. No further action is required concerning payment.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
 				Kind Regards,\r
 				
-				The Holzapfel-Littles`;
+				The Holzapfel-Littles\r
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Buchungsbestätigung - Ossiacher See Ferienwohnung`);
@@ -219,13 +234,16 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung gezahlt. Daher ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
 				Mit freundlichen Grüßen,
 				
-				Familie Holzapfel-Little`;
+				Familie Holzapfel-Little
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			}
 		} else if (currentMessage === "bookingPrePaid") {
@@ -233,7 +251,7 @@ const MailContextProvider = ({ children }) => {
 				setSubject(`Booking confirmation - Lake Ossiach holiday apartment`);
 				let emailText = `Dear ${firstName} ${lastName},\r
 
-				thank you for booking a stay at our holiday aparment on Lake Ossiach!\r
+				Thank you for booking a stay at our holiday aparment on Lake Ossiach!\r
 				
 				Your date of arrival is the ${moment(
 					currentBookingInitial.arriveStr,
@@ -255,15 +273,18 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.arriveEpoch - 2592000000
 				).format(
 					"DD.MM.YYYY"
-				)}. Should you fail to make the remaining payment by the due date, your reservation may be cancelled.\r
+				)}. Should you fail to make the remaining payment by the due date, your reservation may be cancelled. To make the remaining payment, please log in to your account and click on "My Account" in the top left of your screen. You will see a list of your bookings and can click on the "Pay balance" button to pay the oustanding amount for your booking.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
 				
 				Kind Regards,\r
 				
-				The Holzapfel-Littles`;
+				The Holzapfel-Littles\r
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Buchungsbestätigung - Ossiacher See Ferienwohnung`);
@@ -291,15 +312,18 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.arriveEpoch - 2592000000
 				).format(
 					"DD.MM.YYYY"
-				)}. Sollten Sie bis zu dem Fälligkeitsdatum die restliche Zahlung nicht erbracht haben, könnte Ihre Reservierung storniert werden.
+				)}. Sollten Sie bis zu dem Fälligkeitsdatum die restliche Zahlung nicht erbracht haben, könnte Ihre Reservierung storniert werden. Bitte zahlen Sie indem Sie sich in Ihrem Konto anmelden und dann oben links auf "Mein Konto" klicken. Sie sehen dann eine Liste Ihrer Buchungen und können die Zahlung tätigen, indem Sie auf "Restbetrag zahlen" klicken.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
 				Mit freundlichen Grüßen,
 				
-				Familie Holzapfel-Little`;
+				Familie Holzapfel-Little
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			}
 		} else if (
@@ -329,13 +353,16 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a WhatsApp/text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our apartment!
 				
 				Kind Regards,
 				
-				The Holzapfel-Littles`;
+				The Holzapfel-Littles\r
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setSubject(`Zahlungsbestätigung - Ossiacher See Ferienwohnung`);
@@ -360,13 +387,16 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Bitte beachten Sie die Check-in und Check-out Zeiten: 16:00 bis 19:00 Uhr am Ankunftstag und bis 10:00 am Abreisetag.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per WhatsApp/SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
 				
 				Mit freundlichen Grüßen,
 				
-				Familie Holzapfel-Little`;
+				Familie Holzapfel-Little
+				
+				---
+				https://ossiachersee-ferienwohnung.de/`;
 				setContent(dedent(emailText));
 			}
 		} else if (currentMessage === "reminder14Days") {

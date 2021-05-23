@@ -1,11 +1,11 @@
 import React, { useState, useContext, useEffect } from "react";
 import EditBooking from "./EditBooking";
 import UserInfo from "./UserInfo";
-import { BookingsContext } from "../../Context/BookingsContext";
+// import { BookingsContext } from "../../Context/BookingsContext";
 import { UsersContext } from "../../Context/UsersContext";
 import "./Bookings.css";
 import Button from "react-bootstrap/Button";
-import { LogContext } from "../../Context/LogContext";
+// import { LogContext } from "../../Context/LogContext";
 import Image from "react-bootstrap/Image";
 
 const Booking = ({
@@ -31,9 +31,9 @@ const Booking = ({
 	const handleClose2 = () => setShow2(false);
 	const handleShow2 = () => setShow2(true);
 
-	const { update } = useContext(BookingsContext);
+	// const { update } = useContext(BookingsContext);
 	const { list, getUsers } = useContext(UsersContext);
-	const { logThis } = useContext(LogContext);
+	// const { logThis } = useContext(LogContext);
 	const [value, setValue] = useState({
 		userID: userID,
 		airBnB: airBnB,
@@ -64,9 +64,9 @@ const Booking = ({
 	// 	}
 	// };
 
-	const saveChanges = () => {
-		update(_id, value);
-	};
+	// const saveChanges = () => {
+	// 	update(_id, value);
+	// };
 
 	useEffect(() => {
 		// getUserByID(value.userID)
@@ -92,29 +92,39 @@ const Booking = ({
 					thisUser={thisUser}
 				/>
 				<td className="tableCell">
-					{value.airBnB ? <Image src="/img/Airbnb_logo_small.png" rounded /> : <Image src="/img/web_logo.jpg" rounded />}					
+					{value.airBnB ? (
+						<Image src="/img/Airbnb_logo_small.png" rounded />
+					) : (
+						<Image src="/img/web_logo.jpg" rounded />
+					)}
 				</td>
 				{thisUser ? (
 					<td className="tableCell clickable" onDoubleClick={handleShow2}>
-						{`${thisUser.fName} ${thisUser.lName}`}
+						{thisUser.fName} {thisUser.lName}
 					</td>
 				) : (
-					<td className="tableCell">{`${value.name}`}</td>
+					<td className="tableCell">{value.name}</td>
 				)}
-				<td className="tableCell">{`${value.arriveStr}`}</td>
-				<td className="tableCell">{`${value.departStr}`}</td>
+				<td className="tableCell">{value.arriveStr}</td>
+				<td className="tableCell">{value.departStr}</td>
 				<td className="tableCell">
-					{`${(value.departEpoch - value.arriveEpoch) / 86400000}`}
+					{(value.departEpoch - value.arriveEpoch) / 86400000}
 				</td>
 				<td className="tableCell">{value.people}</td>
 				<td className="tableCell">
-					{JSON.stringify(value.totalPrice).replace(".", ",")}
+					{typeof value.totalPrice === "string"
+						? value.totalPrice.replace(".", ",")
+						: JSON.stringify(value.totalPrice).replace(".", ",")}
 				</td>
 				<td className="tableCell">
-					{JSON.stringify(value.prepayment).replace(".", ",")}
+					{typeof value.prepayment === "string"
+						? value.prepayment.replace(".", ",")
+						: JSON.stringify(value.prepayment).replace(".", ",")}
 				</td>
 				<td className="tableCell">
-					{JSON.stringify(value.amtOwed).replace(".", ",")}
+					{typeof value.amtOwed === "string"
+						? value.amtOwed.replace(".", ",")
+						: JSON.stringify(value.amtOwed).replace(".", ",")}
 				</td>
 				{/* <td>
 				<input 

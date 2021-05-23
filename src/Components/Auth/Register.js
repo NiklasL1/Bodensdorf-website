@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Swal from "sweetalert2";
 import "./auth.css";
+import i18n from "../../i18n";
 import { useTranslation } from "react-i18next";
 import { AuthContext } from "../../Context/AuthContext";
 import { MailContext } from "../../Context/MailContext";
@@ -38,7 +39,7 @@ const Register = ({ handleRegister }) => {
 		registerMessage,
 		setRegisterMessage,
 		sendRegisterEmail,
-		registerSubject
+		registerSubject,
 	} = useContext(MailContext);
 	const { logThis } = useContext(LogContext);
 
@@ -56,7 +57,7 @@ const Register = ({ handleRegister }) => {
 		setShow(true);
 	};
 
-	const register = () => {
+	const register = () => {		
 		axios({
 			method: "POST",
 			data: {
@@ -66,6 +67,7 @@ const Register = ({ handleRegister }) => {
 				lName: registerLastName,
 				email: registerEmail.toLowerCase(),
 				telNo: registerTelNo,
+				language: i18n.language,
 			},
 			withCredentials: true,
 			url:
@@ -74,7 +76,7 @@ const Register = ({ handleRegister }) => {
 					: `${process.env.REACT_APP_PROD_API}/api/register`,
 		})
 			.then((res) => {
-				logThis(res);
+				logThis("from Register", res);
 				if (res.data === "User Already Exists") {
 					Swal.fire({
 						icon: "error",
@@ -90,7 +92,7 @@ const Register = ({ handleRegister }) => {
 					setEmail(registerUsername);
 					logThis("register success");
 					setRegisterMessage(true);
-				} else {
+				} else if (res.data === "Error") {
 					Swal.fire({
 						icon: "error",
 						title: `${t("registerAlert11")}`,
@@ -107,7 +109,7 @@ const Register = ({ handleRegister }) => {
 
 	useEffect(() => {
 		if (registerMessage) {
-			login();			
+			login();
 			sendRegisterEmail();
 		}
 	}, [registerSubject]);
@@ -174,12 +176,14 @@ const Register = ({ handleRegister }) => {
 				</Modal.Header>
 				<Modal.Body>
 					<Form className="registerForm">
-						<Form.Group controlId="formGroupPersonname">
+						<Form.Group controlId="formGroupPersonFirstName">
 							<Form.Label>{t("register3")}</Form.Label>
 							<Form.Control
 								type="text"
 								onChange={(e) => setRegisterFirstName(e.target.value)}
 							/>
+						</Form.Group>
+						<Form.Group controlId="formGroupPersonLastName">
 							<Form.Label>{t("register4")}</Form.Label>
 							<Form.Control
 								type="text"
@@ -208,12 +212,14 @@ const Register = ({ handleRegister }) => {
                         <Form.Label>Username</Form.Label>                
                         <Form.Control type="text" onChange={e => setRegisterUsername(e.target.value)} />
                     </Form.Group>                       */}
-						<Form.Group controlId="formGroupPassword">
+						<Form.Group controlId="formGroupPassword1">
 							<Form.Label>{t("register7")}</Form.Label>
 							<Form.Control
 								type="password"
 								onChange={(e) => setRegisterPassword(e.target.value)}
 							/>
+						</Form.Group>
+						<Form.Group controlId="formGroupPassword2">
 							<Form.Label>{t("register8")}</Form.Label>
 							<Form.Control
 								type="password"
