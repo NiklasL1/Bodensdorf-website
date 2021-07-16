@@ -15,7 +15,9 @@
 
 .forgotPassword {
 	font-size: 0.8rem !important;
+	margin-top: 5px;
 	margin-bottom: -10px;
+	cursor: pointer;
 }
 
 .register {
@@ -77,4 +79,23 @@
 #userProfileTop {
 	display: flex;
 	justify-content: space-between;
+}
+
+#forgotPasswordCards {
+	display: grid;
+	grid-template-columns: 1fr;
+	gap: 20px;
+	align-items: stretch;
+	margin-left: 20%;
+	margin-right: 20%;
+}
+
+#passwordTitle{
+	text-align: center;
+}
+
+#passwordTop{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
 }

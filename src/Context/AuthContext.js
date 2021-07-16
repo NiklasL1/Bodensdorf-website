@@ -135,7 +135,7 @@ const AuthContextProvider = ({ children }) => {
 				hasRegistered,
 				setHasRegistered,
 				loggedInAfterRegister,
-				setLoggedInAfterRegister,				
+				setLoggedInAfterRegister,
 				registerFirstName,
 				setRegisterFirstName,
 				registerLastName,
@@ -149,7 +149,7 @@ const AuthContextProvider = ({ children }) => {
 				registerPassword,
 				setRegisterPassword,
 				registerPasswordConfirm,
-				setRegisterPasswordConfirm
+				setRegisterPasswordConfirm,
 			}}
 		>
 			{children}

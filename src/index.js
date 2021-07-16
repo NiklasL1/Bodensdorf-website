@@ -13,26 +13,32 @@ import PaymentContextProvider from "./Context/PaymentContext";
 import AuthContextProvider from "./Context/AuthContext";
 import MailContextProvider from "./Context/MailContext";
 import LogContextProvider from "./Context/LogContext";
+import ImgContextProvider from "./Context/ImgContext";
+import PhotosContextProvider from "./Context/PhotosContext";
 
 ReactDOM.render(
 	<React.StrictMode>
-		<LogContextProvider>
-			<UsersContextProvider>
-				<BookingsContextProvider>
-					<BookingLogicContextProvider>
-						<PaymentContextProvider>
-							<AuthContextProvider>
-								<MailContextProvider>
-									<BrowserRouter>
-										<App />
-									</BrowserRouter>
-								</MailContextProvider>
-							</AuthContextProvider>
-						</PaymentContextProvider>
-					</BookingLogicContextProvider>
-				</BookingsContextProvider>
-			</UsersContextProvider>
-		</LogContextProvider>
+		<ImgContextProvider>
+			<PhotosContextProvider>
+				<LogContextProvider>
+					<UsersContextProvider>
+						<BookingsContextProvider>
+							<BookingLogicContextProvider>
+								<PaymentContextProvider>
+									<AuthContextProvider>
+										<MailContextProvider>
+											<BrowserRouter>
+												<App />
+											</BrowserRouter>
+										</MailContextProvider>
+									</AuthContextProvider>
+								</PaymentContextProvider>
+							</BookingLogicContextProvider>
+						</BookingsContextProvider>
+					</UsersContextProvider>
+				</LogContextProvider>
+			</PhotosContextProvider>
+		</ImgContextProvider>
 	</React.StrictMode>,
 	document.getElementById("root")
 );

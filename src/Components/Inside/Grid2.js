@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Grid2.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,8 +11,10 @@ import { useTranslation } from "react-i18next";
 const Grid2 = () => {
 	const { t } = useTranslation();
 
+	const [showSlides, setShowSlides] = useState(false);
+
 	return (
-		<div className="spacing">
+		<div onMouseEnter={setShowSlides} className="spacing">
 			<a name="house">
 				<h2 className="title">{t("iTitle")}</h2>
 			</a>
@@ -33,7 +35,7 @@ const Grid2 = () => {
 						lg={(6, { order: "last" })}
 					>
 						{/* <LightboxInside /> */}
-						<CarouselInside />
+						<CarouselInside showSlides={showSlides} />
 					</Col>
 				</Row>
 			</Container>

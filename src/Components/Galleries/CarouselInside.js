@@ -1,36 +1,12 @@
-import React, { CSSProperties } from "react";
+import React, { useContext } from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from "react-responsive-carousel";
-import { insidePhotosNew } from "./InsidePhotosNew";
+import { PhotosContext } from "../../Context/PhotosContext";
 
-const CarouselInside = () => {
-	// const arrowStyles: CSSProperties = {
-	// 	position: "absolute",
-	// 	zIndex: 2,
-	// 	top: "calc(50% - 15px)",
-	// 	width: 30,
-	// 	height: 30,
-	// 	cursor: "pointer",
-	// };
-
+const CarouselInside = ({ showSlides }) => {
+	const { insidePhotosNew } = useContext(PhotosContext);
 	return (
 		<>
-			{/* <Carousel
-				showThumbs={false}
-				infiniteLoop={true}
-				useKeyboardArrows={true}
-				swipeable={true}
-				emulateTouch={true}
-				showStatus={false}
-				dynamicHeight={true}
-			>
-				{insidePhotosNew.map((photo) => (
-					<div key={photo.key}>
-						<img src={photo.src} alt={photo.src} />
-					</div>
-				))}
-			</Carousel> */}
-
 			<Carousel
 				showThumbs={false}
 				infiniteLoop={true}
@@ -40,13 +16,13 @@ const CarouselInside = () => {
 				showStatus={false}
 				dynamicHeight={false}
 				renderArrowPrev={(onClickHandler, hasPrev, label) =>
-					hasPrev && (					
+					hasPrev && (
 						<span
 							onClick={onClickHandler}
 							title={label}
 							style={{
 								position: "absolute",
-								zIndex: 2,							
+								zIndex: 2,
 								width: 50,
 								height: "100%",
 								top: 0,
@@ -54,15 +30,15 @@ const CarouselInside = () => {
 								left: 0,
 								display: "flex",
 								justifyContent: "center",
-								alignItems: "center"							
+								alignItems: "center",
 							}}
 						>
 							<i
 								className="fa fa-arrow-left fa-2x"
 								aria-hidden="true"
-								style={{																				
+								style={{
 									textShadow:
-										"-1px -1px 0 #f8f8ff, 1px -1px 0 #f8f8ff, -1px 1px 0 #f8f8ff, 1px 1px 0 #f8f8ff",								
+										"-1px -1px 0 #f8f8ff, 1px -1px 0 #f8f8ff, -1px 1px 0 #f8f8ff, 1px 1px 0 #f8f8ff",
 								}}
 							></i>
 						</span>
@@ -75,7 +51,7 @@ const CarouselInside = () => {
 							title={label}
 							style={{
 								position: "absolute",
-								zIndex: 2,							
+								zIndex: 2,
 								width: 50,
 								height: "100%",
 								top: 0,
@@ -83,26 +59,32 @@ const CarouselInside = () => {
 								right: 0,
 								display: "flex",
 								justifyContent: "center",
-								alignItems: "center"
+								alignItems: "center",
 							}}
 						>
 							<i
 								className="fa fa-arrow-right fa-2x"
 								aria-hidden="true"
-								style={{																				
+								style={{
 									textShadow:
-										"-1px -1px 0 #f8f8ff, 1px -1px 0 #f8f8ff, -1px 1px 0 #f8f8ff, 1px 1px 0 #f8f8ff",								
+										"-1px -1px 0 #f8f8ff, 1px -1px 0 #f8f8ff, -1px 1px 0 #f8f8ff, 1px 1px 0 #f8f8ff",
 								}}
 							></i>
 						</span>
 					)
 				}
 			>
-				{insidePhotosNew.map((photo) => (
-					<div key={photo.key}>
-						<img src={photo.src} alt={photo.src} />
-					</div>
-				))}
+				{showSlides
+					? insidePhotosNew.map((photo) => (
+							<div key={photo.key}>
+								<img src={photo.src} alt={photo.src} />
+							</div>
+					  ))
+					: insidePhotosNew.slice(0, 2).map((photo) => (
+							<div key={photo.key}>
+								<img src={photo.src} alt={photo.src} />
+							</div>
+					  ))}
 			</Carousel>
 		</>
 	);

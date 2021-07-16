@@ -57,7 +57,7 @@ const Register = ({ handleRegister }) => {
 		setShow(true);
 	};
 
-	const register = () => {		
+	const register = () => {
 		axios({
 			method: "POST",
 			data: {
@@ -114,6 +114,12 @@ const Register = ({ handleRegister }) => {
 		}
 	}, [registerSubject]);
 
+	const testEmail = new RegExp(
+		/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	);
+
+	const testTelNo = new RegExp(/^([+]|00)([0-9]{8,24}?)$/);
+
 	const checkRegister = (event) => {
 		event.preventDefault();
 		if (!registerFirstName || registerFirstName === "") {
@@ -155,6 +161,16 @@ const Register = ({ handleRegister }) => {
 			Swal.fire({
 				icon: "warning",
 				title: `${t("registerAlert10")}`,
+			});
+		} else if (!testEmail.test(registerEmail)) {
+			Swal.fire({
+				icon: "warning",
+				title: `${t("registerAlert12")}`,
+			});
+		} else if (!testTelNo.test(registerTelNo)) {
+			Swal.fire({
+				icon: "warning",
+				title: `${t("registerAlert13")}`,
 			});
 		} else {
 			register();

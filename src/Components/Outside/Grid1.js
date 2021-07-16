@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Grid1.css";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
@@ -11,8 +11,10 @@ import { useTranslation } from "react-i18next";
 const Grid1 = () => {
 	const { t } = useTranslation();
 
+	const [showSlides, setShowSlides] = useState(false);
+
 	return (
-		<div className="spacing">
+		<div onMouseEnter={setShowSlides} className="spacing">
 			<a name="sea">
 				<h2 className="title">{t("oTitle")}</h2>
 			</a>
@@ -25,7 +27,7 @@ const Grid1 = () => {
 						lg={6}
 					>
 						{/* <LightboxOutside/> */}
-						<CarouselOutside />
+						<CarouselOutside showSlides={showSlides} />
 					</Col>
 					<Col
 						className="d-flex justify-content-center verticalAlign"

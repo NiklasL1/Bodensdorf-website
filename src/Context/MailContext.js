@@ -18,6 +18,12 @@ const MailContextProvider = ({ children }) => {
 	const [registerSubject, setRegisterSubject] = useState("subject");
 	const [registerContent, setRegisterContent] = useState("content");
 
+	const [forgotPasswordEmail, setForgotPasswordEmail] = useState("");
+	const [forgotPasswordCode, setForgotPasswordCode] = useState("");
+	const [sendingForgotPasswordEmail, setSendingForgotPasswordEmail] =
+		useState(false);
+	const [forgotPasswordEmailSent, setForgotPasswordEmailSent] = useState(false);
+
 	const {
 		data,
 		registerFirstName,
@@ -62,10 +68,12 @@ const MailContextProvider = ({ children }) => {
 			? thisBooking
 			: undefined;
 
-	useEffect(() => {		
-		if (registerMessage) {			
+	useEffect(() => {
+		if (registerMessage) {
 			if (i18n.language.substring(0, 2) === "en") {
-				setRegisterSubject("Registration confirmation - Lake Ossiach holiday apartment");				
+				setRegisterSubject(
+					"Registration confirmation - Lake Ossiach holiday apartment"
+				);
 				let emailText = `Dear ${registerFirstName} ${registerLastName}, \r
 
 				Thank you for registering an account with us. We have stored the following personal information you provided:\r\r
@@ -83,8 +91,8 @@ const MailContextProvider = ({ children }) => {
 				The Holzapfel-Littles\r
 				
 				---
-				https://ossiachersee-ferienwohnung.de/`
-				setRegisterContent(dedent(emailText));				
+				https://ossiachersee-ferienwohnung.de/`;
+				setRegisterContent(dedent(emailText));
 			} else if (i18n.language.substring(0, 2) === "de") {
 				setRegisterSubject(`Konto angelegt - Ossiacher See Ferienwohnung`);
 				let emailText = `Sehr geehrte(r) ${registerFirstName} ${registerLastName}, \r
@@ -97,18 +105,18 @@ const MailContextProvider = ({ children }) => {
 
 				Ihre Daten sind sicher gespeichert und werden ohne Ihre ausdrückliche Erlaubnis nicht an Dritte weitergegeben.\r
 
-				Wir freuen uns, Sie bald in unserer Wohnung willkommen heißen zu dürfen!\r
+				Wir freuen uns, Sie bald in unserer Ferienwohnung willkommen heißen zu dürfen!\r
 
 				Mit freundlichen Grüßen,
 				
 				Familie Holzapfel-Little
 				
 				---
-				https://ossiachersee-ferienwohnung.de/`
+				https://ossiachersee-ferienwohnung.de/`;
 				setRegisterContent(dedent(emailText));
-			}			
+			}
 		}
-	}, [registerMessage])
+	}, [registerMessage]);
 
 	useEffect(() => {
 		logThis(
@@ -139,9 +147,9 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€, your booking is confirmed and no further action is required. Thank you! \r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
-				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
+				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!\r
 				
 				Kind Regards,\r
 				
@@ -170,9 +178,9 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung zu zahlen. Vielen Dank dafür! Es ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
-				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
+				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				
 				Mit freundlichen Grüßen,
 				
@@ -203,9 +211,9 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€. No further action is required concerning payment.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
-				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
+				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!\r
 				
 				Kind Regards,\r
 				
@@ -234,9 +242,9 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung gezahlt. Daher ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
-				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
+				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				
 				Mit freundlichen Grüßen,
 				
@@ -275,9 +283,9 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Should you fail to make the remaining payment by the due date, your reservation may be cancelled. To make the remaining payment, please log in to your account and click on "My Account" in the top left of your screen. You will see a list of your bookings and can click on the "Pay balance" button to pay the oustanding amount for your booking.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
-				We thank you for your booking and hope you have a fantastic stay in our apartment!\r
+				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!\r
 				
 				Kind Regards,\r
 				
@@ -314,9 +322,9 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Sollten Sie bis zu dem Fälligkeitsdatum die restliche Zahlung nicht erbracht haben, könnte Ihre Reservierung storniert werden. Bitte zahlen Sie indem Sie sich in Ihrem Konto anmelden und dann oben links auf "Mein Konto" klicken. Sie sehen dann eine Liste Ihrer Buchungen und können die Zahlung tätigen, indem Sie auf "Restbetrag zahlen" klicken.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
-				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
+				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				
 				Mit freundlichen Grüßen,
 				
@@ -353,9 +361,9 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal (WhatsApp) or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
 				
-				We thank you for your booking and hope you have a fantastic stay in our apartment!
+				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!
 				
 				Kind Regards,
 				
@@ -387,9 +395,9 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Bitte beachten Sie die Check-in und Check-out Zeiten: 16:00 bis 19:00 Uhr am Ankunftstag und bis 10:00 am Abreisetag.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal (WhatsApp) oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
 				
-				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Wohnung!
+				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				
 				Mit freundlichen Grüßen,
 				
@@ -416,7 +424,12 @@ const MailContextProvider = ({ children }) => {
 				"your booking was cancelled because you did not pay the rest of it by the deadline"
 			);
 		}
-	}, [currentMessage, currentBookingInitial, currentBookingRemainder, i18n.language]);
+	}, [
+		currentMessage,
+		currentBookingInitial,
+		currentBookingRemainder,
+		i18n.language,
+	]);
 
 	const sendEmail = async () => {
 		logThis(currentEmail, subject, content);
@@ -439,14 +452,14 @@ const MailContextProvider = ({ children }) => {
 		const resData = await response.json();
 		if (resData.status === "success") {
 			setMessage("");
-			logThis("email message sent successfully")
+			logThis("email message sent successfully");
 		}
 		// else if (resData.status === "fail") {
 		// 	alert("Message failed to send.");
 		// }
 	};
 
-	const sendRegisterEmail = async () => {		
+	const sendRegisterEmail = async () => {
 		const response = await fetch(
 			process.env.REACT_APP_LOCATION === "development"
 				? `${process.env.REACT_APP_DEV_API}/api/mail/access`
@@ -465,8 +478,69 @@ const MailContextProvider = ({ children }) => {
 		);
 		const resData = await response.json();
 		if (resData.status === "success") {
-			setRegisterMessage(false)					
-			logThis("register email sent")
+			setRegisterMessage(false);
+			logThis("register email sent");
+		}
+		// else if (resData.status === "fail") {
+		// 	alert("Message failed to send.");
+		// }
+	};
+
+	const sendForgotPasswordEmail = async () => {
+		const response = await fetch(
+			process.env.REACT_APP_LOCATION === "development"
+				? `${process.env.REACT_APP_DEV_API}/api/mail/access`
+				: `${process.env.REACT_APP_PROD_API}/api/mail/access`,
+			{
+				method: "POST",
+				headers: {
+					"Content-type": "application/json",
+				},
+				body: JSON.stringify({
+					email: forgotPasswordEmail,
+					subject:
+						i18n.language.substring(0, 2) === "en"
+							? "Password change request - Lake Ossiach holiday apartment"
+							: "Passwort zurücksetzen - Ossiacher See Ferienwohnung",
+					content:
+						i18n.language.substring(0, 2) === "en"
+							? dedent(
+									`Dear User,
+
+									you have requested a password reset code. Your code is ${forgotPasswordCode}.
+
+									We look forward to welcoming you to our holiday apartment soon.
+									
+									Kind Regards,
+				
+									The Holzapfel-Littles
+				
+									---
+									https://ossiachersee-ferienwohnung.de/`
+							  )
+							: dedent(
+									`Sehr geehrte Nutzerin, sehr geehrter Nutzer, 
+
+									Sie haben einen Code angefordert, um Ihr Passwort zu ändern. Ihr Code lautet ${forgotPasswordCode}.
+									
+									Wir hoffen Sie bald in unserer Ferienwohnung wilkommen heißen zu dürfen.
+
+									Mit freundlichen Grüßen,
+				
+									Familie Holzapfel-Little
+				
+									---
+									https://ossiachersee-ferienwohnung.de/`
+							  ),
+				}),
+			}
+		);
+		const resData = await response.json();
+		if (resData.status === "success") {
+			setRegisterMessage(false);
+			logThis("forgot password email sent");
+			setSendingForgotPasswordEmail(false)
+			setForgotPasswordEmailSent(true)
 		}
 		// else if (resData.status === "fail") {
 		// 	alert("Message failed to send.");
@@ -474,20 +548,31 @@ const MailContextProvider = ({ children }) => {
 	};
 
 	return (
-		<MailContext.Provider value={{ 
-			sendEmail, 
-			setMessage, 
-			setEmail, 
-			message, 
-			content, 
-			subject, 
-			registerMessage, 
-			setRegisterMessage, 
-			sendRegisterEmail, 
-			registerSubject,
-			currentMessage, 
-			currentBookingInitial, 
-			currentBookingRemainder }}>
+		<MailContext.Provider
+			value={{
+				sendEmail,
+				setMessage,
+				setEmail,
+				message,
+				content,
+				subject,
+				registerMessage,
+				setRegisterMessage,
+				sendRegisterEmail,
+				registerSubject,
+				currentMessage,
+				currentBookingInitial,
+				currentBookingRemainder,
+				setForgotPasswordCode,
+				setForgotPasswordEmail,
+				forgotPasswordEmail,
+				sendingForgotPasswordEmail,
+				setSendingForgotPasswordEmail,
+				sendForgotPasswordEmail,
+				forgotPasswordEmailSent,
+				forgotPasswordCode
+			}}
+		>
 			{children}
 		</MailContext.Provider>
 	);

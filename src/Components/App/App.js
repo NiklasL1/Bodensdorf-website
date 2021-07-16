@@ -9,6 +9,7 @@ import PageNotFound from "../PageNotFound";
 import StripeNew from "../Stripe/StripeNew";
 import UserProfilePage from "../Auth/UserProfilePage";
 import SofortReturnPage from "../Stripe/SofortReturnPage";
+import ForgotPassword from "../Auth/ForgotPassword";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
@@ -22,6 +23,7 @@ function App() {
 					<meta name="description" content={t("MetaContent")} />
 				</Helmet>
 				<Switch>
+					<Route exact path="/password/" children={<ForgotPassword />} />
 					<Route exact path="/return/" children={<SofortReturnPage />} />
 					<Route exact path="/user/" children={<UserProfilePage />} />
 					<Route exact path="/checkout/" children={<StripeNew />} />

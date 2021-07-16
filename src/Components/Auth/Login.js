@@ -12,14 +12,8 @@ import { Link } from "react-router-dom";
 const Login = () => {
 	const { t } = useTranslation();
 
-	const {
-		data,
-		setData,
-		setLoginUsername,
-		setLoginPassword,
-		login,
-		getUser,
-	} = useContext(AuthContext);
+	const { data, setData, setLoginUsername, setLoginPassword, login, getUser } =
+		useContext(AuthContext);
 
 	const logout = () => {
 		axios({
@@ -69,9 +63,11 @@ const Login = () => {
 									placeholder={t("login5")}
 									onChange={(e) => setLoginPassword(e.target.value)}
 								/>
-								{/* <Form.Label className="forgotPassword">
-									{t("login2")}
-								</Form.Label> */}
+								<Link to="/password">
+									<Form.Label className="forgotPassword">
+										{t("login2")}
+									</Form.Label>
+								</Link>
 							</Form.Group>
 							<Button
 								variant="primary"
