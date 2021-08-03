@@ -10,6 +10,7 @@ import StripeNew from "../Stripe/StripeNew";
 import UserProfilePage from "../Auth/UserProfilePage";
 import SofortReturnPage from "../Stripe/SofortReturnPage";
 import ForgotPassword from "../Auth/ForgotPassword";
+import RecommendationPage from "../Recommendations/RecommendationPage";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 
@@ -20,7 +21,7 @@ function App() {
 			<div className="App">
 				<Helmet>
 					<title>{t("TabTitle")}</title>
-					<meta name="description" content={t("MetaContent")} />
+					<meta name="description" content={t("MetaDescription")} />
 				</Helmet>
 				<Switch>
 					<Route exact path="/password/" children={<ForgotPassword />} />
@@ -30,6 +31,7 @@ function App() {
 					<Route exact path="/impressum/" children={<Imprint />} />
 					<Route exact path="/users/" children={<UserManagementPage />} />
 					<Route exact path="/bookings/" children={<BookingManagementPage />} />
+					<Route exact path="/recommendations/" children={<RecommendationPage />} />
 					<Route exact path="/" children={<Main />} />
 					<Route children={<PageNotFound />} />
 				</Switch>

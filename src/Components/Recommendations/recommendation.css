@@ -1,0 +1,66 @@
+.body-bg {	
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;	
+	background-repeat: no-repeat;
+	background-position: center center;
+	min-height: 100vh;
+}
+
+.recommendationPage {
+	margin: 0px 20px 0px 20px;
+}
+
+.recommendationTitle {
+	align-content: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.recommendationTop {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.recommendationCards {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 20px;
+	align-items: stretch;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.rec {
+	display: flex;
+	flex: 1 1 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	box-shadow: 8px 8px 4px lightgray;
+}
+
+.recFavorite {
+	display: flex;
+	flex: 1 1 auto;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	box-shadow: 8px 8px 4px lightblue;
+}
+
+.recBody {
+	float: right;
+}
+
+.recTitle {
+	margin-top: 0px;
+	margin-bottom: 10px;
+}
+
+.recImage {
+	float: left;
+	width: 25%;
+	padding-right: 3%;
+}

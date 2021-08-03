@@ -313,13 +313,18 @@ i18n
           imprint20: "",
           imprint21: "",
           imprint22: "",
-          mailRegistrationSubject:"Registration confirmation - Lake Ossiach holiday apartment",
-          mailRegistrationContent:`Dear`,
-          mailBookingSubject:"Booking confirmation - Lake Ossiach holiday apartment",
-          mailBookingPrePaidContent:`Dear`,
-          mailBookingPaidFullContent:"",
-          mailBookingRestPaidSubject:"Payment confirmation - Lake Ossiach holiday apartment",
-          mailBookingRestPaidContent:"",
+          
+          //RECOMMENDATIONS//
+
+          recTitle: 'Our Recommendations',
+          recIntro: 'Some text about the page',
+          recTab1: 'Eating out',
+          recTab2: 'Shopping',
+          recTab3: 'Other',
+          gotoWeb: 'Visit web site',
+          gotoMap: 'Go to map',
+          recUrbaniS: 'Nice place on major road',
+          recUrbaniT: 'Food...garden...other stuff',
         }
       },
       de: {
@@ -650,13 +655,18 @@ i18n
           imprint20: "impressum-generator.de",
           imprint21: " der ",
           imprint22: "Rechtsanwältin Franziska Hasselbach, Bonn",
-          mailRegistrationSubject:"",
-          mailRegistrationContent:"",
-          mailBookingSubject:"",
-          mailBookingPrePaidContent:"",
-          mailBookingPaidFullContent:"",
-          mailBookingRestPaidSubject:"",
-          mailBookingRestPaidContent:"",
+
+        //RECOMMENDATIONS//
+
+          recTitle: 'Unsere Empfehlungen',
+          recIntro: 'Kurze Beschreibung der Seite',
+          recTab1: 'Essen gehen',
+          recTab2: 'Einkaufen',
+          recTab3: 'Sonstiges',
+          gotoWeb: 'Website besuchen',
+          gotoMap: 'Karte ansehen',
+          recUrbaniS: 'Schönes Restaurant an einer Hauptstraße',
+          recUrbaniT: 'Essen...Garten..andere Sachen...',
         }
       }
     },

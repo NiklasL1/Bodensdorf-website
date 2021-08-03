@@ -39,8 +39,7 @@ function Page() {
 			const headerPicElement = elementRef.current;
 			headerPicElement.style[
 				"background-image"
-			] = `url(/img/${imgType}-${imgSize}/lage-haeuservomsee2.${imgType})`;
-			console.log(headerPicElement);
+			] = `url(/img/${imgType}-${imgSize}/lage-haeuservomsee2.${imgType})`;			
 		}
 	}, [imgType]);
 
