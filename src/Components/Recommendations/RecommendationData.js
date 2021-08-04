@@ -4,7 +4,7 @@ export const recommendations = [
 		type: "other",
 		map: "https://goo.gl/maps/Vo3ffgcQawnRdj3T6",
 		link: "https://www.gerlitzen.com/",
-		image: "/img/activity.png",
+		image: "/img/gerlitzenbahn.jpeg",
 		subtitle: "recBahnS",
 		description: "recBahnT",
 		favorite: "rec",
@@ -14,7 +14,7 @@ export const recommendations = [
 		type: "other",
 		map: "https://goo.gl/maps/MVp4n5WKKMUm8X1n6",
 		link: "https://www.burg-landskron.at/",
-		image: "/img/activity.png",
+		image: "/img/landskron.jpeg",
 		subtitle: "recLandskronS",
 		description: "recLandskronT",
 		favorite: "rec",
@@ -34,9 +34,9 @@ export const recommendations = [
 		type: "other",
 		map: null,
 		link: null,
-		image: "/img/activity.png",
-		subtitle: "recTennisS",
-		description: "recTennisT",
+		image: "/img/tennis.png",
+		subtitle: "Tennis spielen, Trainer buchen",
+		description: "Vom Balkon der Wohnung aus schauen Sie nach links und Sie sehen den Tennisplatz. Buchen Sie im voraus oder gehen Sie einfach vorbei.",
 		favorite: "rec",
 	},
 	{
@@ -77,7 +77,7 @@ export const recommendations = [
 		image: "/img/cutlery.png",
 		subtitle: "recUrbaniS",
 		description: "recUrbaniT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "Naturgasthof Schlosswirt Ossiach",
@@ -87,7 +87,7 @@ export const recommendations = [
 		image: "/img/cutlery.png",
 		subtitle: "recSchlosswirtS",
 		description: "recSchlosswirtT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "zum Hexenpfandl",
@@ -97,7 +97,7 @@ export const recommendations = [
 		image: "/img/cutlery.png",
 		subtitle: "recHexenpfandlS",
 		description: "recHexenpfandlT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "Seerestaurant Steindorf",
@@ -107,7 +107,7 @@ export const recommendations = [
 		image: "/img/cutlery.png",
 		subtitle: "recSeerestaurantS",
 		description: "recSeerestaurantT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "Café Pavillion am See",
@@ -157,7 +157,7 @@ export const recommendations = [
 		image: "/img/shopping.jpeg",
 		subtitle: "recBillaS",
 		description: "recBillaT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "Spar",
@@ -187,7 +187,7 @@ export const recommendations = [
 		image: "/img/shopping.jpeg",
 		subtitle: "recNockfleischS",
 		description: "recNockfleischT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "Café Konditorei Saliterer",
@@ -197,6 +197,6 @@ export const recommendations = [
 		image: "/img/shopping.jpeg",
 		subtitle: "recSalitererS",
 		description: "recSalitererT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 ];

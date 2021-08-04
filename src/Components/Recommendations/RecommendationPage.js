@@ -27,9 +27,8 @@ const RecommendationPage = () => {
 					<Button className="userProfileTitle">{t("user14")}</Button>
 				</Link>
 				<span className="recommendationTop">
-					<div className="recommendationTitle">
-						<h3>{t("recTitle")}</h3>
-						<p>{t("recIntro")}</p>
+					<div>
+						<h1 className="recommendationTitle">{t("recTitle")}</h1>
 					</div>
 				</span>
 				<div className="tab-wrapper">

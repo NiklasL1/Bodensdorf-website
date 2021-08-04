@@ -22,7 +22,7 @@ const RecommendationTab = ({ recType }) => {
 									<Card.Subtitle className="recTitle">
 										<span className="text-muted">{t(rec.subtitle)}</span>
 									</Card.Subtitle>
-									<Card.Text as="div">
+									<Card.Text className="recText" as="div">
 										<p>
 											{" "}
 											<small className="text-muted">{t(rec.description)}</small>
@@ -30,12 +30,12 @@ const RecommendationTab = ({ recType }) => {
 									</Card.Text>
 									{rec.map ? (
 										<Card.Link href={rec.map} target="_blank" rel="noreferrer">
-											{t("gotoMap")}
+											{t("recMap")}
 										</Card.Link>
 									) : undefined}
 									{rec.link ? (
 										<Card.Link href={rec.link} target="_blank" rel="noreferrer">
-											{t("gotoWeb")}
+											{t("recWeb")}
 										</Card.Link>
 									) : undefined}
 								</Card.Body>

@@ -16,6 +16,9 @@
 	align-content: center;
 	margin-top: 20px;
 	margin-bottom: 20px;
+	color: white;
+	font-weight: 600;
+	-webkit-text-stroke: 0.5px darkgray;
 }
 
 .recommendationTop {
@@ -32,35 +35,49 @@
 	align-items: stretch;
 	margin-left: 20px;
 	margin-right: 20px;
+	padding-top: 0.75rem;
 }
 
 .rec {
 	display: flex;
 	flex: 1 1 auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
-	box-shadow: 8px 8px 4px lightgray;
+	background-color: rgba(255,255,255,0.85) !important;
+	box-shadow: 8px 8px 4px green;
 }
 
 .recFavorite {
 	display: flex;
 	flex: 1 1 auto;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	background-color: rgba(255,255,255,0.85) !important;
 	box-shadow: 8px 8px 4px lightblue;
 }
 
 .recBody {
-	float: right;
+	float: lefrightt;
+	clear: none;
 }
 
 .recTitle {
-	margin-top: 0px;
-	margin-bottom: 10px;
+	margin: 0 !important;
+	padding: 0px 0px 0px 10px;
+	float: right;
+	width: 75%;
 }
 
 .recImage {
 	float: left;
 	width: 25%;
-	padding-right: 3%;
+	/* padding-right: 3%; */
+}
+.recText {
+	clear: both;
+}
+
+.nav-item {
+	background-color: rgba(255,255,255,0.7) !important;
+}
+
+.nav-item.active {
+	background-color: rgba(255,255,255,0.9) !important;
+	font-weight: 700 !important;
 }
