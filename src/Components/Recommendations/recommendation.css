@@ -67,8 +67,14 @@
 .recImage {
 	float: left;
 	width: 25%;
-	/* padding-right: 3%; */
+	transition: transform .2s;
 }
+
+.recImage:hover {
+	transform: scale(3.5);
+	transform-origin: left;
+}
+
 .recText {
 	clear: both;
 }
