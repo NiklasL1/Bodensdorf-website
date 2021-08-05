@@ -365,8 +365,13 @@ i18n
 					recNockfleischT: '',
           recSalitererS: '',
 					recSalitererT: '',
-
-        }
+          recThermeBKkS: '',
+          recThermeBKkT: '',
+          recKletterS: '',
+          recKletterT: '',
+          recMinigolfS: '',
+          recMinigolfT: '',
+          }
       },
       de: {
         translations: {
@@ -710,16 +715,16 @@ i18n
         recBahnT: 'Die Gerlitzenkanzelbahn fährt von Annenheim (ca. 6 km von der Wohnung) zum Gipfel der Gerlitzen.',
         recLandskronS: 'Historischer Burg, toller Ausblick',
         recLandskronT: 'Burg Landskrom liegt auf der anderen Seite des Ossiacher Sees, etwa 10 km von der Wohnung entfernt.',
-        recOsterwitzS: '',
-        recOsterwitzT: '',
+        recOsterwitzS: 'Ein wunderschöner Burg hoch auf dem Bergkegel',
+        recOsterwitzT: 'Eine sehr weiträumige Anlage mit viel zu sehen: 14 Burgtoren, Museum, Bildersammlung aus der Renaissance und mehr. Etwa 50 Autominuten von der Wohnung.',
         recTennisS: 'Tennis spielen, Trainer buchen',
         recTennisT: 'Vom Balkon der Wohnung aus schauen Sie nach links und Sie sehen den Tennisplatz. Buchen Sie im voraus oder gehen Sie einfach vorbei.',
-        recRoedelS: '',
-        recRoedelT: '',
+        recRoedelS: 'Riesenrutsche mit Seeblick',
+        recRoedelT: 'Auf 760 Metern Länge gehts auf zwei parallel geführten Bahnen den Hang hinunter. Ob rasant oder ganz gemütlich, entscheidet der Fahrer.',
         recSchiffS: 'Entdecken Sie alle Seiten des Ossiacher Sees mit dem Schiff',
         recSchiffT: 'Der Schiff legt mehrmals am Tag in Bodensdorf an und fährt über Annenheim, Landskron und Ossiach (u.a.) bevor er zurückkehrt.',
-        recVillachS: '',
-        recVillachT: '',
+        recVillachS: 'Eine schöne Tour durch die Altstadt von Villach',
+        recVillachT: 'Eine selbstgeführte Tour zu Fuß dauert bis zu 3 Stunden. Villach ist mit Auto Bahn etwa 11km von der Wohnung entfernt.',
         recStiftS: 'Wunderschöner Stift direkt am See',
         recStiftT: 'Etwa 1000 Jahre alt, der Stift Ossiach ist heute noch als Pfarre der Gemeinde Ossiach aktiv.',
         recUrbaniS: 'Toller Garten, gutes Essen, zu Fuß erreichbar',
@@ -748,6 +753,12 @@ i18n
         recNockfleischT: 'Hier gibt es verschiedene Sorten Speck, Rohwürst und Salami sowie diverse Hartwürste und Kräuterlaibchen, Almkräuterschinken, etc.',
         recSalitererS: 'Café/Konditorei mit herrlichen Kuchen',
         recSalitererT: 'Hausgemachte Reindlinge, Strudel mit unterschiedlichen Füllungen, Torten, Pralinen und mehr, zum mitnehmen oder mit eienm Kaffee gleich essen.',
+        recThermeBKkS: 'Sauna und thermische Baden',
+        recThermeBKkT: ' Spaß und Entspannung in der neu gestalteten Familien- und Gesundheitstherme. Etwa 40km (Auto) entfernt.',
+        recKletterS: 'Freizeitpark für alle Alters- und Könnerstufen',
+        recKletterT: 'Über 150 Übungen (mehrere Parcours, neuer Flying-Fox Parcours uvm.). Der Kletterwald ist eine der größten Adventure Parks in Österreich.',
+        recMinigolfS: 'Schöne Anlage direkt am See',
+        recMinigolfT: 'Minigolf und Pit-Pat spielt man hier neben dem Kurpark und unweit von Pavillion am See.',
       }
       }
     },
