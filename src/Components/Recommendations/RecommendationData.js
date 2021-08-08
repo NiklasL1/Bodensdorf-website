@@ -36,7 +36,8 @@ export const recommendations = [
 		link: null,
 		image: "/img/tennis.png",
 		subtitle: "Tennis spielen, Trainer buchen",
-		description: "Vom Balkon der Wohnung aus schauen Sie nach links und Sie sehen den Tennisplatz. Buchen Sie im voraus oder gehen Sie einfach vorbei.",
+		description:
+			"Vom Balkon der Wohnung aus schauen Sie nach links und Sie sehen den Tennisplatz. Buchen Sie im voraus oder gehen Sie einfach vorbei.",
 		favorite: "rec",
 	},
 	{
