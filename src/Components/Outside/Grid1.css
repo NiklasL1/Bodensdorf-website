@@ -22,3 +22,22 @@
 	text-align: center;
 	padding-bottom: 2%;
 }
+.textTable {
+	text-decoration: none !important;
+}
+
+.textTable:link {
+	text-decoration: none !important;
+}
+
+.textTable:visited {
+	text-decoration: none !important;
+}
+
+.textTable:hover {
+	text-decoration: none !important;
+}
+
+.textTable:active {
+	text-decoration: none !important;
+}

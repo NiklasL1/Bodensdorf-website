@@ -18,6 +18,7 @@ import Swal from "sweetalert2";
 // import addDays from "date-fns/addDays";
 import { AuthContext } from "../../Context/AuthContext";
 import StripeNew from "../Stripe/StripeNew";
+import LoginDuringBooking from "../Auth/LoginDuringBooking";
 import LoginModal from "../Auth/LoginModal";
 
 const BookingMenu = () => {
@@ -320,7 +321,8 @@ const BookingMenu = () => {
 				arrayOfDates={arrayOfDates}
 				extraPerson={extraPerson}
 			/>
-			<LoginModal handleShowBookingModal={handleShow} />
+			<LoginDuringBooking handleShowBookingModal={handleShow} />
+			<LoginModal />
 			<StripeNew />
 		</>
 	);

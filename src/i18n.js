@@ -25,6 +25,7 @@ i18n
     resources: {
       en: {
         translations: {
+          ChangeLng: "Seite auf Deutsch",
           TabTitle: "Lake Ossiach holiday apartment",
           MetaDescription: "english description",
           book: "Booking calendar",
@@ -84,6 +85,9 @@ i18n
           aText1: "In the area there are a number of historical and cultural sites. Villach, with its lovely main square and many small streets is around 10 miles to the west. A little further away, around 23 miles to the east, is Klagenfurt, the capital city of Carinthia with an historical old city, an Italian palace and a number of additional cultural sites.",
           aText2: 'Alt-Ossiach is directly opposite on the other side of the lake and can be reached by car, bicycle or ferry. Located here is the beautiful Stiftung Ossiach, site of the "Carinthian Summer", a series of open-air concerts',
           aText3: "Somewhat further away at the southwest end of the lake is the fortress Castle Landskron. The castle area has been inhabited since the 9th century BC. The castle itself, protected by a double curtain wall with seven towers, was a splendid mansion during the Renaissance. The main building had four stories, a high central tower and a number of defensive towers.",
+          aText4: "Click ",
+          aText5: "here",
+          aText6: " to see our personal recommendations on what's good in the area, including eating out, shopping, sightseeing and other activities.",
           dTitle: "Directions",
           dSubTitle: "How to find us",
           dT1: "By car coming from the north (Salzburg, Germany etc.)",
@@ -380,6 +384,7 @@ i18n
       },
       de: {
         translations: {
+          ChangeLng: "Page in English",
           TabTitle: "Ossiacher See Ferienwohnung",
           MetaDescription: "Deutsche Beschreibung",
           book: "Buchungskalender",
@@ -439,6 +444,9 @@ i18n
           aText1: "In der Nähe befinden sich viele historische und kulturelle Sehenswürdigkeiten. Ca. 15 km westlich liegt Villach mit einem schönen Hauptplatz und vielen kleinen Gassen. Etwas weiter weg (ca. 37 km) im Osten ist die Hauptstadt Kärntens, Klagenfurt, mit einer historischen Altstadt, einem italienischen Palais und weiteren Kulturschätzen.",
           aText2: 'Am See direkt gegenüber liegt Alt-Ossiach, erreichbar per Auto, Fahrrad oder Fähre. Hier ist die wunderschöne Stiftung Ossiach, Hauptaustragungsstelle des "Karintischen Sommers", eine Reihe von Konzerten in einer herrlichen Umgebung.',
           aText3: "Ein Stück weiter weg am südwestlichen Ende des Sees befindet sich die Burg Landskron. Landskron war schon im 9. Jahrhundert v. Chr. besiedelt. Das von einer doppelten Ringmauer mit sieben Türmen umgebene ehemalige Schloss war um 1600 ein prunkvoller Herrensitz der Renaissance. Das Hauptgebäude hatte vier Stockwerke, einen hohen Schlossturm und starke Wehrtürme.",
+          aText4: "Klicken Sie ",
+          aText5: "hier",
+          aText6: " um unsere persönlichen Empfehlungen rund um Essen, Einkaufen, Sehenswürdigkeiten und anderen Aktivitäten in der Umgebung zu sehen.",
           dTitle: "Anfahrt",
           dSubTitle: "Wie Sie gut ankommen",
           dT1: "mit dem Auto aus dem Norden (Salzburg, Deutschland etc.)",
