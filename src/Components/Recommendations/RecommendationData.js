@@ -1,7 +1,7 @@
 export const recommendations = [
 	{
 		name: "Gerlitzenbahn",
-		type: "other",
+		type: "activity",
 		map: "https://goo.gl/maps/Vo3ffgcQawnRdj3T6",
 		link: "https://www.gerlitzen.com/",
 		image: "/img/gerlitzenbahn.jpeg",
@@ -11,7 +11,7 @@ export const recommendations = [
 	},
 	{
 		name: "Burg Landskron",
-		type: "other",
+		type: "sight",
 		map: "https://goo.gl/maps/MVp4n5WKKMUm8X1n6",
 		link: "https://www.burg-landskron.at/",
 		image: "/img/landskron.jpeg",
@@ -21,7 +21,7 @@ export const recommendations = [
 	},
 	{
 		name: "Burg Hochosterwitz",
-		type: "other",
+		type: "sight",
 		map: "https://goo.gl/maps/3fUwyivTkGv4DKvs8",
 		link: "https://www.burg-hochosterwitz.com/",
 		image: "/img/osterwitz.png",
@@ -31,7 +31,7 @@ export const recommendations = [
 	},
 	{
 		name: "Tenniszentrum Bachmann",
-		type: "other",
+		type: "activity",
 		map: null,
 		link: null,
 		image: "/img/tennis.png",
@@ -41,7 +41,7 @@ export const recommendations = [
 	},
 	{
 		name: "Sommerrödelbahn am Ossiacher See",
-		type: "other",
+		type: "activity",
 		map: "https://goo.gl/maps/HNZz7uwdZVZN8Jtx6",
 		link: "https://www.sommerrodelbahn-ossiach.at/",
 		image: "/img/roedeln.jpeg",
@@ -51,7 +51,7 @@ export const recommendations = [
 	},
 	{
 		name: "Ossiacher See Schifffahrt",
-		type: "other",
+		type: "sight",
 		map: "https://goo.gl/maps/1p3iu1NcdRAvihiP9",
 		link: "https://ossiachersee-schifffahrt.at/",
 		image: "/img/OssiacherSeeSchiff.jpeg",
@@ -61,7 +61,7 @@ export const recommendations = [
 	},
 	{
 		name: "Stift Ossiach",
-		type: "other",
+		type: "sight",
 		map: "https://goo.gl/maps/YBhWjRz5ETj2JnrC6",
 		link: "http://www.pfarre-ossiach.at/",
 		image: "/img/stiftossiach.jpeg",
@@ -71,7 +71,7 @@ export const recommendations = [
 	},
 	{
 		name: "Altstadt Villach",
-		type: "other",
+		type: "sight",
 		map: "https://goo.gl/maps/x5cqmaYexukgVc498",
 		link: "https://www.visitvillach.at/de/tours/villacher-altstadtspaziergang.html",
 		image: "/img/villach.jpeg",
@@ -80,8 +80,8 @@ export const recommendations = [
 		favorite: "rec",
 	},
 	{
-		name: "Therme Kathrein",
-		type: "other",
+		name: "Therme Bad Kleinkirchheim",
+		type: "activity",
 		map: "https://goo.gl/maps/LTYwzu3BNwVcsyobA",
 		link: "http://www.therme-kathrein.at/",
 		image: "/img/therme.jpeg",
@@ -91,7 +91,7 @@ export const recommendations = [
 	},
 	{
 		name: "Kletterwald Ossiacher See",
-		type: "other",
+		type: "activity",
 		map: "https://goo.gl/maps/3FeEQDuh7bFF1fLK7",
 		link: "https://www.kletterwald.at/",
 		image: "/img/kletterwald.jpeg",
@@ -101,7 +101,7 @@ export const recommendations = [
 	},
 	{
 		name: "Minigolf",
-		type: "other",
+		type: "activity",
 		map: "https://goo.gl/maps/KBtWSAHtg7NXkqKg6",
 		link: "",
 		image: "/img/minigolf.jpeg",
@@ -111,7 +111,7 @@ export const recommendations = [
 	},
 	{
 		name: "Fahrradverleih Leo am See",
-		type: "other",
+		type: "activity",
 		map: "https://goo.gl/maps/wgWRPPAr3aDKKyoZ8",
 		link: "https://www.leoamsee.at/",
 		image: "/img/fahrraeder.jpeg",
@@ -121,7 +121,7 @@ export const recommendations = [
 	},
 	{
 		name: "Bootsverleih Blasge",
-		type: "other",
+		type: "activity",
 		map: "https://goo.gl/maps/mZFJSh1JuHygrQLk7",
 		link: "http://www.blasge.at/blasge/index.php/component/content/article/80-administratives/50-angebote",
 		image: "/img/sailboat.png",
@@ -157,7 +157,7 @@ export const recommendations = [
 		image: "/img/hexenpfandl.jpeg",
 		subtitle: "recHexenpfandlS",
 		description: "recHexenpfandlT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "Seerestaurant Steindorf",
@@ -167,7 +167,7 @@ export const recommendations = [
 		image: "/img/seerestaurant.jpeg",
 		subtitle: "recSeerestaurantS",
 		description: "recSeerestaurantT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	// {
 	// 	name: "Café Pavillion am See",
@@ -247,7 +247,7 @@ export const recommendations = [
 		image: "/img/nockbauern.jpeg",
 		subtitle: "recNockfleischS",
 		description: "recNockfleischT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 	{
 		name: "Café Konditorei Saliterer",
@@ -257,6 +257,6 @@ export const recommendations = [
 		image: "/img/saliterer.jpeg",
 		subtitle: "recSalitererS",
 		description: "recSalitererT",
-		favorite: "recFavorite",
+		favorite: "rec",
 	},
 ];
