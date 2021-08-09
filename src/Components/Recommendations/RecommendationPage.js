@@ -46,9 +46,14 @@ const RecommendationPage = () => {
 											<RecommendationTab recType="shopping" />
 										</div>
 									</Tab>
-									<Tab eventKey="other" title={t("recTab3")}>
+									<Tab eventKey="activity" title={t("recTab3")}>
 										<div className="tab-item-wrapper">
-											<RecommendationTab recType="other" />
+											<RecommendationTab recType="activity" />
+										</div>
+									</Tab>
+									<Tab eventKey="sight" title={t("recTab4")}>
+										<div className="tab-item-wrapper">
+											<RecommendationTab recType="sight" />
 										</div>
 									</Tab>
 								</Tabs>

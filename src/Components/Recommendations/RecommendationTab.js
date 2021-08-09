@@ -19,7 +19,7 @@ const RecommendationTab = ({ recType }) => {
 									<Card.Title className="recTitle">
 										<h5>{rec.name}</h5>
 									</Card.Title>
-									<Card.Subtitle className="recTitle">
+									<Card.Subtitle className="recSubtitle">
 										<span className="text-muted">{t(rec.subtitle)}</span>
 									</Card.Subtitle>
 									<Card.Text className="recText" as="div">
