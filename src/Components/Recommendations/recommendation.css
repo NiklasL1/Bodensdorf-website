@@ -1,11 +1,13 @@
 .body-bg {	
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
-	-o-background-size: cover;
+	-o-background-size: cover; 
 	background-size: cover;	
-	background-repeat: no-repeat;
+	background-repeat: repeat-y;
 	background-position: center center;
 	min-height: 100vh;
+	min-width: 100vw;
+	/* max-height: 100vh; */
 }
 
 .recommendationPage {

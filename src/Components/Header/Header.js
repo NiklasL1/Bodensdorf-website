@@ -13,6 +13,7 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import de from "date-fns/locale/de";
 import en from "date-fns/locale/en-US";
 import Login from "../Auth/Login";
+import HeaderMenu from "./HeaderMenu";
 import { PaymentContext } from "../../Context/PaymentContext";
 import { ImgContext } from "../../Context/ImgContext";
 registerLocale("de", de);
@@ -47,7 +48,7 @@ function Page() {
 		<Container fluid>
 			<Row>
 				<Navbar collapseOnSelect expand="sm" fixed="top">
-					<Navbar.Brand>
+					{/* <Navbar.Brand>
 						<Navbar.Brand onClick={() => changeLanguage("de")}>
 							<Button className="buttonColor" variant="light" size="lg">
 								DE
@@ -61,13 +62,13 @@ function Page() {
 					</Navbar.Brand>
 					<Navbar.Brand>
 						<Login />
-					</Navbar.Brand>
+					</Navbar.Brand> */}
 					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
 					<Navbar.Collapse
 						id="responsive-navbar-nav"
 						className="justify-content-end"
 					>
-						<Nav.Link href="#book">
+						{/* <Nav.Link href="#book">
 							<Button className="buttonColor" variant="light">
 								{t("book")}
 							</Button>
@@ -86,7 +87,8 @@ function Page() {
 							<Button className="buttonColor" variant="light">
 								{t("area")}
 							</Button>
-						</Nav.Link>
+						</Nav.Link> */}
+						<HeaderMenu />
 					</Navbar.Collapse>
 				</Navbar>
 				<Col
