@@ -1,11 +1,13 @@
 .body-bg {	
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
-	-o-background-size: cover;
+	-o-background-size: cover; 
 	background-size: cover;	
-	background-repeat: no-repeat;
+	background-repeat: repeat-y;
 	background-position: center center;
 	min-height: 100vh;
+	min-width: 100vw;
+	/* max-height: 100vh; */
 }
 
 .recommendationPage {
@@ -98,4 +100,10 @@
 .nav-item.active {
 	background-color: rgba(255,255,255,0.9) !important;
 	font-weight: 700 !important;
+}
+
+.backToHomeButton {
+	margin-top: 20px;
+	margin-right: 10px;
+	float: right;
 }

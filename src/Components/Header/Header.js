@@ -12,7 +12,7 @@ import Button from "react-bootstrap/Button";
 import { registerLocale, setDefaultLocale } from "react-datepicker";
 import de from "date-fns/locale/de";
 import en from "date-fns/locale/en-US";
-import Login from "../Auth/Login";
+import HeaderMenu from "./HeaderMenu";
 import { PaymentContext } from "../../Context/PaymentContext";
 import { ImgContext } from "../../Context/ImgContext";
 registerLocale("de", de);
@@ -21,13 +21,7 @@ registerLocale("en", en);
 function Page() {
 	const { setPayingRemainder } = useContext(PaymentContext);
 	const { imgSize, imgType } = useContext(ImgContext);
-	const elementRef = useRef();
-
-	const { t } = useTranslation();
-	const changeLanguage = (lng) => {
-		i18n.changeLanguage(lng);
-		setDefaultLocale(lng);
-	};
+	const elementRef = useRef();	
 
 	useEffect(() => {
 		setDefaultLocale("en");
@@ -39,56 +33,17 @@ function Page() {
 			const headerPicElement = elementRef.current;
 			headerPicElement.style[
 				"background-image"
-			] = `url(/img/${imgType}-${imgSize}/lage-haeuservomsee2.${imgType})`;			
+			] = `url(/img/${imgType}-${imgSize}/lage-haeuservomsee2.${imgType})`;
 		}
 	}, [imgType]);
 
 	return (
 		<Container fluid>
 			<Row>
-				<Navbar collapseOnSelect expand="sm" fixed="top">
-					<Navbar.Brand>
-						<Navbar.Brand onClick={() => changeLanguage("de")}>
-							<Button className="buttonColor" variant="light" size="lg">
-								DE
-							</Button>
-						</Navbar.Brand>
-						<Navbar.Brand onClick={() => changeLanguage("en")}>
-							<Button className="buttonColor" variant="light" size="lg">
-								EN
-							</Button>
-						</Navbar.Brand>
-					</Navbar.Brand>
-					<Navbar.Brand>
-						<Login />
-					</Navbar.Brand>
-					<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-					<Navbar.Collapse
-						id="responsive-navbar-nav"
-						className="justify-content-end"
-					>
-						<Nav.Link href="#book">
-							<Button className="buttonColor" variant="light">
-								{t("book")}
-							</Button>
-						</Nav.Link>
-						<Nav.Link href="#house">
-							<Button className="buttonColor" variant="light">
-								{t("house")}
-							</Button>
-						</Nav.Link>
-						<Nav.Link href="#sea">
-							<Button className="buttonColor" variant="light">
-								{t("sea")}
-							</Button>
-						</Nav.Link>
-						<Nav.Link href="#area">
-							<Button className="buttonColor" variant="light">
-								{t("area")}
-							</Button>
-						</Nav.Link>
-					</Navbar.Collapse>
-				</Navbar>
+				<div className="navBar">
+					<HeaderMenu />
+				</div>
+
 				<Col
 					id="headerPic"
 					ref={elementRef}

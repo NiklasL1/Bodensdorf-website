@@ -29,9 +29,10 @@ const AuthContextProvider = ({ children }) => {
 	const [registerPasswordConfirm, setRegisterPasswordConfirm] = useState("");
 
 	const [showLogin, setShowLogin] = useState(false);
-	const handleCloseLogin = () => setShowLogin(false);
+	const [showLoginDuringBooking, setShowLoginDuringBooking] = useState(false);
+	const handleCloseLogin = () => setShowLoginDuringBooking(false);
 	const handleShowLogin = () => {
-		setShowLogin(true);
+		setShowLoginDuringBooking(true);
 	};
 
 	let history = useHistory();
@@ -126,6 +127,8 @@ const AuthContextProvider = ({ children }) => {
 				setLoginUsername,
 				loginPassword,
 				setLoginPassword,
+				showLoginDuringBooking,
+				setShowLoginDuringBooking,
 				showLogin,
 				setShowLogin,
 				handleCloseLogin,

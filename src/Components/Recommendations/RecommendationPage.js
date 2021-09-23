@@ -24,7 +24,7 @@ const RecommendationPage = () => {
 		<div className="body-bg" ref={elementRef}>
 			<div className="recommendationPage">
 				<Link to="/">
-					<Button className="userProfileTitle">{t("user14")}</Button>
+					<Button className="backToHomeButton">{t("user14")}</Button>
 				</Link>
 				<span className="recommendationTop">
 					<div>

@@ -8,33 +8,36 @@ import Form from "react-bootstrap/Form";
 import "./auth.css";
 import { Link } from "react-router-dom";
 
-const LoginModal = () => {
+const LoginDuringBooking = ({ handleShowBookingModal }) => {
 	const { t } = useTranslation();
 
 	const {
-		showLogin,
+		showLoginDuringBooking,
 		setLoginUsername,
 		setLoginPassword,
-		setShowLogin,
+		handleCloseLogin,
 		login,
 	} = useContext(AuthContext);
 
 	const handleLogin = (event) => {
 		event.preventDefault();
 		login();
-		setShowLogin(false);
+		handleCloseLogin();
+		handleShowBookingModal();
 	};
 
 	const handleRegister = () => {
-		setShowLogin(false);
+		handleCloseLogin();
+		handleShowBookingModal();
 	};
 
 	return (
-		<Modal show={showLogin} onHide={() => setShowLogin(false)} centered>
+		<Modal show={showLoginDuringBooking} onHide={handleCloseLogin} centered>
 			<Modal.Header closeButton>
-				<Modal.Title>{t("login1")}</Modal.Title>
+				<Modal.Title>{t("loginModal1")}</Modal.Title>
 			</Modal.Header>
-			<Modal.Body>				
+			<Modal.Body>
+				<p>{t("loginModal2")}</p>
 				<Form className="loginForm">
 					<Form.Group controlId="formGroupUsername">
 						<Form.Control
@@ -69,7 +72,7 @@ const LoginModal = () => {
 			</Modal.Body>
 			<Modal.Footer id="loginModalFooter">
 				<Register handleRegister={handleRegister} />
-				<Button variant="outline-danger" onClick={() => setShowLogin(false)}>
+				<Button variant="outline-danger" onClick={handleCloseLogin}>
 					{t("bookMo8")}
 				</Button>
 			</Modal.Footer>
@@ -77,4 +80,4 @@ const LoginModal = () => {
 	);
 };
 
-export default LoginModal;
+export default LoginDuringBooking;
