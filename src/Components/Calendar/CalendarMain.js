@@ -16,12 +16,9 @@ const CalendarMain = () => {
 			<a name="book">
 				<h2 className="title">{t("cTitle")}</h2>
 			</a>
-			<h6 className="subTitle">{t("cSubTitle")}</h6>
-			<Container fluid>
-				{/* <Row className="justify-content-center">
-                <BookingMenu/>
-            </Row> */}
-				<Row>
+			<h6 className="subTitleBottom">{t("cSubTitle")}</h6>
+			<Container fluid>			
+				{/* <Row>
 					<Col
 						className="d-flex justify-content-center verticalAlign"
 						md={12}
@@ -34,11 +31,12 @@ const CalendarMain = () => {
 						xs={{ order: "first" }}
 						md={(12, { order: "first" })}
 						lg={(6, { order: "last" })}
-					>
-						{/* <BookingCalendar2/> */}
+					>	
+						<BookingCalendar2 />					
 						<BookingCalendar3 />
 					</Col>
-				</Row>
+				</Row> */}
+				<CalendarText />
 			</Container>
 		</div>
 	);

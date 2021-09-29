@@ -11,10 +11,10 @@ import { useTranslation } from "react-i18next";
 const Grid2 = () => {
 	const { t } = useTranslation();
 
-	const [showSlides, setShowSlides] = useState(false);
+	const [showSlidesGrid2, setShowSlidesGrid2] = useState(false);
 
 	return (
-		<div onMouseEnter={setShowSlides} className="spacing">
+		<div onMouseEnter={setShowSlidesGrid2} className="spacing">
 			<a name="house">
 				<h2 className="title">{t("iTitle")}</h2>
 			</a>
@@ -35,7 +35,7 @@ const Grid2 = () => {
 						lg={(6, { order: "last" })}
 					>
 						{/* <LightboxInside /> */}
-						<CarouselInside showSlides={showSlides} />
+						<CarouselInside showSlides={showSlidesGrid2} />
 					</Col>
 				</Row>
 			</Container>

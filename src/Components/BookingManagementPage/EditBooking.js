@@ -107,12 +107,15 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 		checkOverlap();
 	}, [value.arriveEpoch, value.departEpoch]);
 
+	// add + 43200000 to set time to noon to avoid issues with DST
+
 	useEffect(() => {
 		if (value.arriveStr) {
 			setValue((prevState) => {
 				return {
 					...prevState,
-					arriveEpoch: moment(value.arriveStr, "DD-MM-YYYY").valueOf(),
+					arriveEpoch:
+						moment(value.arriveStr, "DD-MM-YYYY").valueOf() + 43200000,
 				};
 			});
 		}
@@ -123,7 +126,8 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 			setValue((prevState) => {
 				return {
 					...prevState,
-					departEpoch: moment(value.departStr, "DD-MM-YYYY").valueOf(),
+					departEpoch:
+						moment(value.departStr, "DD-MM-YYYY").valueOf() + 43200000,
 				};
 			});
 		}

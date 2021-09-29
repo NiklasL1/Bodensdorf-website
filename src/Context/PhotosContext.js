@@ -1,10 +1,12 @@
-import React, { createContext, useContext } from "react";
+import React, { createContext, useContext, useState } from "react";
 import { ImgContext } from "./ImgContext";
 
 export const PhotosContext = createContext();
 
 const PhotosContextProvider = ({ children }) => {
 	const { imgSize, imgType } = useContext(ImgContext);
+
+	const [showSlidesGrid1, setShowSlidesGrid1] = useState(false);
 
 	const insidePhotosNew = [
 		{
@@ -129,7 +131,7 @@ const PhotosContextProvider = ({ children }) => {
 	];
 
 	return (
-		<PhotosContext.Provider value={{ insidePhotosNew, outsidePhotosNew }}>
+		<PhotosContext.Provider value={{ insidePhotosNew, outsidePhotosNew, showSlidesGrid1, setShowSlidesGrid1 }}>
 			{children}
 		</PhotosContext.Provider>
 	);

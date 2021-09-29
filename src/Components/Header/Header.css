@@ -118,5 +118,96 @@
 	top: 0;
 	right: 0;
 	z-index: 100;
-	padding: 20px 15px 0;	
+	padding: 20px 15px 0;
+}
+
+.centerButton {
+	display: flex;
+	justify-content: center;
+}
+
+.container_row{
+	display: grid;
+	text-align: center;
+  }
+  
+  .layer1, .layer2{
+	grid-column: 1;
+	grid-row: 1;
+  }  
+
+.bookingFloatingButton {
+	position: fixed;
+	bottom: 0;
+	right: 0;
+	z-index: 100;	
+}
+
+#pageTitle {
+	font-family: "Parisienne", cursive;
+	font-weight: 500;
+	font-size: 5rem;
+	text-shadow: -1px -1px 0 #a9a9a9, 1px -1px 0 #a9a9a9, -1px 1px 0 #a9a9a9, 1px 1px 0 #a9a9a9;
+	/* color: #fc6076; */
+}
+
+.book-btn {
+	display: none;
+	height: 150px;
+	width: 150px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	margin: 30px;
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+
+	border-radius: 50%;
+	-o-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.book-btn:hover {
+	background-position: 100% 0;
+	-o-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.book-btn:focus {
+	outline: none;
+}
+
+.book-btn.color-4 {
+	background-image: linear-gradient(
+		to right,
+		#fc6076,
+		#ff9a44,
+		#ef9d43,
+		#e75516
+	);
+	box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
+}
+
+.book-btn.top{
+	display: inline-block;
+}
+
+.book-btn.animate {
+	animation-duration: 1s;
+	animation-name: slidein;
+	display: block;
+}
+
+@keyframes slidein {
+	from {
+		margin-left: 100%;		
+	}
+
+	to {
+		margin-left: 0%;		
+	}
 }

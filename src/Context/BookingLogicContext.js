@@ -9,6 +9,8 @@ export const BookingLogicContext = createContext();
 const BookingLogicContextProvider = ({ children }) => {
 	const { t } = useTranslation();
 
+	const [show, setShow] = useState(false);
+
 	const [startDate, setStartDate] = useState();
 	const [endDate, setEndDate] = useState();
 	const [arrayOfDates, setArrayOfDates] = useState();
@@ -17,14 +19,14 @@ const BookingLogicContextProvider = ({ children }) => {
 	const [within30, setWithin30] = useState(false);
 	const [chooseFullPay, setChooseFullPay] = useState(false);
 
-	const [startDateValid, setStartDateValid] = useState();
-	const [endDateValid, setEndDateValid] = useState();
+	// const [startDateValid, setStartDateValid] = useState();
+	// const [endDateValid, setEndDateValid] = useState();
 
 	const [totalBookingCost, setTotalBookingCost] = useState(0);
 	const [prepaymentCost, setPrepaymentCost] = useState(0);
 	const [restpaymentCost, setRestpaymentCost] = useState(0);
 
-	const [bookingDetails, setBookingDetails] = useState();
+	const [bookingDetails, setBookingDetails] = useState();	
 
 	const { logThis } = useContext(LogContext);
 
@@ -195,9 +197,12 @@ const BookingLogicContextProvider = ({ children }) => {
 		);
 
 		if (
-			pattern.test(startDate) &&
-			pattern.test(endDate) &&
+			// pattern.test(startDate) &&
+			// pattern.test(endDate) &&
 			arrayOfDates &&
+			bookingCostArray &&
+			startDate &&
+			endDate &&
 			startDate !== endDate
 		) {
 			let cost = removeLastDay.reduce(function (all, amount) {
@@ -304,10 +309,12 @@ const BookingLogicContextProvider = ({ children }) => {
 				within30,
 				chooseFullPay,
 				setChooseFullPay,
-				startDateValid,
-				setStartDateValid,
-				endDateValid,
-				setEndDateValid,
+				show,
+				setShow,				
+				// startDateValid,
+				// setStartDateValid,
+				// endDateValid,
+				// setEndDateValid,
 			}}
 		>
 			{children}

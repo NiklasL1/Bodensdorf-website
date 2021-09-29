@@ -13,7 +13,7 @@ const TableOutside = () => {
 			<p>{t("aText3")}</p>
 			<p>
 				{t("aText4")}
-				<Link to="/recommendations">{t("aText5")}</Link>
+				<Link to="/recommendations"><b>{t("aText5")}</b></Link>
 				{t("aText6")}
 			</p>
 		</div>

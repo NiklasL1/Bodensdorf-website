@@ -34,11 +34,12 @@ const CarouselInside = ({ showSlides }) => {
 							}}
 						>
 							<i
-								className="fa fa-arrow-left fa-2x"
+								className="fa fa-chevron-left fa-2x"
 								aria-hidden="true"
 								style={{
 									textShadow:
 										"-1px -1px 0 #f8f8ff, 1px -1px 0 #f8f8ff, -1px 1px 0 #f8f8ff, 1px 1px 0 #f8f8ff",
+									color: "grey",
 								}}
 							></i>
 						</span>
@@ -63,11 +64,12 @@ const CarouselInside = ({ showSlides }) => {
 							}}
 						>
 							<i
-								className="fa fa-arrow-right fa-2x"
+								className="fa fa-chevron-right fa-2x"
 								aria-hidden="true"
 								style={{
 									textShadow:
 										"-1px -1px 0 #f8f8ff, 1px -1px 0 #f8f8ff, -1px 1px 0 #f8f8ff, 1px 1px 0 #f8f8ff",
+									color: "grey",
 								}}
 							></i>
 						</span>

@@ -10,6 +10,7 @@
 
 # production
 /build
+.vscode
 
 # dotenv environment variables file
 .env

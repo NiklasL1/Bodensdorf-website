@@ -1,17 +1,17 @@
 .preSeason {
-	background-color: rgb(181, 236, 98);
+	background-color: #800000;
 }
 
 .mainSeason {
-	background-color: rgb(243, 243, 114);
+	background-color: #f58231;
 }
 
-.aftSeason {
-	background-color: burlywood;
+.greyBack {
+	background-color: lightgrey;
 }
 
 .offSeason {
-	background-color: rgb(114, 114, 241);
+	background-color: #4363d8;
 }
 
 .arrivalDepartureDay {
@@ -28,5 +28,93 @@
 }
 
 .centerText {
+	text-align: center;	
+	background-color: lightgrey;
+}
+
+.calendarTextContainer {
+	display: flex;
+	justify-content: space-around;	
+}
+
+.calendarTextColorBackground {
+	width: 25% !important;	
+	font-weight: bold;	
+}
+
+.calendarTextColorBackground50{
+	width: 50% !important;	
+	font-weight: bold;	
+}
+
+.alignRightText{
+	text-align: right;
+}
+
+
+.calendarTextWhiteBackground {
+	width: 25% !important;	
+}
+
+.pricesText {
 	text-align: center;
+}
+
+.noTopBorder {
+	border-top: 0px !important;
+	background-color: lightgrey;
+	color: black;
+	text-shadow: none;
+}
+
+.noTopBorder2 {
+	border-top: 0px !important;	
+}
+
+.subTitleBottom {
+	font-style: italic;
+	text-align: center;
+	padding-bottom: 1%;
+	color: rgb(68, 101, 163);
+}
+
+.cal-btn {
+	display: block;
+	height: 55px;
+	width: 200px;
+	font-size: 16px;
+	font-weight: 600;
+	color: #fff;
+	cursor: pointer;
+	margin: 10px;
+	text-align: center;
+	border: none;
+	background-size: 300% 100%;
+
+	border-radius: 50px;
+	-o-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.cal-btn:hover {
+	background-position: 100% 0;
+	-o-transition: all 0.4s ease-in-out;
+	-webkit-transition: all 0.4s ease-in-out;
+	transition: all 0.4s ease-in-out;
+}
+
+.cal-btn:focus {
+	outline: none;
+}
+
+.cal-btn.color-4 {
+	background-image: linear-gradient(
+		to right,
+		#fc6076,
+		#ff9a44,
+		#ef9d43,
+		#e75516
+	);
+	box-shadow: 0 4px 15px 0 rgba(252, 104, 110, 0.75);
 }

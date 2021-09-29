@@ -251,8 +251,7 @@ const Register = ({ handleRegister }) => {
 							{t("register9")}
 						</Button>
 					</Form>
-				</Modal.Body>
-				{/* <Modal.Footer>footer</Modal.Footer> */}
+				</Modal.Body>				
 			</Modal>
 		</>
 	);

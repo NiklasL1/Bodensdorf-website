@@ -53,7 +53,13 @@ const TableInside = () => {
 						<td colSpan="6">{t("i6")}</td>
 					</tr>
 					<tr>
-						<td colSpan="12" className="boldIt centerText">
+						<td colSpan="6" className="boldIt">
+							{t("iT7")}
+						</td>
+						<td colSpan="6">{t("i7")}</td>
+					</tr>
+					<tr>
+						<td colSpan="12" className="boldIt centerTextI">
 							<Button variant="primary" onClick={handleShow}>
 								{t("iMenu")}
 							</Button>

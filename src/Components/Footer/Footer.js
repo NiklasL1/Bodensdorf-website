@@ -10,9 +10,9 @@ const Footer = () => {
 	const { t } = useTranslation();
 
 	return (
-		<div className="spacing">
-			<div className="phantom" />
-			<div className="style">
+		<div className="footer">
+			{/* <div className="phantom" /> */}
+			<div>
 				<Container fluid>
 					<Row>
 						<Col className="d-flex justify-content-center ">

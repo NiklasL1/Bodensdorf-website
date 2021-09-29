@@ -10,6 +10,7 @@ import { useHistory } from "react-router-dom";
 import i18n from "../../i18n";
 import { setDefaultLocale } from "react-datepicker";
 import { AuthContext } from "../../Context/AuthContext";
+import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import axios from "axios";
 
 const HeaderMenu = () => {
@@ -17,6 +18,7 @@ const HeaderMenu = () => {
 	const { t } = useTranslation();
 	let history = useHistory();
 	const { setShowLogin, data, setData, getUser } = useContext(AuthContext);
+	const { setShow } = useContext(BookingLogicContext);
 
 	const changeLanguage = () => {
 		if (i18n.language.substring(0, 2) === "de") {
@@ -45,11 +47,11 @@ const HeaderMenu = () => {
 	};
 
 	return (
-		<FloatingMenu slideSpeed={500} direction="down" spacing={8} isOpen={isOpen}>
+		<FloatingMenu slideSpeed={500} direction="left" spacing={8} isOpen={isOpen}>
 			<MainButton
 				className="menuButton"
-				iconResting={<i class="fa fa-bars fa-2x" aria-hidden="true" />}
-				iconActive={<i class="fa fa-bars fa-2x" aria-hidden="true" />}
+				iconResting={<i className="fa fa-bars fa-2x" aria-hidden="true" />}
+				iconActive={<i className="fa fa-bars fa-2x" aria-hidden="true" />}
 				onClick={() => setIsOpen(!isOpen)}
 				size={70}
 			/>
@@ -57,7 +59,7 @@ const HeaderMenu = () => {
 			<ChildButton
 				className={data ? "hidden" : "menuButton"}
 				title={t("login1")}
-				icon={<i class="fa fa-sign-in fa-lg" aria-hidden="true" />}
+				icon={<i className="fa fa-sign-in fa-lg" aria-hidden="true" />}
 				size={50}
 				onClick={() => setShowLogin(true)}	
 			/>
@@ -75,8 +77,8 @@ const HeaderMenu = () => {
 					(data.username === "niklas" && data.lName === "Management") ||
 					(data.username === "heidi" && data.lName === "Management") ||
 					(data.username === "tom" && data.lName === "Management")
-						? <i class="fa fa-cogs fa-lg" aria-hidden="true" />
-						: <i class="fa fa-user fa-lg" aria-hidden="true" /> : undefined}
+						? <i className="fa fa-cogs fa-lg" aria-hidden="true" />
+						: <i className="fa fa-user fa-lg" aria-hidden="true" /> : undefined}
 				size={50}
 				onClick={ data ?
 					(data.username === "niklas" && data.lName === "Management") ||
@@ -90,7 +92,7 @@ const HeaderMenu = () => {
 			<ChildButton
 				className={data ? "menuButton" : "hidden"}
 				title={t("login4")}
-				icon={<i class="fa fa-sign-out fa-lg" aria-hidden="true" />}
+				icon={<i className="fa fa-sign-out fa-lg" aria-hidden="true" />}
 				size={50}
 				onClick={() => logout()}
 			/>
@@ -98,18 +100,19 @@ const HeaderMenu = () => {
 			<ChildButton
 				className="menuButton"
 				title={t("book")}
-				icon={<i class="fa fa-calendar fa-lg" aria-hidden="true" />}
+				icon={<i className="fa fa-calendar fa-lg" aria-hidden="true" />}
 				size={50}
 				onClick={() => {
-					var top = document.getElementById("calendarSection").offsetTop; //Getting Y of target element
-					window.scrollTo(0, top);
+					setShow(true)
+					// var top = document.getElementById("calendarSection").offsetTop; //Getting Y of target element
+					// window.scrollTo(0, top);
 				}}
 			/>
 
 			<ChildButton
 				className="menuButton"
 				title={t("recTitle")}
-				icon={<i class="fa fa-star fa-lg" aria-hidden="true" />}
+				icon={<i className="fa fa-star fa-lg" aria-hidden="true" />}
 				size={50}
 				onClick={() => {
 					history.push("/recommendations");
@@ -118,7 +121,7 @@ const HeaderMenu = () => {
 			<ChildButton
 				className="menuButton"
 				title={t("ChangeLng")}
-				icon={<i class="fa fa-language fa-lg" aria-hidden="true" />}
+				icon={<i className="fa fa-language fa-lg" aria-hidden="true" />}
 				size={50}
 				onClick={() => {
 					changeLanguage();

@@ -34,10 +34,10 @@ const BookingMenu = () => {
 		calculateDaysCost,
 		setAvailable,
 		available,
-		startDateValid,
-		setStartDateValid,
-		endDateValid,
-		setEndDateValid,
+		// startDateValid,
+		// setStartDateValid,
+		// endDateValid,
+		// setEndDateValid,
 	} = useContext(BookingLogicContext);
 	const { bookingsList } = useContext(BookingsContext);
 	const { data, handleShowLogin } = useContext(AuthContext);
@@ -100,16 +100,16 @@ const BookingMenu = () => {
 				icon: "warning",
 				title: `${t("bAlert")}`,
 			});
-		} else if (!startDateValid) {
-			Swal.fire({
-				icon: "warning",
-				title: `${t("bAlert8")}`,
-			});
-		} else if (!endDateValid) {
-			Swal.fire({
-				icon: "warning",
-				title: `${t("bAlert9")}`,
-			});
+		// } else if (!startDateValid) {
+		// 	Swal.fire({
+		// 		icon: "warning",
+		// 		title: `${t("bAlert8")}`,
+		// 	});
+		// } else if (!endDateValid) {
+		// 	Swal.fire({
+		// 		icon: "warning",
+		// 		title: `${t("bAlert9")}`,
+		// 	});
 		} else if (startEpoch < Date.now()) {
 			Swal.fire({
 				icon: "warning",
@@ -153,9 +153,9 @@ const BookingMenu = () => {
 		if (value) {
 			if (pattern.test(value)) {
 				setStartDate(value);
-				setStartDateValid(true);
+				// setStartDateValid(true);
 			} else {
-				setStartDateValid(false);
+				// setStartDateValid(false);
 			}
 		}
 	};
@@ -170,9 +170,9 @@ const BookingMenu = () => {
 		if (value) {
 			if (pattern.test(value)) {
 				setEndDate(value);
-				setEndDateValid(true);
+				// setEndDateValid(true);
 			} else {
-				setEndDateValid(false);
+				// setEndDateValid(false);
 			}
 		}
 	};

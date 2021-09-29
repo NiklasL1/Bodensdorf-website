@@ -1,0 +1,145 @@
+.bookingCalendar {
+	inherits: false;
+	text-align:  center;	
+}
+
+/* .nice-dates-navigation, */
+/* .nice-dates-day {
+	color: blue;
+} */
+
+.nice-dates-day.-outside {
+	color: #999;
+}
+/* .nice-dates-navigation_previous:hover:before,
+.nice-dates-navigation_next:hover:before {
+	border-color: blue !important;
+} */
+/* .nice-dates-popover {
+	box-shadow: 0 1px 8px blue;
+	border: 1px solid blue;
+	border-radius: 2px;
+	max-width: 480px;
+	transition: none;
+} */
+
+
+.nice-dates-day.-preSeason {
+	/* background-color: lightgreen; */
+	/* filter: opacity(0.5), brightness(1.2); */
+	font-weight: bold;
+	color: #800000;	
+	/* border-radius: 100%; */
+}
+
+.nice-dates-day.-mainSeason {
+	/* background-color: orange; */
+	/* filter: opacity(0.2), brightness(1.2); */
+	font-weight: bold;
+	color: #f58231;
+	/* text-shadow: -1px -1px 0 #a9a9a9, 1px -1px 0 #a9a9a9, -1px 1px 0 #a9a9a9, 1px 1px 0 #a9a9a9; */
+	/* border-radius: 100%; */
+}
+
+.nice-dates-day.-offSeason {
+	font-weight: bold;
+	color: #4363d8;
+}
+
+.nice-dates-day.-disabled {
+	background-color: #eee;
+	color: grey;
+	/* font-weight: normal; */
+	text-shadow: none;
+	/* border-radius: 100%; */
+}
+
+/* .nice-dates-day.-disabled {
+	color: grey;
+	background: repeating-linear-gradient(
+			135deg,
+			transparent,
+			transparent 5px,
+			white 5px,
+			white 15px
+		),
+		linear-gradient(to bottom, white, lightgray);
+} */
+
+.nice-dates-navigation_previous{
+	display: none;
+}
+
+.nice-dates-navigation_next{
+	display: none;
+}
+
+
+.navButtons {
+	display: flex;
+	position: relative;
+	justify-content: space-between;
+	z-index: 2 !important;
+	margin-bottom: -20px;
+	margin-left: 20px;
+	margin-right: 20px;
+	color: #999;
+	cursor: pointer;
+	/* width: 90%;	 */
+}
+
+.navButton:hover{
+	color: #333;
+}
+
+.recButtons {
+	margin-bottom: 20px;	
+	display: flex;
+	justify-content: space-around;
+}
+
+.recButton {
+	color: blue;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.flexIt {	
+	display: flex !important;
+	justify-content: space-between !important;
+}
+
+.tableWidth {
+	width: 50%;
+	border-top: 0px !important;
+	/* background-color: rgb(235, 235, 235); */
+}
+
+.hideIt {
+	display: none;
+}
+
+.infoTable {
+	margin-top: 20px;
+	color: white !important;
+	text-shadow: 1px 1px black !important;
+}
+
+.infoTable2 {
+	margin-bottom: -30px !important;
+}
+
+.rightAlign {
+	text-align: right;
+}
+
+.modalW{
+	width: 50% !important;
+}
+
+.resetBtn {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 10px;	
+	margin-top: 20px;
+}
