@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {
-	format,
+import {	
 	getMonth,
 	getYear,
 	isSameDay,
@@ -322,7 +321,7 @@ const BookingCalendarNew = () => {
 
 	useEffect(() => {
 		determineRecommendations();
-	}, []);
+	}, [i18n.language]);
 
 	const handleRecClick = (number) => {
 		if (number === 1) {
