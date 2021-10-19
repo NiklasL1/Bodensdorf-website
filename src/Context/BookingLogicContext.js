@@ -31,7 +31,7 @@ const BookingLogicContextProvider = ({ children }) => {
 	const { logThis } = useContext(LogContext);
 
 	const bodensdorf = {
-		cleaningFee: 40,
+		cleaningFee: 50,
 		// currency: "EUR",
 		// minimumDaysDiscount: 6,
 		// daysDiscount: 5, // %
