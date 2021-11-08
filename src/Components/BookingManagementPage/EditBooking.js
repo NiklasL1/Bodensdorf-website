@@ -11,7 +11,6 @@ import Swal from "sweetalert2";
 
 const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 	const [overlap, setOverlap] = useState(false);
-	const [tooShort, setTooShort] = useState(false);
 	const { update, bookingsList } = useContext(BookingsContext);
 
 	const handleSubmit = (event) => {
@@ -46,12 +45,6 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 				icon: "warning",
 				title: "Ausstehender Betrag ist nicht angegeben",
 			});
-			// } else if (tooShort) {
-			// 	Swal.fire({
-			// 		icon: "warning",
-			// 		title:
-			// 			"Anreise Datum muss mindistens vier Tage nach Abreise Datum sein",
-			// 	});
 		} else if (overlap) {
 			Swal.fire({
 				icon: "error",
@@ -85,25 +78,18 @@ const EditBooking = ({ handleClose, show, thisUser, _id, value, setValue }) => {
 					value.departEpoch <= element.departEpoch)
 			) {
 				setOverlap(true);
-				// console.log("overlap")
 			}
 			if (
 				value.arriveEpoch <= element.arriveEpoch &&
 				value.departEpoch >= element.departEpoch
 			) {
 				setOverlap(true);
-				// console.log("overlap")
-			}
-			if (value.departEpoch - value.arriveEpoch < 345600000) {
-				setTooShort(true);
-				// console.log("too short")
 			}
 		});
 	};
 
 	useEffect(() => {
 		setOverlap(false);
-		setTooShort(false);
 		checkOverlap();
 	}, [value.arriveEpoch, value.departEpoch]);
 

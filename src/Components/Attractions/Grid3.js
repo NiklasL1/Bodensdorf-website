@@ -15,9 +15,7 @@ const Grid3 = () => {
 
 	return (
 		<div className="spacing">
-			<a name="area">
-				<h2 className="title">{t("aTitle")}</h2>
-			</a>
+			<h2 className="title">{t("aTitle")}</h2>
 			<h6 className="subTitle">{t("aSubTitle")}</h6>
 			<Container fluid>
 				<Row>
@@ -26,7 +24,11 @@ const Grid3 = () => {
 						md={12}
 						lg={6}
 					>
-						<Image src={`/img/${imgType}-${imgSize}/ossiach-kollage.${imgType}`} rounded fluid />
+						<Image
+							src={`/img/${imgType}-${imgSize}/ossiach-kollage.${imgType}`}
+							rounded
+							fluid
+						/>
 					</Col>
 					<Col
 						className="d-flex justify-content-center verticalAlign"

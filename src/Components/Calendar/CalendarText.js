@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import Table from "react-bootstrap/Table";
 import { useTranslation } from "react-i18next";
 import "./CalendarText.css";
-import Button from "react-bootstrap/Button";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 
 const TableOutside = () => {

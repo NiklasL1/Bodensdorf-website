@@ -1,11 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import {	
-	getMonth,
-	getYear,
-	isSameDay,
-	subMonths,
-	addMonths,
-} from "date-fns";
+import { getMonth, getYear, isSameDay, subMonths, addMonths } from "date-fns";
 import { enGB, de } from "date-fns/locale";
 import { DateRangePickerCalendar, START_DATE } from "react-nice-dates";
 import "react-nice-dates/build/style.css";
@@ -144,6 +138,12 @@ const BookingCalendarNew = () => {
 				) {
 					inbetweenDatesArray.push(new Date(x));
 				}
+			}
+			if (
+				sortedBookingsList[i].departEpoch ===
+				sortedBookingsList[i + 1].arriveEpoch
+			) {
+				inbetweenDatesArray.push(new Date(sortedBookingsList[i].departEpoch));
 			}
 		}
 		setInbetweenDates(inbetweenDatesArray);
@@ -383,7 +383,7 @@ const BookingCalendarNew = () => {
 			setInfoClassName("hideIt");
 		} else if (infoClassName) {
 			setInfoClassName(undefined);
-			setPriceClassName("hideIt")
+			setPriceClassName("hideIt");
 		}
 	};
 
@@ -478,7 +478,7 @@ const BookingCalendarNew = () => {
 								<td className="tableWidth">{totalBookingCost}€</td>
 							</tr>
 						</tbody>
-					</Table>					
+					</Table>
 					<div className="flexIt">
 						<Button variant="outline-secondary" onClick={toggleInfo}>
 							{!infoClassName ? t("cnew3a") : t("cnew3")}

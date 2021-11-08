@@ -201,7 +201,7 @@ const ForgotPassword = () => {
 					<Form
 						onSubmit={(e) => {
 							e.preventDefault();
-							if (newPassword != newPasswordConfirm) {
+							if (newPassword !== newPasswordConfirm) {
 								Swal.fire({
 									icon: "error",
 									title: `${t("pass4Error")}`,

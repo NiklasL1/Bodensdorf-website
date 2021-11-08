@@ -21,18 +21,10 @@ const UserProfilePage = () => {
 		setPayingRemainder,
 		setOutstandingPayment,
 		handleShowStripe,
-		thisBooking,
 		setThisBooking,
 	} = useContext(PaymentContext);
 
-	const {
-		data,
-		setData,
-		loginUsername,
-		setLoginUsername,
-		loginPassword,
-		setLoginPassword,
-	} = useContext(AuthContext);
+	const { data, setData } = useContext(AuthContext);
 
 	const { logThis } = useContext(LogContext);
 
@@ -62,10 +54,6 @@ const UserProfilePage = () => {
 	const sortedList = filteredList
 		? filteredList.sort((a, b) => b.arriveEpoch - a.arriveEpoch)
 		: undefined;
-
-	// const logit = () => {
-	// 	logThis(thisBooking);
-	// };
 
 	const handleClick = (amountOwed, _id) => {
 		setOutstandingPayment(amountOwed);
