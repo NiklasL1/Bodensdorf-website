@@ -32,7 +32,7 @@ const MailContextProvider = ({ children }) => {
 		registerTelNo,
 	} = useContext(AuthContext);
 	const { thisBooking } = useContext(PaymentContext);
-	const { bookingDetails, setExtraPerson } = useContext(BookingLogicContext);
+	const { bookingDetails } = useContext(BookingLogicContext);
 	const { logThis } = useContext(LogContext);
 
 	let paymentMethod = JSON.parse(localStorage.getItem("payment"));
@@ -76,7 +76,7 @@ const MailContextProvider = ({ children }) => {
 				);
 				let emailText = `Dear ${registerFirstName} ${registerLastName}, \r
 
-				Thank you for registering an account with us. We have stored the following personal information you provided:\r\r
+				Thank you for registering an account with us. We have stored the following personal information you provided:\r
 
 				Name: ${registerFirstName} ${registerLastName}\r
 				E-mail: ${registerEmail}\r
@@ -97,7 +97,7 @@ const MailContextProvider = ({ children }) => {
 				setRegisterSubject(`Konto angelegt - Ossiacher See Ferienwohnung`);
 				let emailText = `Sehr geehrte(r) ${registerFirstName} ${registerLastName}, \r
 
-				ihr Konto wurde erfolgreich angelegt. Wir haben die Folgenden persönlichen Daten, die Sie angegeben haben, für Sie gespeichert:\r\r
+				ihr Konto wurde erfolgreich angelegt. Wir haben die Folgenden persönlichen Daten, die Sie angegeben haben, für Sie gespeichert:\r
 
 				Name: ${registerFirstName} ${registerLastName}\r
 				E-mail: ${registerEmail}\r
@@ -131,12 +131,12 @@ const MailContextProvider = ({ children }) => {
 				setSubject(`Booking confirmation - Lake Ossiach holiday apartment`);
 				let emailText = `Dear ${firstName} ${lastName},\r
 
-				Thank you for booking a stay at our holiday aparment on Lake Ossiach!\r
+				Thank you for booking a stay at our holiday apartment on Lake Ossiach!\r
 				
 				Your date of arrival is the ${moment(
 					currentBookingInitial.arriveStr,
 					"DD-MM-YYYY"
-				).format("DD.MM.YYYY")} and your date of depature will be the ${moment(
+				).format("DD.MM.YYYY")} and your date of departure will be the ${moment(
 					currentBookingInitial.departStr,
 					"DD-MM-YYYY"
 				).format(
@@ -147,7 +147,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€, your booking is confirmed and no further action is required. Thank you! \r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take some time for you to receive an answer.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!\r
 				
@@ -178,7 +178,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung zu zahlen. Vielen Dank dafür! Es ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen etwas dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				
@@ -195,12 +195,12 @@ const MailContextProvider = ({ children }) => {
 				setSubject("Booking confirmation - Lake Ossiach holiday apartment");
 				let emailText = `Dear ${firstName} ${lastName},\r
 
-				Thank you for booking a stay at our holiday aparment on Lake Ossiach!\r
+				Thank you for booking a stay at our holiday apartment on Lake Ossiach!\r
 				
 				Your date of arrival is the ${moment(
 					currentBookingInitial.arriveStr,
 					"DD-MM-YYYY"
-				).format("DD.MM.YYYY")} and your date of depature will be the ${moment(
+				).format("DD.MM.YYYY")} and your date of departure will be the ${moment(
 					currentBookingInitial.departStr,
 					"DD-MM-YYYY"
 				).format(
@@ -211,7 +211,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€. No further action is required concerning payment.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take some time for you to receive an answer.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!\r
 				
@@ -242,7 +242,7 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.amtPaid
 				}€ für Ihre Buchung gezahlt. Daher ist keine weitere Aktion ihrerseits erforderlich.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen etwas dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				
@@ -259,12 +259,12 @@ const MailContextProvider = ({ children }) => {
 				setSubject(`Booking confirmation - Lake Ossiach holiday apartment`);
 				let emailText = `Dear ${firstName} ${lastName},\r
 
-				Thank you for booking a stay at our holiday aparment on Lake Ossiach!\r
+				Thank you for booking a stay at our holiday apartment on Lake Ossiach!\r
 				
 				Your date of arrival is the ${moment(
 					currentBookingInitial.arriveStr,
 					"DD-MM-YYYY"
-				).format("DD.MM.YYYY")} and your date of depature will be the ${moment(
+				).format("DD.MM.YYYY")} and your date of departure will be the ${moment(
 					currentBookingInitial.departStr,
 					"DD-MM-YYYY"
 				).format(
@@ -281,9 +281,9 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.arriveEpoch - 2592000000
 				).format(
 					"DD.MM.YYYY"
-				)}. Should you fail to make the remaining payment by the due date, your reservation may be cancelled. To make the remaining payment, please log in to your account and click on "My Account" in the top left of your screen. You will see a list of your bookings and can click on the "Pay balance" button to pay the oustanding amount for your booking.\r
+				)}. Should you fail to make the remaining payment by the due date, your reservation may be cancelled. To make the remaining payment, please log in to your account and click on the "My Account" icon, the rightmost icon in the menu on the top right of your screen. You will see a list of your bookings and can click on the "Pay balance" button to pay the oustanding amount for your booking.\r
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take some time for you to receive an answer.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!\r
 				
@@ -320,9 +320,9 @@ const MailContextProvider = ({ children }) => {
 					currentBookingInitial.arriveEpoch - 2592000000
 				).format(
 					"DD.MM.YYYY"
-				)}. Sollten Sie bis zu dem Fälligkeitsdatum die restliche Zahlung nicht erbracht haben, könnte Ihre Reservierung storniert werden. Bitte zahlen Sie indem Sie sich in Ihrem Konto anmelden und dann oben links auf "Mein Konto" klicken. Sie sehen dann eine Liste Ihrer Buchungen und können die Zahlung tätigen, indem Sie auf "Restbetrag zahlen" klicken.
+				)}. Sollten Sie bis zu dem Fälligkeitsdatum die restliche Zahlung nicht erbracht haben, könnte Ihre Reservierung storniert werden. Bitte zahlen Sie indem Sie sich in Ihrem Konto anmelden und dann auf den "Mein Konto" Knopf klicken. Dieser befindet sich in dem Menu oben rechts, nachdem Sie sich angemeldet haben. Sie sehen dann eine Liste Ihrer Buchungen und können die Zahlung tätigen, indem Sie auf "Restbetrag zahlen" klicken.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen etwas dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				
@@ -354,14 +354,14 @@ const MailContextProvider = ({ children }) => {
 				Your date of arrival is the ${moment(
 					currentBookingRemainder.arriveStr,
 					"DD-MM-YYYY"
-				).format("DD.MM.YYYY")} and your date of depature will be the ${moment(
+				).format("DD.MM.YYYY")} and your date of departure will be the ${moment(
 					currentBookingRemainder.departStr,
 					"DD-MM-YYYY"
 				).format(
 					"DD.MM.YYYY"
 				)}. Please note that check-in is from 16:00 to 19:00 o'clock on the day of arrival and check-out is by 10:00 on the day of departure.
 				
-				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take up to a week for you to receive an answer to an e-mail.\r
+				For any further inquiries about your stay, please contact heidi@tomlittle.org, or send a Signal or text message to +4915111353000, if possible in a timely manner. It may take some time for you to receive an answer.\r
 				
 				We thank you for your booking and hope you have a fantastic stay in our holiday apartment!
 				
@@ -395,7 +395,7 @@ const MailContextProvider = ({ children }) => {
 					"DD.MM.YYYY"
 				)}. Bitte beachten Sie die Check-in und Check-out Zeiten: 16:00 bis 19:00 Uhr am Ankunftstag und bis 10:00 am Abreisetag.
 				
-				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen bis zu einer Woche dauern könnte, bis Sie auf E-mails eine Antwort erhalten.
+				Für weitere Fragen senden Sie uns bitte eine E-mail an heidi@tomlittle.org, oder per Signal oder SMS an +4915111353000. Möglichst nicht zu kurzfristig, da es in machen Fällen etwas dauern könnte, bis Sie eine Antwort erhalten.
 				
 				Vielen Dank für Ihre Buchung und wir wünschen Ihnen eine fantastische Zeit in unserer Ferienwohnung!
 				

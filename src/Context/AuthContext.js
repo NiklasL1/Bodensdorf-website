@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import Swal from "sweetalert2";
 import { useTranslation } from "react-i18next";
 import axios from "axios";
@@ -35,7 +35,7 @@ const AuthContextProvider = ({ children }) => {
 		setShowLoginDuringBooking(true);
 	};
 
-	let history = useHistory();
+	// let history = useHistory();
 
 	const getUser = () => {
 		axios({
@@ -108,16 +108,16 @@ const AuthContextProvider = ({ children }) => {
 			}
 		});
 
-		if (
-			loginPassword === "65527" &&
-			(loginUsername === "niklas" ||
-				loginUsername === "heidi" ||
-				loginUsername === "tom")
-		) {
-			// history.push("/bookings");
-		}
+		// if (
+		// 	loginPassword === "65527" &&
+		// 	(loginUsername === "niklas" ||
+		// 		loginUsername === "heidi" ||
+		// 		loginUsername === "tom")
+		// ) {			
+		// 	history.push("/bookings");
+		// }
 	};
-
+	
 	return (
 		<AuthContext.Provider
 			value={{

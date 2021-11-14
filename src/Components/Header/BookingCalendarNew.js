@@ -44,8 +44,6 @@ const BookingCalendarNew = () => {
 	const [rec2Year, setrec2Year] = useState();
 	const [rec3Year, setrec3Year] = useState();
 
-	const [mouseOverCalendar, setMouseOverCalendar] = useState(false);
-
 	const {
 		startDate,
 		setStartDate,
@@ -79,13 +77,13 @@ const BookingCalendarNew = () => {
 	const arriveDepartArray = [];
 	const inbetweenDatesArray = [];
 
+	let currentLocale = i18n.language.substring(0, 2) === "en" ? enGB : de;
+
 	useEffect(() => {
 		if (showSlidesGrid1) {
 			setButtonClass("book-btn color-4");
 		}
-	}, [showSlidesGrid1]);
-
-	let currentLocale = i18n.language.substring(0, 2) === "en" ? enGB : de;
+	}, [showSlidesGrid1]);	
 
 	const checkAvailability = () => {
 		bookingsList.forEach((element) => {
@@ -432,26 +430,21 @@ const BookingCalendarNew = () => {
 							></i>
 						</div>
 
-						<span
-							onMouseEnter={() => setMouseOverCalendar(true)}
-							onMouseLeave={() => setMouseOverCalendar(false)}
-						>
-							<DateRangePickerCalendar
-								startDate={selectedStartDate}
-								endDate={selectedEndDate}
-								focus={focus}
-								onStartDateChange={handleStartDateChange}
-								onEndDateChange={handleEndDateChange}
-								onFocusChange={handleFocusChange}
-								locale={currentLocale}
-								modifiers={modifiers}
-								modifiersClassNames={modifiersClassNames}
-								month={month}
-								onMonthChange={() => undefined}
-								minimumDate={new Date()}
-								minimumLength={6}
-							/>
-						</span>
+						<DateRangePickerCalendar
+							startDate={selectedStartDate}
+							endDate={selectedEndDate}
+							focus={focus}
+							onStartDateChange={handleStartDateChange}
+							onEndDateChange={handleEndDateChange}
+							onFocusChange={handleFocusChange}
+							locale={currentLocale}
+							modifiers={modifiers}
+							modifiersClassNames={modifiersClassNames}
+							month={month}
+							onMonthChange={() => undefined}
+							minimumDate={new Date()}
+							minimumLength={6}
+						/>
 					</div>
 					<div className="resetBtn">
 						<Button variant="primary" onClick={resetSelection}>

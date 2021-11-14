@@ -12,13 +12,11 @@ import { PhotosContext } from "../../Context/PhotosContext";
 const Grid1 = () => {
 	const { t } = useTranslation();
 
-	const { showSlidesGrid1, setShowSlidesGrid1 } = useContext(PhotosContext);	
+	const { showSlidesGrid1, setShowSlidesGrid1 } = useContext(PhotosContext);
 
 	return (
 		<div onMouseEnter={setShowSlidesGrid1} className="spacing">
-			<a name="sea">
-				<h2 className="title">{t("oTitle")}</h2>
-			</a>
+			<h2 className="title">{t("oTitle")}</h2>
 			<h6 className="subTitle">{t("oSubTitle")}</h6>
 			<Container fluid>
 				<Row>

@@ -9,26 +9,26 @@ const BookingsContextProvider = ({ children }) => {
 	const [loading, setLoading] = useState(true);
 
 	// create with userID
-	const createWithID = (userID, values) => {
-		fetch(
-			process.env.REACT_APP_LOCATION === "development"
-				? `${process.env.REACT_APP_DEV_API}/api/bookings/${userID}`
-				: `${process.env.REACT_APP_PROD_API}/api/bookings/${userID}`,
-			{
-				method: "post",
-				headers: {
-					Accept: "application/json, text/plain, */*",
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ ...values }),
-			}
-		)
-			.then((res) => res.json())
-			.then((res) => setBookingsList((prevState) => [...prevState, res]))
-			.catch((error) => {
-				console.error("Error:", error);
-			});
-	};
+	// const createWithID = (userID, values) => {
+	// 	fetch(
+	// 		process.env.REACT_APP_LOCATION === "development"
+	// 			? `${process.env.REACT_APP_DEV_API}/api/bookings/${userID}`
+	// 			: `${process.env.REACT_APP_PROD_API}/api/bookings/${userID}`,
+	// 		{
+	// 			method: "post",
+	// 			headers: {
+	// 				Accept: "application/json, text/plain, */*",
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 			body: JSON.stringify({ ...values }),
+	// 		}
+	// 	)
+	// 		.then((res) => res.json())
+	// 		.then((res) => setBookingsList((prevState) => [...prevState, res]))
+	// 		.catch((error) => {
+	// 			console.error("Error:", error);
+	// 		});
+	// };
 
 	// create
 	const create = (values) => {
@@ -64,16 +64,16 @@ const BookingsContextProvider = ({ children }) => {
 		setLoading(false);
 	};
 
-	const getDataPerUser = async (userID) => {
-		const url =
-			process.env.REACT_APP_LOCATION === "development"
-				? `${process.env.REACT_APP_DEV_API}/api/bookings/${userID}`
-				: `${process.env.REACT_APP_PROD_API}/api/bookings/${userID}`;
-		const response = await fetch(url);
-		const data = await response.json();
-		setBookingsList(data);
-		setLoading(false);
-	};
+	// const getDataPerUser = async (userID) => {
+	// 	const url =
+	// 		process.env.REACT_APP_LOCATION === "development"
+	// 			? `${process.env.REACT_APP_DEV_API}/api/bookings/${userID}`
+	// 			: `${process.env.REACT_APP_PROD_API}/api/bookings/${userID}`;
+	// 	const response = await fetch(url);
+	// 	const data = await response.json();
+	// 	setBookingsList(data);
+	// 	setLoading(false);
+	// };
 
 	useEffect(() => {
 		getData();

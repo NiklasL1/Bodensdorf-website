@@ -15,9 +15,7 @@ const Grid2 = () => {
 
 	return (
 		<div onMouseEnter={setShowSlidesGrid2} className="spacing">
-			<a name="house">
-				<h2 className="title">{t("iTitle")}</h2>
-			</a>
+			<h2 className="title">{t("iTitle")}</h2>
 			<h6 className="subTitle">{t("iSubTitle")}</h6>
 			<Container fluid>
 				<Row>

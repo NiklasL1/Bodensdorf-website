@@ -60,7 +60,7 @@ export default function StripeNew() {
 		setBookingDetails,
 	} = useContext(BookingLogicContext);
 	const { data } = useContext(AuthContext);
-	const { sendEmail, setEmail, setMessage, registerMessage } = useContext(
+	const { sendEmail, setEmail, setMessage } = useContext(
 		MailContext
 	);
 	const { logThis } = useContext(LogContext);
