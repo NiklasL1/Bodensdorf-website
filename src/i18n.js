@@ -26,7 +26,7 @@ i18n
       en: {
         translations: {
           ChangeLng: "Seite auf Deutsch",
-          TabTitle: "Lake Ossiach holiday apartment",
+          TabTitle: "Holiday apartment on Lake Ossiach with private beach - Book now!",
           MetaDescription: "english description",
           book: "Booking calendar",
           house: "The Apartment",
@@ -405,7 +405,7 @@ i18n
       de: {
         translations: {
           ChangeLng: "Page in English",
-          TabTitle: "Ossiacher See Ferienwohnung",
+          TabTitle: "Ferienwohnung direkt am Ossiacher See mit privatem Badestrand mieten",
           MetaDescription: "Deutsche Beschreibung",
           book: "Buchungskalender",
           house: "Wohnung",
