@@ -9,10 +9,10 @@ const ManagementPage = () => {
 	const { loginUsername, loginPassword } = useContext(AuthContext);
 	return (
 		<>
-			{loginPassword === "65527" &&
-			(loginUsername === "niklas" ||
-				loginUsername === "heidi" ||
-				loginUsername === "tom") ? (
+			{loginPassword === process.env.REACT_APP_MAN_PSWD &&
+			(loginUsername === process.env.REACT_APP_MAN_USER_1 ||
+				loginUsername === process.env.REACT_APP_MAN_USER_2 ||
+				loginUsername === process.env.REACT_APP_MAN_USER_3) ? (
 				<div>
 					<ListForm />
 					<Users />

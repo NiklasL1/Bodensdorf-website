@@ -36,9 +36,9 @@ const ManagementPage = () => {
 	return (
 		<>
 			{data ? (
-				(data.username === "niklas" && data.lName === "Management") ||
-				(data.username === "heidi" && data.lName === "Management") ||
-				(data.username === "tom" && data.lName === "Management") ? (
+				(data.username === process.env.REACT_APP_MAN_USER_1 && data.lName === process.env.REACT_APP_MAN_USER_LASTNAME) ||
+				(data.username === process.env.REACT_APP_MAN_USER_2 && data.lName === process.env.REACT_APP_MAN_USER_LASTNAME) ||
+				(data.username === process.env.REACT_APP_MAN_USER_3 && data.lName === process.env.REACT_APP_MAN_USER_LASTNAME) ? (
 					<div className="alignPage">
 						<ListForm
 							handleClose={handleClose}
