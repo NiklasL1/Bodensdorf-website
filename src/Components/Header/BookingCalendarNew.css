@@ -1,6 +1,6 @@
 .bookingCalendar {
 	inherits: false;
-	text-align:  center;	
+	text-align: center;
 }
 
 /* .nice-dates-navigation, */
@@ -23,12 +23,11 @@
 	transition: none;
 } */
 
-
 .nice-dates-day.-preSeason {
 	/* background-color: lightgreen; */
 	/* filter: opacity(0.5), brightness(1.2); */
 	font-weight: bold;
-	color: #800000;	
+	color: #800000;
 	/* border-radius: 100%; */
 }
 
@@ -46,34 +45,39 @@
 	color: #4363d8;
 }
 
+/*
 .nice-dates-day.-disabled {
-	background-color: #eee;
-	color: grey;
-	/* font-weight: normal; */
-	text-shadow: none;
-	/* border-radius: 100%; */
+	text-shadow: white;
+	color: black;
+	background: repeating-linear-gradient(
+    135deg,
+    white 0px,
+    white 3px,
+    rgb(156, 155, 155) 3px,
+    rgb(156, 155, 155) 5px
+	)
 }
+*/
 
-/* .nice-dates-day.-disabled {
-	color: grey;
+.nice-dates-day.-disabled {
+	color: black;
 	background: repeating-linear-gradient(
 			135deg,
-			transparent,
-			transparent 5px,
-			white 5px,
-			white 15px
+			rgb(156, 155, 155),
+			rgb(156, 155, 155) 0px,
+			white 3px,
+			white 5px
 		),
-		linear-gradient(to bottom, white, lightgray);
-} */
+		linear-gradient(to bottom, white, rgb(156, 155, 155));
+}
 
-.nice-dates-navigation_previous{
+.nice-dates-navigation_previous {
 	display: none;
 }
 
-.nice-dates-navigation_next{
+.nice-dates-navigation_next {
 	display: none;
 }
-
 
 .navButtons {
 	display: flex;
@@ -88,12 +92,12 @@
 	/* width: 90%;	 */
 }
 
-.navButton:hover{
+.navButton:hover {
 	color: #333;
 }
 
 .recButtons {
-	margin-bottom: 20px;	
+	margin-bottom: 20px;
 	display: flex;
 	justify-content: space-around;
 }
@@ -104,7 +108,7 @@
 	cursor: pointer;
 }
 
-.flexIt {	
+.flexIt {
 	display: flex !important;
 	justify-content: space-between !important;
 }
@@ -133,13 +137,13 @@
 	text-align: right;
 }
 
-.modalW{
+.modalW {
 	width: 50% !important;
 }
 
 .resetBtn {
 	display: flex;
 	justify-content: center;
-	margin-bottom: 10px;	
+	margin-bottom: 10px;
 	margin-top: 20px;
 }
