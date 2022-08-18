@@ -70,12 +70,14 @@ const BookingCalendarNew = () => {
 	const [inbetweenDates, setInbetweenDates] = useState();
 
 	const [infoClassName, setInfoClassName] = useState("hidden");
-	const [priceClassName, setPriceClassName] = useState("hidden");
+	const [priceClassName, setPriceClassName] = useState(undefined);
 	const [buttonClass, setButtonClass] = useState("book-btn color-4 top");
 
 	const unavailableArray = [];
 	const arriveDepartArray = [];
 	const inbetweenDatesArray = [];
+
+	const minimumNightsStay = 5;
 
 	let currentLocale = i18n.language.substring(0, 2) === "en" ? enGB : de;
 
@@ -83,7 +85,7 @@ const BookingCalendarNew = () => {
 		if (showSlidesGrid1) {
 			setButtonClass("book-btn color-4");
 		}
-	}, [showSlidesGrid1]);	
+	}, [showSlidesGrid1]);
 
 	const checkAvailability = () => {
 		bookingsList.forEach((element) => {
@@ -118,7 +120,7 @@ const BookingCalendarNew = () => {
 			if (
 				sortedBookingsList[i + 1].arriveEpoch -
 					sortedBookingsList[i].departEpoch <
-				86400000 * 6
+				86400000 * minimumNightsStay
 			) {
 				for (
 					x = sortedBookingsList[i].departEpoch;
@@ -128,7 +130,10 @@ const BookingCalendarNew = () => {
 					inbetweenDatesArray.push(new Date(x));
 				}
 			}
-			if (sortedBookingsList[i].departEpoch - Date.now() < 86400000 * 6) {
+			if (
+				sortedBookingsList[i].arriveEpoch - Date.now() <
+				86400000 * minimumNightsStay
+			) {
 				for (
 					x = Date.now();
 					x < sortedBookingsList[i].departEpoch + 1;
@@ -226,7 +231,7 @@ const BookingCalendarNew = () => {
 				icon: "warning",
 				title: `${t("bAlert6")}`,
 			});
-		} else if (arrayOfDates.length < 7) {
+		} else if (arrayOfDates.length < 6) {
 			Swal.fire({
 				icon: "warning",
 				title: `${t("bAlert2")}`,
@@ -443,7 +448,7 @@ const BookingCalendarNew = () => {
 							month={month}
 							onMonthChange={() => undefined}
 							minimumDate={new Date()}
-							minimumLength={6}
+							minimumLength={minimumNightsStay}
 						/>
 					</div>
 					<div className="resetBtn">
