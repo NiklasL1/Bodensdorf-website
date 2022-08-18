@@ -91,9 +91,12 @@ const Login = () => {
 	return (
 		<div>
 			{data ? (
-				(data.username === "niklas" && data.lName === "Management") ||
-				(data.username === "heidi" && data.lName === "Management") ||
-				(data.username === "tom" && data.lName === "Management") ? (
+				(data.username === REACT_APP_MAN_USER_1 &&
+					data.lName === REACT_APP_MAN_USER_LASTNAME) ||
+				(data.username === REACT_APP_MAN_USER_2 &&
+					data.lName === REACT_APP_MAN_USER_LASTNAME) ||
+				(data.username === REACT_APP_MAN_USER_3 &&
+					data.lName === REACT_APP_MAN_USER_LASTNAME) ? (
 					<>
 						<Link to="/bookings">
 							<Button className="buttonColor loginButton" variant="light">
