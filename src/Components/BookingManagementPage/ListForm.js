@@ -63,7 +63,7 @@ const AddToList = ({ handleClose, show }) => {
 				setOverlapAdd(true);
 				// console.log("overlap")
 			}
-			if (formState.departEpoch - formState.arriveEpoch < 345600000) {
+			if (formState.departEpoch - formState.arriveEpoch < 86400000) {
 				setTooShortAdd(true);
 				// console.log("too short")
 			}
@@ -133,8 +133,7 @@ const AddToList = ({ handleClose, show }) => {
 		} else if (tooShortAdd) {
 			Swal.fire({
 				icon: "warning",
-				title:
-					"Anreise Datum muss mindistens vier Tage nach Abreise Datum sein",
+				title: "Der Abreisetag muss nach dem Anreisetag liegen",
 			});
 		} else if (overlapAdd) {
 			Swal.fire({
@@ -171,7 +170,8 @@ const AddToList = ({ handleClose, show }) => {
 			setFormState((prevState) => {
 				return {
 					...prevState,
-					arriveEpoch: moment(formState.arriveStr, "DD-MM-YYYY").valueOf(),
+					arriveEpoch:
+						moment(formState.arriveStr, "DD-MM-YYYY").valueOf() + 43200000,
 				};
 			});
 		}
@@ -182,7 +182,8 @@ const AddToList = ({ handleClose, show }) => {
 			setFormState((prevState) => {
 				return {
 					...prevState,
-					departEpoch: moment(formState.departStr, "DD-MM-YYYY").valueOf(),
+					departEpoch:
+						moment(formState.departStr, "DD-MM-YYYY").valueOf() + 43200000,
 				};
 			});
 		}
