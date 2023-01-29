@@ -89,6 +89,10 @@ const PhotosContextProvider = ({ children }) => {
 			src: `/img/${imgType}-${imgSize}/gallery-innen-new/I20 wohnung-badezimmer-2.${imgType}`,
 			key: "I20",
 		},
+		{
+			src: `/img/${imgType}-${imgSize}/gallery-innen-new/I21 wohnung-badezimmer-3.${imgType}`,
+			key: "I21",
+		},
 	];
 
 	const outsidePhotosNew = [
