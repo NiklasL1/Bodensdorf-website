@@ -1,5 +1,15 @@
 export const recommendations = [
 	{
+		name: "Erlebnis Card Kärnten",
+		type: "activity",
+		map: "",
+		link: "https://www.visitvillach.at/de/erlebnis-card.html",
+		image: "/img/KaerntenCard.jpg",
+		subtitle: "recCardS",
+		description: "recCardT",
+		favorite: "rec",
+	},
+	{
 		name: "Gerlitzenbahn",
 		type: "activity",
 		map: "https://goo.gl/maps/Vo3ffgcQawnRdj3T6",
