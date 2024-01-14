@@ -18,7 +18,7 @@ import { PaymentContext } from "../../Context/PaymentContext";
 import { ImgContext } from "../../Context/ImgContext";
 import { BookingLogicContext } from "../../Context/BookingLogicContext";
 import { PhotosContext } from "../../Context/PhotosContext";
-import BookingCalendarNew from "./BookingCalendarNew";
+//import BookingCalendarNew from "./BookingCalendarNew";
 import LoginModal from "../Auth/LoginModal";
 registerLocale("de", de);
 registerLocale("en", en);
@@ -61,23 +61,23 @@ function Page() {
 				<div className="navBar">
 					<HeaderMenu />
 				</div>
-				<div className="bookingFloatingButton">
+				{/*<div className="bookingFloatingButton">
 					<button className={buttonClass} onClick={() => setShow(true)}>
 						{t("b1")}
 					</button>
-				</div>
+				</div>*/}
 				<Col
 					id="headerPic"
 					ref={elementRef}
 					className="d-flex justify-content-center vertAlignMenu"
 				>
 					<div className="containerRow">
-						<h1 id="pageTitle" className="layer1">
+						<h1 id="pageTitle" className="layer1">	
 							{t("moTitle")}
 						</h1>
-						<div className="layer2 centerButton">
+						{/*<div className="layer2 centerButton">
 							<BookingCalendarNew />
-						</div>
+						</div>*/}
 					</div>
 					{/* <BookingMenu /> */}
 				</Col>

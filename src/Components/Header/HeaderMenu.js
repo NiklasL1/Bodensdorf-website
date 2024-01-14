@@ -56,7 +56,7 @@ const HeaderMenu = () => {
 				size={70}
 			/>
 
-			<ChildButton
+			{/*<ChildButton
 				className={data ? "hidden" : "menuButton"}
 				title={t("login1")}
 				icon={<i className="fa fa-sign-in fa-lg" aria-hidden="true" />}
@@ -107,7 +107,7 @@ const HeaderMenu = () => {
 					// var top = document.getElementById("calendarSection").offsetTop; //Getting Y of target element
 					// window.scrollTo(0, top);
 				}}
-			/>
+			/>*/}
 
 			<ChildButton
 				className="menuButton"

@@ -6,7 +6,7 @@ import Grid2 from "../Inside/Grid2";
 import Grid3 from "../Attractions/Grid3";
 import Grid4 from "../Directions/Grid4";
 import Footer from "../Footer/Footer";
-import CalendarMain from "../Calendar/CalendarMain";
+//import CalendarMain from "../Calendar/CalendarMain";
 
 function App() {
 	return (
@@ -15,8 +15,7 @@ function App() {
 			<Grid1 />
 			<Grid2 />
 			<Grid3 />
-			<Grid4 />
-			<CalendarMain />
+			<Grid4 />		
 			<Footer />
 		</div>
 	);
