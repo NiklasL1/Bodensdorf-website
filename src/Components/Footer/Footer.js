@@ -16,7 +16,7 @@ const Footer = () => {
 				<Container fluid>
 					<Row>
 						<Col className="d-flex justify-content-center ">
-							Copyright © Heidrun Holzapfel-Little 2018-2023
+							Copyright © Heidrun Holzapfel-Little 2024
 						</Col>
 						<Col className="d-flex justify-content-center">
 							<Link to="/impressum" className="textStyling">
