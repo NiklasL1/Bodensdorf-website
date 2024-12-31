@@ -3,13 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import Main from "./Main";
 import Imprint from "./Imprint";
-import UserManagementPage from "../UserManagementPage/UserManagementPage";
-import BookingManagementPage from "../BookingManagementPage/BookingManagementPage";
 import PageNotFound from "../PageNotFound";
-import StripeNew from "../Stripe/StripeNew";
-import UserProfilePage from "../Auth/UserProfilePage";
-import SofortReturnPage from "../Stripe/SofortReturnPage";
-import ForgotPassword from "../Auth/ForgotPassword";
 import RecommendationPage from "../Recommendations/RecommendationPage";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
@@ -24,13 +18,7 @@ function App() {
 					<meta name="description" content={t("MetaDescription")} />
 				</Helmet>
 				<Switch>
-					<Route exact path="/password/" children={<ForgotPassword />} />
-					<Route exact path="/return/" children={<SofortReturnPage />} />
-					<Route exact path="/user/" children={<UserProfilePage />} />
-					<Route exact path="/checkout/" children={<StripeNew />} />
 					<Route exact path="/impressum/" children={<Imprint />} />
-					<Route exact path="/users/" children={<UserManagementPage />} />
-					<Route exact path="/bookings/" children={<BookingManagementPage />} />
 					<Route exact path="/recommendations/" children={<RecommendationPage />} />
 					<Route exact path="/" children={<Main />} />
 					<Route children={<PageNotFound />} />

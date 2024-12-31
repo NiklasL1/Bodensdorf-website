@@ -22,6 +22,7 @@ const RecommendationTab = ({ recType }) => {
 									<Card.Subtitle className="recSubtitle">
 										<span className="text-muted">{t(rec.subtitle)}</span>
 									</Card.Subtitle>
+									<br/>
 									<Card.Text className="recText" as="div">
 										<p>
 											{" "}

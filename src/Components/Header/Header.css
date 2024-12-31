@@ -91,22 +91,28 @@
 	align-items: center;
 }
 
-.menuButton {
-	background: rgba(0, 0, 0, 0)
-		linear-gradient(45deg, rgba(34, 193, 195, 1) 0%, rgba(238, 253, 45, 1) 90%)
-		repeat scroll 0% 0% !important;
-	border-color: rgba(67, 88, 93, 0.644) !important;
-	color: black;
-}
 
-.menuButton:hover {
-	background: rgba(0, 0, 0, 0)
-		linear-gradient(45deg, rgb(254, 107, 139) 30%, rgb(255, 142, 83) 90%) repeat
-		scroll 0% 0% !important;
-	border-color: rgba(67, 88, 93, 0.644) !important;
-	color: black;
-	text-decoration: none;
-}
+
+.menuButton {
+	background: linear-gradient(45deg, #6a8c8a 0%, #a1b7b1 90%);
+	border: 2px solid #5a7371;
+	color: #333;
+	font-weight: 600;
+	padding: 10px 20px;
+	border-radius: 5px;
+	transition: all 0.3s ease;
+	min-width: 230px; /* Ensure a consistent width */
+	text-align: center; /* Center the text */
+	margin-right: 10px;
+	float: right;
+  }
+  
+  .menuButton:hover {
+	background: linear-gradient(45deg, #8a9f9e 30%, #7b9e9d 90%);
+	border-color: #5a7371;
+	color: #fff;
+	transform: translateY(-3px); /* Slight lift effect on hover */
+  }
 
 .hidden {
 	display: none !important;

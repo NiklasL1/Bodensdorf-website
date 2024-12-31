@@ -15,13 +15,14 @@
 }
 
 .recommendationTitle {
-	align-content: center;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	color: lightblue !important;
-	font-weight: 600;
-	-webkit-text-stroke: 0.5px blue;
+	font-family: "Parisienne", cursive;
+	font-weight: 500;
+	font-size: 5rem;
+	text-shadow: -1px -1px 0 #a9a9a9, 1px -1px 0 #a9a9a9, -1px 1px 0 #a9a9a9, 1px 1px 0 #a9a9a9;
+	/* color: #fc6076; */
 }
+
+
 
 .recommendationTop {
 	width: 100%;
@@ -37,65 +38,98 @@
 	gap: 1rem;
 	padding-top: 0.75rem;
 }
-@media (min-width: 600px) {
+@media (min-width: 768px) {
 	.recommendationCards { grid-template-columns: repeat(2, 1fr); }
 }
-@media (min-width: 900px) {
+@media (min-width: 1080px) {
 	.recommendationCards { grid-template-columns: repeat(3, 1fr); }
 }
 
-.rec {
+
+/* Wrapper for recommendation cards */
+.rec, .recFavorite {
 	display: flex;
-	flex: 1 1 auto;
-	background-color: rgba(255,255,255,0.85) !important;
-	box-shadow: 8px 8px 4px green;
-}
-
-.recFavorite {
-	display: flex;
-	flex: 1 1 auto;
-	background-color: rgba(255,255,255,0.85) !important;
-	box-shadow: 8px 8px 4px lightblue;
-}
-
-.recBody {
-	float: lefrightt;
-	clear: none;
-}
-
-.recTitle {
-	margin-top: 0rem !important;
-	margin-bottom: 0rem !important;
-	padding: 0px 0px 0px 10px;
-	float: right;
-	width: 75%;
-}
-
-.recSubtitle {
-	margin-top: 0rem !important;
-	margin-bottom: 0.1rem !important;
-	padding: 0px 0px 0px 10px;
-	float: right;
-	width: 75%;
-}
-
-.recImage {
-	float: left;
-	width: 25%;
-	transition: transform .2s;
-}
-
-.recImage:hover {
-	transform: scale(3.5);
-	transform-origin: left;
-	z-index: 5;
-}
-
-.recText {
-	clear: both;
+	flex-wrap: wrap;
+	background-color: rgba(255, 255, 255, 0.9);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	border-radius: 10px;
+	margin: 15px;
+	padding: 15px;
+	transition: box-shadow 0.3s ease;
+	max-width: 100%;
+	overflow: hidden;
+  }
+  
+  /* Hover effect for the card */
+  .rec:hover, .recFavorite:hover {
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Image styling */
+  .recImage {
+	flex: 0 0 25%;
+	max-width: 100%;
+	height: auto;
+	margin-right: 15px;
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	border-radius: 8px;
+  }
+  
+  .recImage:hover {
+	transform: scale(1.05);
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Title styling */
+  .recTitle {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #2c3e50;
+	margin: 0 0 10px;
+	width: 100%;
+	padding: 10px 0;
+	border-bottom: 2px solid #3498db;
+  }
+  
+  /* Horizontal line between title and text */
+  .recLine {
+	width: 100%;
+	height: 1px;
+	background-color: #bdc3c7; /* Light gray color for the line */
+	margin: 10px 0; /* Adds space above and below the line */
+  }
+  
+  /* Subtitle styling */
+  .recSubtitle {
 	font-size: 1.1rem;
-	line-height: 1.1;
-}
+	color: #7f8c8d;
+	margin: 0 0 10px;
+	padding-left: 10px;
+	font-style: italic;
+  }
+  
+  /* Text block styling */
+  .recText {
+	font-size: 1rem;
+	line-height: 1.4;
+	color: #34495e;
+	padding-left: 10px;
+	width: 100%;
+	overflow-wrap: break-word;
+	white-space: normal;
+  }
+  
+  /* For recommendation cards */
+  .rec {
+	background-color: rgba(255, 255, 255, 0.95);
+	border-left: 5px solid #2ecc71;
+  }
+  
+  /* For favorite recommendation cards */
+  .recFavorite {
+	background-color: rgba(255, 255, 255, 0.95);
+	border-left: 5px solid #3498db;
+  }
 
 .nav-item {
 	background-color: rgba(255,255,255,0.7) !important;
@@ -108,6 +142,78 @@
 
 .backToHomeButton {
 	margin-top: 20px;
-	margin-right: 10px;
 	float: right;
 }
+
+/* Wrapper for the tab container */
+.tab-wrapper {
+	margin-top: 30px;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: transparent; /* Keep the background transparent for the background image */
+  }
+  
+  /* Container for the tabs */
+  .container-fluid {
+	padding: 0;
+  }
+  
+  /* Tabs navigation */
+  .nav-tabs {
+	border-bottom: 2px solid #ccc;
+	margin-bottom: 20px;
+	background-color: transparent; /* Keep the background transparent for the background image */
+  }
+  
+  /* Individual tab item */
+  .nav-item {
+	margin-right: 10px;
+  }
+  
+  /* Tab links styling */
+  .nav-link {
+	padding: 10px 20px;
+	font-size: 1.1rem;
+	font-weight: 500;
+	color: #555;
+	border-radius: 5px;
+	background-color: transparent;
+	transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  /* Hover effect for tab links */
+  .nav-link:hover {
+	background-color: #e2e6ea;
+	color: #007bff;
+  }
+  
+  /* Active tab link */
+  .nav-link.active {
+	background-color: #007bff;
+	color: white;
+	border-color: #007bff;
+	font-weight: 600;
+  }
+  
+  /* Styling for the tab content wrapper */
+  .tab-item-wrapper {
+	padding: 20px;
+	border-radius: 8px;
+  }
+  
+  /* Style for tab panel content */
+  .tab-content {
+	padding-top: 20px;
+  }
+  
+  /* Small adjustments for mobile responsiveness */
+  @media (max-width: 768px) {
+	.nav-link {
+	  font-size: 1rem;
+	  padding: 8px 16px;
+	}
+  
+	.tab-item-wrapper {
+	  padding: 15px;
+	}
+  }

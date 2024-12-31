@@ -74,7 +74,7 @@ const Imprint = () => {
 				<Container fluid>
 					<Row>
 						<Col className="d-flex justify-content-center">
-							Copyright © Heidrun Holzapfel-Little 2024
+							Copyright © Heidrun Holzapfel-Little 2025
 						</Col>
 						<Col className="d-flex justify-content-center">
 							<Link to="/">Home</Link>
